@@ -18,7 +18,7 @@
 
 
 
-Are you using an older version of Xcode? Do this instead:
+Using an older version of Xcode? Do this instead:
 
 - Navigate to the project navigator and select your project or the blue project icon.
 - Package Dependencies > Add a New Package > +
@@ -44,5 +44,3 @@ init() {
 Make sure to replace API_KEY with your actual GoMarketMe API key. You can find it on the product onboarding page and under Profile > API Key.
 
 Check out our <a href="https://github.com/GoMarketMe/gomarketme-swift-sample-app" target="_blank">sample app</a> for an example.
-
-<a href="https://gomarketme.co" target="_blank">GoMarketMe</a>
