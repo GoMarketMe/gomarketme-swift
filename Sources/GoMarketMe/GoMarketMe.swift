@@ -13,7 +13,6 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
     private let systemInfoUrl = URL(string: "https://api.gomarketme.net/v1/mobile/system-info")!
     private let eventUrl = URL(string: "https://api.gomarketme.net/v1/event")!
 
-    private var updateListenerTask: Task<Void, Error>? = nil
     private var currTransaction: Transaction? = nil
     
     private override init() {
@@ -24,19 +23,15 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
         self.apiKey = apiKey
 
         Task {
-            await startListeningForUpdates()
-
             do {
                 if !(await isSDKInitialized()) {
                     try await postSDKInitialization(apiKey: apiKey)
                 }
 
-                let systemInfo = await getSystemInfo()
-                try await postSystemInfo(systemInfo: systemInfo, apiKey: apiKey)
+                try await postSystemInfo(systemInfo: await getSystemInfo(), apiKey: apiKey)
 
                 for await result in Transaction.all {
                     if affiliateCampaignCode != nil {
-                        print("RE Processing pending transaction")
                         await processTransactionResult(result)
                     }
                 }
@@ -46,18 +41,8 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
             }
         }
     }
-
-    public func startListeningForUpdates() async {
-        updateListenerTask = Task {
-            for await result in Transaction.currentEntitlements {
-                if affiliateCampaignCode != nil {
-                    await processTransactionResult(result)
-                }
-            }
-        }
-    }
     
-    func fetchAndSendProduct(productId:String) async {
+    private func fetchAndSendProduct(productId:String) async {
         do {
             let product = try await Product.products(for: [productId])
             if !product.isEmpty {
@@ -72,16 +57,15 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
     private func processTransactionResult(_ result: VerificationResult<Transaction>) async {
         switch result {
         case .verified(let transaction):
-            await fetchAndSendProduct(productId: transaction.productID)
-            fetchPurchaseDetails(transaction: transaction)
+            await syncTransaction(transaction: transaction)
         case .unverified(let transaction, _):
-            await fetchAndSendProduct(productId: transaction.productID)
-            fetchPurchaseDetails(transaction: transaction)
+            await syncTransaction(transaction: transaction)
         }
     }
-        
-    deinit {
-        updateListenerTask?.cancel()
+
+    public func syncTransaction(transaction: Transaction) async {
+        await fetchAndSendProduct(productId: transaction.productID)
+        fetchPurchaseDetails(transaction: transaction)
     }
 
     private func postSDKInitialization(apiKey: String) async throws {
@@ -131,10 +115,6 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
                let jsonDict = jsonObject as? [String: Any] {
                 affiliateCampaignCode = jsonDict["affiliate_campaign_code"] as? String
                 deviceId = jsonDict["device_id"] as? String
-                if deviceId != nil {
-                    print(deviceId!)
-                }
-                print("SystemInfo sent successfully")
             } else {
                 throw NSError(domain: "GoMarketMeSDK", code: 1, userInfo: [NSLocalizedDescriptionKey: "Failed to parse response JSON."])
             }
@@ -155,7 +135,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
         return UserDefaults.standard.bool(forKey: sdkInitializedKey)
     }
 
-    func markSDKAsInitialized() {
+    private func markSDKAsInitialized() {
         UserDefaults.standard.set(true, forKey: sdkInitializedKey)
     }
 
@@ -174,26 +154,18 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
         self.sendEventToServer(eventType: "product", body: productInfo)
     }
 
-    func refreshReceipt() {
+    private func refreshReceipt() {
         let request = SKReceiptRefreshRequest()
         request.delegate = self
         request.start()
     }
     
-    // Called when the receipt refresh completes successfully
     public func requestDidFinish(_ request: SKRequest) {
         if let receiptURL = Bundle.main.appStoreReceiptURL,
             let receiptData = try? Data(contentsOf: receiptURL) {
             let base64EncodedReceipt = receiptData.base64EncodedString()
             sendPurchaseDetails(self.currTransaction!, receipt: base64EncodedReceipt)
-        } else {
-            print("Receipt is still missing.")
         }
-    }
-        
-    // Called if the receipt refresh fails
-    public func request(_ request: SKRequest, didFailWithError error: Error) {
-        print("Failed to refresh receipt: \(error.localizedDescription)")
     }
     
     private func fetchPurchaseDetails(transaction: Transaction) {

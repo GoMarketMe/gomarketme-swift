@@ -41,6 +41,20 @@ init() {
 }
 ```
 
+### Sync the Transaction (Recommended)
+
+```swift
+// Step 1: Retrieve the product
+// Step 2: Attempt the purchase
+// Step 3: Handle the purchase result
+switch result { 
+case .success(let verification):
+    if case .verified(let transaction) = verification {
+        await goMarketMe.syncReceipt(transaction: transaction) // <- add this lane for faster processing
+    }
+}
+```
+
 Make sure to replace API_KEY with your actual GoMarketMe API key. You can find it on the product onboarding page and under Profile > API Key.
 
 Check out our <a href="https://github.com/GoMarketMe/gomarketme-swift-sample-app" target="_blank">sample app</a> for an example.
