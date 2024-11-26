@@ -14,7 +14,7 @@
 
 - File > Swift Packages > Add Package Dependency
 - Add `https://github.com/GoMarketMe/gomarketme-swift.git`
-- Select "Up to Next Major" with "1.0.0"
+- Select "Exact Version" > "1.1.1"
 
 
 
@@ -50,7 +50,7 @@ init() {
 switch result { 
 case .success(let verification):
     if case .verified(let transaction) = verification {
-        await goMarketMe.syncReceipt(transaction: transaction) // <- add this lane for faster processing
+        await goMarketMe.syncTransaction(transaction: transaction) // <- add this line for faster processing
     }
 }
 ```
