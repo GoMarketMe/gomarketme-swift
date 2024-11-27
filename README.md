@@ -36,8 +36,10 @@ import GoMarketMe
 ### Initialize Client
 
 ```swift
+private let goMarketMe = GoMarketMe.shared
+
 init() {
-    GoMarketMe.shared.initialize(apiKey: "API_KEY")
+    goMarketMe.initialize(apiKey: "API_KEY") // Initialize with your API key
 }
 ```
 
