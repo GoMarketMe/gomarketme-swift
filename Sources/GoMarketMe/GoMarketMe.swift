@@ -4,7 +4,6 @@ import StoreKit
 
 public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
     public static let shared = GoMarketMe()
-    private var paymentQueueObserver: NSObjectProtocol?
     private let sdkInitializedKey = "GOMARKETME_SDK_INITIALIZED"
     private var affiliateCampaignCode: String?
     private var deviceId: String?
@@ -13,6 +12,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
     private let systemInfoUrl = URL(string: "https://api.gomarketme.net/v1/mobile/system-info")!
     private let eventUrl = URL(string: "https://api.gomarketme.net/v1/event")!
 
+    private var backgroundTaskID: UIBackgroundTaskIdentifier = UIBackgroundTaskIdentifier.invalid
     private var currTransaction: Transaction? = nil
     
     private override init() {
@@ -30,16 +30,29 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
 
                 try await postSystemInfo(systemInfo: await getSystemInfo(), apiKey: apiKey)
 
-                for await result in Transaction.all {
-                    if affiliateCampaignCode != nil {
-                        await processTransactionResult(result)
-                    }
-                }
+                await syncAllTransactions()
                 
             } catch {
                 print("Error during SDK initialization: \(error.localizedDescription)")
             }
         }
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(appWillEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
+    }
+
+    @objc private func appWillEnterForeground() {
+        Task {
+            await syncAllTransactions()
+        }
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     private func fetchAndSendProduct(productId:String) async {
@@ -63,9 +76,19 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
         }
     }
 
+    public func syncAllTransactions() async {
+        if affiliateCampaignCode != nil {
+            for await result in Transaction.all {
+                await processTransactionResult(result)
+            }
+        }
+    }
+
     public func syncTransaction(transaction: Transaction) async {
-        await fetchAndSendProduct(productId: transaction.productID)
-        fetchPurchaseDetails(transaction: transaction)
+        if affiliateCampaignCode != nil {
+            await fetchAndSendProduct(productId: transaction.productID)
+            fetchPurchaseDetails(transaction: transaction)
+        }
     }
 
     private func postSDKInitialization(apiKey: String) async throws {
@@ -154,18 +177,31 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
         self.sendEventToServer(eventType: "product", body: productInfo)
     }
 
+    private func endBackgroundTask() {
+        if backgroundTaskID != UIBackgroundTaskIdentifier.invalid {
+            UIApplication.shared.endBackgroundTask(backgroundTaskID)
+            backgroundTaskID = UIBackgroundTaskIdentifier.invalid
+        }
+    }
+
     private func refreshReceipt() {
+        backgroundTaskID = UIApplication.shared.beginBackgroundTask(withName: "SKReceiptRefreshRequest") {
+            self.endBackgroundTask()
+        }
+
         let request = SKReceiptRefreshRequest()
         request.delegate = self
         request.start()
     }
-    
+
     public func requestDidFinish(_ request: SKRequest) {
         if let receiptURL = Bundle.main.appStoreReceiptURL,
             let receiptData = try? Data(contentsOf: receiptURL) {
             let base64EncodedReceipt = receiptData.base64EncodedString()
             sendPurchaseDetails(self.currTransaction!, receipt: base64EncodedReceipt)
         }
+
+        self.endBackgroundTask()
     }
     
     private func fetchPurchaseDetails(transaction: Transaction) {
