@@ -2,15 +2,84 @@ import Foundation
 import UIKit
 import StoreKit
 
+public struct GoMarketMeAffiliateMarketingData: Decodable {
+    public let campaign: Campaign
+    public let affiliate: Affiliate
+    public let saleDistribution: SaleDistribution
+    public let affiliateCampaignCode: String
+    public let deviceId: String
+    public let offerCode: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case campaign
+        case affiliate
+        case saleDistribution = "sale_distribution"
+        case affiliateCampaignCode = "affiliate_campaign_code"
+        case deviceId = "device_id"
+        case offerCode = "offer_code"
+    }
+}
+
+public struct Campaign: Decodable {
+    public let id: String
+    public let name: String
+    public let status: String
+    public let type: String
+    public let publicLinkUrl: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case status
+        case type
+        case publicLinkUrl = "public_link_url"
+    }
+}
+
+public struct Affiliate: Decodable {
+    public let id: String
+    public let firstName: String
+    public let lastName: String
+    public let countryCode: String
+    public let instagramAccount: String
+    public let tiktokAccount: String
+    public let xAccount: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case firstName = "first_name"
+        case lastName = "last_name"
+        case countryCode = "country_code"
+        case instagramAccount = "instagram_account"
+        case tiktokAccount = "tiktok_account"
+        case xAccount = "x_account"
+    }
+}
+
+public struct SaleDistribution: Decodable {
+    public let platformPercentage: String
+    public let affiliatePercentage: String
+    
+    enum CodingKeys: String, CodingKey {
+        case platformPercentage = "platform_percentage"
+        case affiliatePercentage = "affiliate_percentage"
+    }
+}
+
 public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
     public static let shared = GoMarketMe()
     private let sdkInitializedKey = "GOMARKETME_SDK_INITIALIZED"
-    private var affiliateCampaignCode: String?
-    private var deviceId: String?
+    private let sdkType = "Swift"
+    private let sdkVersion = "2.0.0"
     private var apiKey: String = ""
-    private let sdkInitializationUrl = URL(string: "https://api.gomarketme.net/v1/sdk-initialization")!
-    private let systemInfoUrl = URL(string: "https://api.gomarketme.net/v1/mobile/system-info")!
-    private let eventUrl = URL(string: "https://api.gomarketme.net/v1/event")!
+    private let sdkInitializationUrl = URL(string: "https://4v9008q1a5.execute-api.us-west-2.amazonaws.com/prod/v1/sdk-initialization")!
+    private let systemInfoUrl = URL(string: "https://4v9008q1a5.execute-api.us-west-2.amazonaws.com/prod/v1/mobile/system-info")!
+    private let eventUrl = URL(string: "https://4v9008q1a5.execute-api.us-west-2.amazonaws.com/prod/v1/event")!
+    private var _affiliateCampaignCode: String = ""
+    private var _deviceId: String = ""
+    private var _packageName = ""
+    
+    @Published public var affiliateMarketingData: GoMarketMeAffiliateMarketingData?
 
     private var backgroundTaskID: UIBackgroundTaskIdentifier = UIBackgroundTaskIdentifier.invalid
     private var currTransaction: Transaction? = nil
@@ -18,32 +87,51 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
     private override init() {
         super.init()
     }
-    
+
     public func initialize(apiKey: String) {
         self.apiKey = apiKey
 
         Task {
             do {
-                if !(await isSDKInitialized()) {
-                    try await postSDKInitialization(apiKey: apiKey)
+                if !(await _isSDKInitialized()) {
+                    try await _postSDKInitialization(apiKey: apiKey)
                 }
 
-                try await postSystemInfo(systemInfo: await getSystemInfo(), apiKey: apiKey)
+                let systemInfo = await _getSystemInfo()
+                _packageName = Bundle.main.bundleIdentifier ?? "Unknown"
+
+                if let deviceInfo = systemInfo["device_info"] as? [String: Any],
+                let identifierForVendor = deviceInfo["identifierForVendor"] as? String {
+                    _deviceId = identifierForVendor
+                }
+
+                // Dispatch async task to main queue
+                DispatchQueue.main.async {
+                    Task {
+                        do {
+                            self.affiliateMarketingData = try await self._postSystemInfo(data: systemInfo, apiKey: apiKey) // Update on the main thread
+                        } catch {
+                            print("Failed to post system info: \(error)")
+                            self.affiliateMarketingData = nil // Handle any errors during system info posting
+                        }
+                    }
+                }
 
                 await syncAllTransactions()
-                
+
+                NotificationCenter.default.addObserver(
+                    self,
+                    selector: #selector(appWillEnterForeground),
+                    name: UIApplication.willEnterForegroundNotification,
+                    object: nil
+                )
             } catch {
-                print("Error during SDK initialization: \(error.localizedDescription)")
+                print("Initialization failed with error: \(error)")
+                affiliateMarketingData = nil // Make sure to reset on failure
             }
         }
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(appWillEnterForeground),
-            name: UIApplication.willEnterForegroundNotification,
-            object: nil
-        )
     }
+
 
     @objc private func appWillEnterForeground() {
         Task {
@@ -53,18 +141,6 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
 
     deinit {
         NotificationCenter.default.removeObserver(self)
-    }
-    
-    private func fetchAndSendProduct(productId:String) async {
-        do {
-            let product = try await Product.products(for: [productId])
-            if !product.isEmpty {
-                sendProductDetails(product[0])
-            }
-
-        } catch {
-            print("Failed to fetch products: \(error)")
-        }
     }
 
     private func processTransactionResult(_ result: VerificationResult<Transaction>) async {
@@ -77,34 +153,27 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
     }
 
     public func syncAllTransactions() async {
-        if affiliateCampaignCode != nil {
             for await result in Transaction.all {
                 await processTransactionResult(result)
             }
-        }
     }
 
     public func syncTransaction(transaction: Transaction) async {
-        if affiliateCampaignCode != nil {
-            await fetchAndSendProduct(productId: transaction.productID)
-            fetchPurchaseDetails(transaction: transaction)
-        }
+            _fetchPurchaseDetails(transaction: transaction)
     }
 
-    private func postSDKInitialization(apiKey: String) async throws {
+    private func _postSDKInitialization(apiKey: String) async throws {
         var request = URLRequest(url: sdkInitializationUrl)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue(apiKey, forHTTPHeaderField: "x-api-key")
         let (_, response) = try await URLSession.shared.data(for: request)
         if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
-            markSDKAsInitialized()
-        } else {
-            throw NSError(domain: "GoMarketMeSDK", code: (response as? HTTPURLResponse)?.statusCode ?? 0, userInfo: [NSLocalizedDescriptionKey: "Failed to mark SDK as initialized."])
+            _markSDKAsInitialized()
         }
     }
 
-    private func getSystemInfo() async -> [String: Any] {
+    private func _getSystemInfo() async -> [String: Any] {
         var systemInfo = [String: Any]()
         var deviceInfo = [String: Any]()
         let device = await UIDevice.current
@@ -113,7 +182,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
         deviceInfo["model"] = await device.model
         deviceInfo["localizedModel"] = await device.localizedModel
         deviceInfo["identifierForVendor"] = await device.identifierForVendor?.uuidString
-        deviceInfo["isPhysicalDevice"] = !isSimulator
+        deviceInfo["isPhysicalDevice"] = !_isSimulator
         systemInfo["device_info"] = deviceInfo
         var windowInfo = [String: Any]()
         let screen = await UIScreen.main
@@ -126,27 +195,53 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
         return systemInfo
     }
 
-    private func postSystemInfo(systemInfo: [String: Any], apiKey: String) async throws {
-        var request = URLRequest(url: systemInfoUrl)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue(apiKey, forHTTPHeaderField: "x-api-key")
-        request.httpBody = try JSONSerialization.data(withJSONObject: systemInfo)
-        let (data, response) = try await URLSession.shared.data(for: request)
-        if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
-            if let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []),
-               let jsonDict = jsonObject as? [String: Any] {
-                affiliateCampaignCode = jsonDict["affiliate_campaign_code"] as? String
-                deviceId = jsonDict["device_id"] as? String
-            } else {
-                throw NSError(domain: "GoMarketMeSDK", code: 1, userInfo: [NSLocalizedDescriptionKey: "Failed to parse response JSON."])
+    private func _postSystemInfo(data: [String: Any], apiKey: String) async -> GoMarketMeAffiliateMarketingData? {
+        var requestData = data
+        requestData["sdk_type"] = sdkType
+        requestData["sdk_version"] = sdkVersion
+        requestData["package_name"] = _packageName
+        
+        do {
+            let requestBody = try JSONSerialization.data(withJSONObject: requestData, options: [])
+            var request = URLRequest(url: systemInfoUrl)
+            request.httpMethod = "POST"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
+            request.httpBody = requestBody
+            
+            let (data, response) = try await URLSession.shared.data(for: request)
+            
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                if let httpResponse = response as? HTTPURLResponse {
+                    print("HTTP error: Status code \(httpResponse.statusCode)")
+                } else {
+                    print("Failed to send system info: Invalid HTTP response")
+                }
+                return nil
             }
-        } else {
-            throw NSError(domain: "GoMarketMeSDK", code: (response as? HTTPURLResponse)?.statusCode ?? 0, userInfo: [NSLocalizedDescriptionKey: "Failed to send SystemInfo."])
+            
+            if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any], json.isEmpty {
+                return nil
+            }
+
+            let decoder = JSONDecoder()
+            
+            do {
+                let affiliateData = try decoder.decode(GoMarketMeAffiliateMarketingData.self, from: data)
+                print("System Info sent successfully")
+                return affiliateData
+            } catch {
+                print("Error decoding response data: \(error.localizedDescription)")
+                return nil
+            }
+            
+        } catch {
+            print("Error during system info posting: \(error.localizedDescription)")
+            return nil
         }
     }
 
-    private var isSimulator: Bool {
+    private var _isSimulator: Bool {
         #if targetEnvironment(simulator)
         return true
         #else
@@ -154,27 +249,12 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
         #endif
     }
 
-    private func isSDKInitialized() async -> Bool {
+    private func _isSDKInitialized() async -> Bool {
         return UserDefaults.standard.bool(forKey: sdkInitializedKey)
     }
 
-    private func markSDKAsInitialized() {
+    private func _markSDKAsInitialized() {
         UserDefaults.standard.set(true, forKey: sdkInitializedKey)
-    }
-
-    private func sendProductDetails(_ product: Product) {
-        let productInfo = [
-            "productID": product.id,
-            "productTitle": product.displayName,
-            "productDescription": product.description,
-            "productPrice": product.displayPrice,
-            "productRawPrice": product.price,
-            "productCurrencyCode": product.priceFormatStyle.currencyCode,
-            "productCurrencySymbol": product.priceFormatStyle.currencyCode,
-            "hashCode": product.hashValue
-        ] as [String: Any]
-        
-        self.sendEventToServer(eventType: "product", body: productInfo)
     }
 
     private func endBackgroundTask() {
@@ -198,41 +278,77 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
         if let receiptURL = Bundle.main.appStoreReceiptURL,
             let receiptData = try? Data(contentsOf: receiptURL) {
             let base64EncodedReceipt = receiptData.base64EncodedString()
-            sendPurchaseDetails(self.currTransaction!, receipt: base64EncodedReceipt)
+            fetchProducts(for: [self.currTransaction!.productID]) { products in
+                self._sendConsolidatedPurchaseDetails(self.currTransaction!, receipt: base64EncodedReceipt, products: products)
+            }
         }
 
         self.endBackgroundTask()
     }
     
-    private func fetchPurchaseDetails(transaction: Transaction) {
+    private func _fetchPurchaseDetails(transaction: Transaction) {
         self.currTransaction = transaction
         refreshReceipt()
     }
     
-    private func sendPurchaseDetails(_ transaction: Transaction, receipt: String) {
-        let purchaseInfo: [String: Any] = [
-                "productID": transaction.productID,
-                "purchaseID": String(transaction.id),
-                "transactionDate": transaction.purchaseDate.timeIntervalSince1970,
-                "status": "",
-                "verificationData": [
-                    "localVerificationData": receipt,
-                    "source": "app_store"
-                ],
-                "pendingCompletePurchase": "",
-                "error": "",
-                "hashCode": String(transaction.hashValue)
-            ]
-        self.sendEventToServer(eventType: "purchase", body: purchaseInfo)
+    private func fetchProducts(for productIDs: [String], completion: @escaping ([Product]) -> Void) {
+        Task {
+            do {
+                let products = try await Product.products(for: productIDs)
+                completion(products)
+            } catch {
+                print("Failed to fetch products: \(error.localizedDescription)")
+                completion([])
+            }
+        }
     }
 
-    private func sendEventToServer(eventType: String, body: [String: Any], completion: (() -> Void)? = nil) {
+    private func _sendConsolidatedPurchaseDetails(_ transaction: Transaction, receipt: String, products: [Product]) {
+        var purchaseInfo: [String: Any] = [
+            "packageName": _packageName,
+            "productID": transaction.productID,
+            "purchaseID": String(transaction.id),
+            "transactionDate": transaction.purchaseDate.timeIntervalSince1970,
+            "status": "",
+            "verificationData": [
+                "localVerificationData": receipt,
+                "serverVerificationData": receipt,
+                "source": "app_store"
+            ],
+            "pendingCompletePurchase": "",
+            "error": {},
+            "hashCode": String(transaction.hashValue)
+        ]
+
+        var productsArray: [[String: Any]] = []
+
+        for product in products {
+            let productInfo: [String: Any] = [
+                "packageName": _packageName,
+                "productID": product.id,
+                "productTitle": product.displayName,
+                "productDescription": product.description,
+                "productPrice": product.displayPrice,
+                "productRawPrice": product.price,
+                "productCurrencyCode": product.priceFormatStyle.currencyCode ?? "",
+                "productCurrencySymbol": product.priceFormatStyle.currencyCode ?? "",
+                "hashCode": String(product.hashValue)
+            ]
+            productsArray.append(productInfo)
+        }
+
+        purchaseInfo["products"] = productsArray
+
+        self._sendEventToServer(eventType: "purchase", body: purchaseInfo)
+    }
+
+    private func _sendEventToServer(eventType: String, body: [String: Any], completion: (() -> Void)? = nil) {
         var request = URLRequest(url: eventUrl)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue(self.apiKey, forHTTPHeaderField: "x-api-key")
-        request.addValue(deviceId ?? "", forHTTPHeaderField: "x-device-id")
-        request.addValue(affiliateCampaignCode ?? "", forHTTPHeaderField: "x-affiliate-campaign-code")
+        request.addValue(_deviceId, forHTTPHeaderField: "x-device-id")
+        request.addValue(_affiliateCampaignCode, forHTTPHeaderField: "x-affiliate-campaign-code")
         request.addValue(eventType, forHTTPHeaderField: "x-event-type")
         request.addValue("app_store", forHTTPHeaderField: "x-source-name")
         request.httpBody = try? JSONSerialization.data(withJSONObject: body)

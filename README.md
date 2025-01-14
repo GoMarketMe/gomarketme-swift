@@ -14,7 +14,7 @@
 
 - File > Swift Packages > Add Package Dependency
 - Add `https://github.com/GoMarketMe/gomarketme-swift.git`
-- Select "Exact Version" > "1.1.2"
+- Select "Exact Version" > "2.0.0"
 
 
 
@@ -60,6 +60,6 @@ case .success(let verification):
 }
 ```
 
-Make sure to replace API_KEY with your actual GoMarketMe API key. You can find it on the product onboarding page and under Profile > API Key.
+Make sure to replace API_KEY with your actual GoMarketMe API key. You can find it on the onboarding page and under Profile > API Key.
 
 Check out our <a href="https://github.com/GoMarketMe/gomarketme-swift-sample-app" target="_blank">sample app</a> for an example.
