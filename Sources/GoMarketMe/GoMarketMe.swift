@@ -70,7 +70,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
     public static let shared = GoMarketMe()
     private let sdkInitializedKey = "GOMARKETME_SDK_INITIALIZED"
     private let sdkType = "Swift"
-    private let sdkVersion = "2.0.0"
+    private let sdkVersion = "2.1.0"
     private var apiKey: String = ""
     private let sdkInitializationUrl = URL(string: "https://4v9008q1a5.execute-api.us-west-2.amazonaws.com/prod/v1/sdk-initialization")!
     private let systemInfoUrl = URL(string: "https://4v9008q1a5.execute-api.us-west-2.amazonaws.com/prod/v1/mobile/system-info")!
@@ -316,7 +316,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
                 "source": "app_store"
             ],
             "pendingCompletePurchase": "",
-            "error": {},
+            "error": "",
             "hashCode": String(transaction.hashValue)
         ]
 
