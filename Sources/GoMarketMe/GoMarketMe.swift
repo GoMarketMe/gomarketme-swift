@@ -70,7 +70,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
     public static let shared = GoMarketMe()
     private let sdkInitializedKey = "GOMARKETME_SDK_INITIALIZED"
     private let sdkType = "Swift"
-    private let sdkVersion = "2.1.0"
+    private let sdkVersion = "2.2.0"
     private var apiKey: String = ""
     private let sdkInitializationUrl = URL(string: "https://4v9008q1a5.execute-api.us-west-2.amazonaws.com/prod/v1/sdk-initialization")!
     private let systemInfoUrl = URL(string: "https://4v9008q1a5.execute-api.us-west-2.amazonaws.com/prod/v1/mobile/system-info")!
@@ -304,6 +304,17 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
     }
 
     private func _sendConsolidatedPurchaseDetails(_ transaction: Transaction, receipt: String, products: [Product]) {
+
+        func subscriptionUnitString(_ unit: Product.SubscriptionPeriod.Unit) -> String {
+            switch unit {
+            case .day: return "day"
+            case .week: return "week"
+            case .month: return "month"
+            case .year: return "year"
+            @unknown default: return "unknown"
+            }
+        }
+
         var purchaseInfo: [String: Any] = [
             "packageName": _packageName,
             "productID": transaction.productID,
@@ -323,7 +334,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
         var productsArray: [[String: Any]] = []
 
         for product in products {
-            let productInfo: [String: Any] = [
+            var productInfo: [String: Any] = [
                 "packageName": _packageName,
                 "productID": product.id,
                 "productTitle": product.displayName,
@@ -334,6 +345,24 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
                 "productCurrencySymbol": product.priceFormatStyle.currencyCode ?? "",
                 "hashCode": String(product.hashValue)
             ]
+
+            if let subInfo = product.subscription,
+            let introOffer = subInfo.introductoryOffer {
+                let introOfferDict: [String: Any] = [
+                    "type": introOffer.type.rawValue,
+                    "price": introOffer.price,
+                    "localizedPrice": introOffer.price.formatted(),
+                    "period": [
+                        "unit": subscriptionUnitString(introOffer.period.unit),
+                        "value": introOffer.period.value
+                    ],
+                    "paymentMode": introOffer.paymentMode.rawValue,		
+                    "periodCount": introOffer.periodCount,
+                    "currencyCode": product.priceFormatStyle.currencyCode ?? ""
+                ]
+                productInfo["introOffer"] = introOfferDict
+            }
+
             productsArray.append(productInfo)
         }
 
