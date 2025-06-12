@@ -160,6 +160,11 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
         refreshReceipt()
     }
 
+    public func syncTransaction(transaction: Transaction) async {
+        self.currTransactions.append(transaction)
+        refreshReceipt()
+    }
+
     private func _postSDKInitialization(apiKey: String) async throws {
         var request = URLRequest(url: sdkInitializationUrl)
         request.httpMethod = "POST"
