@@ -261,6 +261,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
+            request.addValue(_deviceId, forHTTPHeaderField: "x-device-id")
             request.setValue(sdkType, forHTTPHeaderField: "x-sdk-type")
             request.setValue(sdkVersion, forHTTPHeaderField: "x-sdk-version")
             request.httpBody = requestBody
