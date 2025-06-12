@@ -117,8 +117,8 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
                     }
                 }
 
-                //await syncAllTransactions()
-                refreshReceipt()
+                await syncAllTransactions()
+                //refreshReceipt()
 
                 NotificationCenter.default.addObserver(
                     self,
@@ -136,8 +136,8 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
 
     @objc private func appWillEnterForeground() {
         Task {
-            //await syncAllTransactions()
-            refreshReceipt()
+            await syncAllTransactions()
+            //refreshReceipt()
         }
     }
 
