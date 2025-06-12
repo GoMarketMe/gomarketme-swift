@@ -278,6 +278,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
     }
 
     public func requestDidFinish(_ request: SKRequest) {
+        print("requestDidFinish")
         if let receiptURL = Bundle.main.appStoreReceiptURL,
         let receiptData = try? Data(contentsOf: receiptURL) {
             
