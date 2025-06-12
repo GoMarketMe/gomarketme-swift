@@ -70,7 +70,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
     public static let shared = GoMarketMe()
     private let sdkInitializedKey = "GOMARKETME_SDK_INITIALIZED"
     private let sdkType = "Swift"
-    private let sdkVersion = "2.2.0"
+    private let sdkVersion = "2.3.0"
     private var apiKey: String = ""
     private let sdkInitializationUrl = URL(string: "https://4v9008q1a5.execute-api.us-west-2.amazonaws.com/prod/v1/sdk-initialization")!
     private let systemInfoUrl = URL(string: "https://4v9008q1a5.execute-api.us-west-2.amazonaws.com/prod/v1/mobile/system-info")!
@@ -117,7 +117,8 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
                     }
                 }
 
-                await syncAllTransactions()
+                //await syncAllTransactions()
+                refreshReceipt()
 
                 NotificationCenter.default.addObserver(
                     self,
@@ -135,7 +136,8 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
 
     @objc private func appWillEnterForeground() {
         Task {
-            await syncAllTransactions()
+            //await syncAllTransactions()
+            refreshReceipt()
         }
     }
 
@@ -278,9 +280,9 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
         if let receiptURL = Bundle.main.appStoreReceiptURL,
             let receiptData = try? Data(contentsOf: receiptURL) {
             let base64EncodedReceipt = receiptData.base64EncodedString()
-            fetchProducts(for: [self.currTransaction!.productID]) { products in
-                self._sendConsolidatedPurchaseDetails(self.currTransaction!, receipt: base64EncodedReceipt, products: products)
-            }
+            // fetchProducts(for: [self.currTransaction!.productID]) { products in
+            //     self._sendConsolidatedPurchaseDetails(self.currTransaction!, receipt: base64EncodedReceipt, products: products)
+            // }
         }
 
         self.endBackgroundTask()
