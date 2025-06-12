@@ -287,7 +287,6 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
             
             do {
                 let affiliateData = try decoder.decode(GoMarketMeVerifyReceiptData.self, from: data)
-                print("Receipt validated successfully")
                 return affiliateData
             } catch {
                 print("Error decoding response data: \(error.localizedDescription)")
@@ -351,7 +350,6 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
 
         fetchProducts(for: result.product_ids) { products in
             for transaction in self.currTransactions {
-                print("transaction, productIDs:", result.product_ids)
                 self._sendConsolidatedPurchaseDetails(transaction, receipt: base64EncodedReceipt, products: products)
             }
         }
@@ -361,7 +359,6 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
 
 
     public func requestDidFinish(_ request: SKRequest) {
-        print("requestDidFinish")
         DispatchQueue.global().async {
             Task {
                 await self.handleRequestDidFinish()
