@@ -290,6 +290,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
             fetchProducts(for: productIDs) { products in
                 // Send details for all transactions
                 for transaction in self.currTransactions {
+                    print("transaction, productIDs:", productIDs)
                     self._sendConsolidatedPurchaseDetails(transaction, receipt: base64EncodedReceipt, products: products)
                 }
             }
