@@ -253,7 +253,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
     private func _postVerifyReceipt(base64EncodedReceipt: String) async -> GoMarketMeVerifyReceiptData? {
         
         let requestData: [String: Any] = [
-            "package_name": _packageName
+            "package_name": _packageName,
             "encoded_receipt": base64EncodedReceipt
         ]
         
@@ -343,7 +343,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
 
         let base64EncodedReceipt = receiptData.base64EncodedString()
 
-        guard let result = await self._postVerifyReceipt(data: base64EncodedReceipt), result.is_valid else {
+        guard let result = await self._postVerifyReceipt(base64EncodedReceipt: base64EncodedReceipt), result.is_valid else {
             print("Receipt verification failed or returned invalid.")
             self.endBackgroundTask()
             return
