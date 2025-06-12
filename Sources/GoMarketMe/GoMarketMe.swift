@@ -82,7 +82,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
     @Published public var affiliateMarketingData: GoMarketMeAffiliateMarketingData?
 
     private var backgroundTaskID: UIBackgroundTaskIdentifier = UIBackgroundTaskIdentifier.invalid
-    private var currTransaction: Transaction? = nil
+    private var currTransactions: [Transaction] = []
     
     private override init() {
         super.init()
@@ -118,7 +118,6 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
                 }
 
                 await syncAllTransactions()
-                //refreshReceipt()
 
                 NotificationCenter.default.addObserver(
                     self,
@@ -137,7 +136,6 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
     @objc private func appWillEnterForeground() {
         Task {
             await syncAllTransactions()
-            //refreshReceipt()
         }
     }
 
@@ -148,20 +146,18 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
     private func processTransactionResult(_ result: VerificationResult<Transaction>) async {
         switch result {
         case .verified(let transaction):
-            await syncTransaction(transaction: transaction)
+            self.currTransactions.append(transaction)
         case .unverified(let transaction, _):
-            await syncTransaction(transaction: transaction)
+            self.currTransactions.append(transaction)
         }
     }
 
     public func syncAllTransactions() async {
-            for await result in Transaction.all {
-                await processTransactionResult(result)
-            }
-    }
+        for await result in Transaction.all {
+            await processTransactionResult(result)
+        }
 
-    public func syncTransaction(transaction: Transaction) async {
-            _fetchPurchaseDetails(transaction: transaction)
+        refreshReceipt()
     }
 
     private func _postSDKInitialization(apiKey: String) async throws {
@@ -278,19 +274,22 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
 
     public func requestDidFinish(_ request: SKRequest) {
         if let receiptURL = Bundle.main.appStoreReceiptURL,
-            let receiptData = try? Data(contentsOf: receiptURL) {
+        let receiptData = try? Data(contentsOf: receiptURL) {
+            
             let base64EncodedReceipt = receiptData.base64EncodedString()
-            // fetchProducts(for: [self.currTransaction!.productID]) { products in
-            //     self._sendConsolidatedPurchaseDetails(self.currTransaction!, receipt: base64EncodedReceipt, products: products)
-            // }
+            
+            // Extract all product IDs from currTransactions, removing duplicates
+            let productIDs = Array(Set(self.currTransactions.map { $0.productID }))
+            
+            fetchProducts(for: productIDs) { products in
+                // Send details for all transactions
+                for transaction in self.currTransactions {
+                    self._sendConsolidatedPurchaseDetails(transaction, receipt: base64EncodedReceipt, products: products)
+                }
+            }
         }
 
         self.endBackgroundTask()
-    }
-    
-    private func _fetchPurchaseDetails(transaction: Transaction) {
-        self.currTransaction = transaction
-        refreshReceipt()
     }
     
     private func fetchProducts(for productIDs: [String], completion: @escaping ([Product]) -> Void) {
