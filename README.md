@@ -14,7 +14,7 @@
 
 - File > Swift Packages > Add Package Dependency
 - Add `https://github.com/GoMarketMe/gomarketme-swift.git`
-- Select "Exact Version" > "2.2.0"
+- Select "Exact Version" > "2.2.1"
 
 
 
