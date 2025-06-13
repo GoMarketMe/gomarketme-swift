@@ -123,7 +123,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
                     }
                 }
 
-                await syncAllTransactions()
+                await syncReceipt()
 
                 NotificationCenter.default.addObserver(
                     self,
@@ -141,7 +141,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
 
     @objc private func appWillEnterForeground() {
         Task {
-            await syncAllTransactions()
+            await syncReceipt()
         }
     }
 
@@ -158,16 +158,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
         }
     }
 
-    public func syncAllTransactions() async {
-        for await result in Transaction.all {
-            await processTransactionResult(result)
-        }
-
-        refreshReceipt()
-    }
-
-    public func syncTransaction(transaction: Transaction) async {
-        self.currTransactions.append(transaction)
+    public func syncReceipt() async {
         refreshReceipt()
     }
 
@@ -250,11 +241,11 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
         }
     }
 
-    private func _postVerifyReceipt(base64EncodedReceipt: String) async -> GoMarketMeVerifyReceiptData? {
+    private func _postVerifyReceipt(encodedReceipt: String) async -> GoMarketMeVerifyReceiptData? {
         
         let requestData: [String: Any] = [
             "package_name": _packageName,
-            "encoded_receipt": base64EncodedReceipt
+            "encoded_receipt": encodedReceipt
         ]
         
         do {
@@ -342,18 +333,16 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
             return
         }
 
-        let base64EncodedReceipt = receiptData.base64EncodedString()
+        let encodedReceipt = receiptData.base64EncodedString()
 
-        guard let result = await self._postVerifyReceipt(base64EncodedReceipt: base64EncodedReceipt), result.is_valid else {
+        guard let result = await self._postVerifyReceipt(encodedReceipt: encodedReceipt), result.is_valid else {
             print("Receipt verification failed or returned invalid.")
             self.endBackgroundTask()
             return
         }
 
         fetchProducts(for: result.product_ids) { products in
-            for transaction in self.currTransactions {
-                self._sendConsolidatedPurchaseDetails(transaction, receipt: base64EncodedReceipt, products: products)
-            }
+            self._sendConsolidatedEncodedReceiptDetails(encodedReceipt, products: products)
         }
         
 
@@ -380,7 +369,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
         }
     }
 
-    private func _sendConsolidatedPurchaseDetails(_ transaction: Transaction, receipt: String, products: [Product]) {
+    private func _sendConsolidatedEncodedReceiptDetails(_ encodedReceipt: String, products: [Product]) {
 
         func subscriptionUnitString(_ unit: Product.SubscriptionPeriod.Unit) -> String {
             switch unit {
@@ -392,20 +381,12 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
             }
         }
 
-        var purchaseInfo: [String: Any] = [
+        var requestData: [String: Any] = [
             "packageName": _packageName,
-            "productID": transaction.productID,
-            "purchaseID": String(transaction.id),
-            "transactionDate": transaction.purchaseDate.timeIntervalSince1970,
-            "status": "",
-            "verificationData": [
-                "localVerificationData": receipt,
-                "serverVerificationData": receipt,
-                "source": "app_store"
-            ],
-            "pendingCompletePurchase": "",
-            "error": "",
-            "hashCode": String(transaction.hashValue)
+            "deviceId": _deviceId,
+            "sdkType": sdkType,
+            "sdkVersion": sdkVersion,
+            "encodedReceipt": encodedReceipt,
         ]
 
         var productsArray: [[String: Any]] = []
@@ -443,9 +424,9 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
             productsArray.append(productInfo)
         }
 
-        purchaseInfo["products"] = productsArray
+        requestData["products"] = productsArray
 
-        self._sendEventToServer(eventType: "purchase", body: purchaseInfo)
+        self._sendEventToServer(eventType: "encoded-receipt", body: requestData)
     }
 
     private func _sendEventToServer(eventType: String, body: [String: Any], completion: (() -> Void)? = nil) {
