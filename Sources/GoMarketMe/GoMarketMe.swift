@@ -124,7 +124,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymen
                     }
                 }
 
-                //await syncReceipt()
+                await syncReceipt()
 
                 // NotificationCenter.default.addObserver(
                 //     self,
