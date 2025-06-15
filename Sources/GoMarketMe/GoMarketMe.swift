@@ -316,7 +316,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
     private func handleRequestDidFinish() async {
         guard
             let receiptURL = Bundle.main.appStoreReceiptURL,
-            let receiptData = try? Data(contentsOf: receiptURL),
+            let receiptData = try? Data(contentsOf: receiptURL)
         else {
             self.endBackgroundTask()
             return
@@ -332,9 +332,8 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
 
         fetchProducts(for: result.product_ids) { products in
             self._sendConsolidatedEncodedReceiptDetails(encodedReceipt, products: products)
+            self.endBackgroundTask() // ✅ moved here to ensure background task ends *after* async work
         }
-
-        self.endBackgroundTask()
     }
 
     public func requestDidFinish(_ request: SKRequest) {
