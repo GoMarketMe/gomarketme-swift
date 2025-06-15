@@ -189,15 +189,14 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
     }
 
     public func checkLatestTransaction(productID: String) async {
-    guard let product = try? await Product.products(for: [productID]).first else { return }
-    if let result = try? await Transaction.latest(for: product) {
-        if case .verified(let transaction) = result {
-            print("🔁 Recovered past transaction: \(transaction.productID)")
-            //await transaction.finish()
-            // Send to backend
+        if let result = try? await Transaction.latest(for: productID) {
+            if case .verified(let transaction) = result {
+                print("🔁 Recovered past transaction: \(transaction.productID)")
+                // await transaction.finish()
+                // Send to backend
+            }
         }
     }
-}
 
     public func syncTransaction(_ result: Product.PurchaseResult) async {
         switch result {
