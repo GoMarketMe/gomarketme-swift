@@ -98,6 +98,7 @@ public class GoMarketMe: NSObject, ObservableObject {
     }
 
     public func syncExistingPurchases() async {
+        try? await AppStore.sync()
         for await result in Transaction.currentEntitlements {
             do {
                 let transaction = try result.payloadValue
@@ -185,8 +186,7 @@ public class GoMarketMe: NSObject, ObservableObject {
     }
 
     public func sync() async {
-        await AppStore.sync()
-        //await syncExistingPurchases()
+        await syncExistingPurchases()
     }
 
     private func _postSDKInitialization(apiKey: String) async throws {
