@@ -340,6 +340,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymen
     }
 
     public func requestDidFinish(_ request: SKRequest) {
+        print("requestDidFinish!")
         DispatchQueue.global().async {
             Task {
                 await self.handleRequestDidFinish()
