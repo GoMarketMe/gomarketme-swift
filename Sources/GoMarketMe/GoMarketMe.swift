@@ -93,6 +93,7 @@ public class GoMarketMe: NSObject, ObservableObject {
     private var backgroundTaskID: UIBackgroundTaskIdentifier = UIBackgroundTaskIdentifier.invalid
 
     private override init() {
+        super.init()
         listenForTransactions()
     }
 
