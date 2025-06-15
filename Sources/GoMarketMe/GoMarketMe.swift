@@ -442,7 +442,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymen
 
     public func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         Task {
-            await self.syncReceipt()
+            await self.refreshReceipt()
         }
     }
 }
