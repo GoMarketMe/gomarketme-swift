@@ -337,24 +337,27 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymen
         // Start with product IDs from the receipt verification
         var productIDs = Set(result.product_ids)
 
-        // Add any product IDs from Transaction.all
+        var transactions: [Transaction] = []
+
+        // Add any product IDs from Transaction.all and collect all transactions
         for await verificationResult in Transaction.all {
             switch verificationResult {
             case .verified(let transaction):
                 print("verified")
                 productIDs.insert(transaction.productID)
+                transactions.append(transaction)
+
             case .unverified(let transaction, _):
                 print("unverified")
                 productIDs.insert(transaction.productID)
-            default:
-                print("default")
+                transactions.append(transaction)
             }
         }
 
         print("All collected product IDs: \(productIDs)")
 
         fetchProducts(for: Array(productIDs)) { products in
-            self._sendConsolidatedEncodedReceiptDetails(encodedReceipt, products: products)
+            self._sendDetails(encodedReceipt, products: products, transactions: transactions)
             self.endBackgroundTask()
         }
     }
@@ -380,7 +383,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymen
         }
     }
 
-    private func _sendConsolidatedEncodedReceiptDetails(_ encodedReceipt: String, products: [Product]) {
+    private func _sendDetails(_ encodedReceipt: String, products: [Product], transactions: [Transaction]) {
 
         func subscriptionUnitString(_ unit: Product.SubscriptionPeriod.Unit) -> String {
             switch unit {
@@ -432,6 +435,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymen
         }
 
         requestData["products"] = productsArray
+        requestData["transactions"] = transactions
 
         self._sendEventToServer(eventType: "encoded-receipt", body: requestData)
     }
