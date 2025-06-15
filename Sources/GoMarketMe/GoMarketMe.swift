@@ -71,7 +71,8 @@ public struct GoMarketMeVerifyReceiptData: Decodable {
     public let product_ids: [String]
 }
 
-public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymentTransactionObserver {
+//public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymentTransactionObserver {
+public class GoMarketMe: NSObject, ObservableObject {
 
     public static let shared = GoMarketMe()
     private let sdkInitializedKey = "GOMARKETME_SDK_INITIALIZED"
@@ -85,14 +86,26 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymen
     private var _affiliateCampaignCode: String = ""
     private var _deviceId: String = ""
     private var _packageName = ""
+    private var updatesTask: Task<Void, Never>?
     
     @Published public var affiliateMarketingData: GoMarketMeAffiliateMarketingData?
 
     private var backgroundTaskID: UIBackgroundTaskIdentifier = UIBackgroundTaskIdentifier.invalid
-    
+
     private override init() {
         super.init()
-        SKPaymentQueue.default().add(self)
+        listenForTransactions()
+    }
+
+    public func syncExistingPurchases() async {
+        for await result in Transaction.currentEntitlements {
+            do {
+                let transaction = try result.payloadValue
+                print("📦 Existing entitlement: \(transaction.productID)")
+            } catch {
+                print("⚠️ Invalid entitlement result: \(error)")
+            }
+        }
     }
 
     public func initialize(apiKey: String) {
@@ -111,8 +124,6 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymen
                 let identifierForVendor = deviceInfo["identifierForVendor"] as? String {
                     _deviceId = identifierForVendor
                 }
-
-                // Dispatch async task to main queue
                 DispatchQueue.main.async {
                     Task {
                         do {
@@ -123,8 +134,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymen
                         }
                     }
                 }
-
-                await syncReceipt()
+                await syncExistingPurchases()
 
                 NotificationCenter.default.addObserver(
                     self,
@@ -139,20 +149,63 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymen
         }
     }
 
+    private func listenForTransactions() {
+        updatesTask = Task.detached(priority: .background) {
+            for await verificationResult in Transaction.updates {
+                await self.handleTransactionUpdate(result: verificationResult)
+            }
+        }
+    }
+
+    private func handleTransactionUpdate(result: VerificationResult<Transaction>) async {
+        do {
+            let transaction = try result.payloadValue
+            guard transaction.revocationDate == nil else { return } // Skip revoked transactions
+
+            // ✅ Forward to your SDK backend or notify the app
+            print("🧾 Received transaction: \(transaction.productID) - \(transaction.purchaseDate)")
+
+            // Always finish the transaction
+            await transaction.finish()
+        } catch {
+            print("❌ Failed to verify transaction: \(error)")
+        }
+    }
+
 
     @objc private func appWillEnterForeground() {
         Task {
-            await syncReceipt()
+            await syncExistingPurchases()
         }
     }
 
     deinit {
         NotificationCenter.default.removeObserver(self)
-        SKPaymentQueue.default().remove(self)
+        //SKPaymentQueue.default().remove(self)
     }
 
-    public func syncReceipt() async {
-        await refreshReceipt()
+    public func syncAllTransactions() async {
+        await syncExistingPurchases()
+    }
+
+    public func syncTransaction(_ result: Product.PurchaseResult) async {
+        switch result {
+        case .success(let verification):
+            switch verification {
+            case .verified(let transaction):
+                print("✅ SDK received transaction: \(transaction.productID)")
+                await transaction.finish()
+                // Send to backend, track attribution, etc.
+            case .unverified(let transaction, let error):
+                print("❌ Unverified transaction: \(transaction.productID), error: \(error)")
+            }
+        case .userCancelled:
+            print("ℹ️ User cancelled the purchase.")
+        case .pending:
+            print("⏳ Purchase is pending.")
+        @unknown default:
+            print("⚠️ Unknown purchase result.")
+        }
     }
 
     private func _postSDKInitialization(apiKey: String) async throws {
@@ -354,7 +407,6 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymen
         var transactions: [Transaction] = []
 
         // Add any product IDs from Transaction.all and collect all transactions
-        try? await AppStore.sync()
         for await verificationResult in Transaction.all {
             switch verificationResult {
             case .verified(let transaction):
