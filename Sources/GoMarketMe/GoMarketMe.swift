@@ -72,7 +72,7 @@ public struct GoMarketMeVerifyReceiptData: Decodable {
 }
 
 //public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymentTransactionObserver {
-public class GoMarketMe:ObservableObject {
+public class GoMarketMe: NSObject, ObservableObject {
 
     public static let shared = GoMarketMe()
     private let sdkInitializedKey = "GOMARKETME_SDK_INITIALIZED"
@@ -91,14 +91,8 @@ public class GoMarketMe:ObservableObject {
     @Published public var affiliateMarketingData: GoMarketMeAffiliateMarketingData?
 
     private var backgroundTaskID: UIBackgroundTaskIdentifier = UIBackgroundTaskIdentifier.invalid
-    
-    // private override init() {
-    //     super.init()
-    //     SKPaymentQueue.default().add(self)
-    // }
 
     private init() {
-        // Start listening to transaction updates early
         listenForTransactions()
     }
 
@@ -129,8 +123,6 @@ public class GoMarketMe:ObservableObject {
                 let identifierForVendor = deviceInfo["identifierForVendor"] as? String {
                     _deviceId = identifierForVendor
                 }
-
-                // Dispatch async task to main queue
                 DispatchQueue.main.async {
                     Task {
                         do {
@@ -141,16 +133,14 @@ public class GoMarketMe:ObservableObject {
                         }
                     }
                 }
-
-                //await syncReceipt()
                 await syncExistingPurchases()
 
-                // NotificationCenter.default.addObserver(
-                //     self,
-                //     selector: #selector(appWillEnterForeground),
-                //     name: UIApplication.willEnterForegroundNotification,
-                //     object: nil
-                // )
+                NotificationCenter.default.addObserver(
+                    self,
+                    selector: #selector(appWillEnterForeground),
+                    name: UIApplication.willEnterForegroundNotification,
+                    object: nil
+                )
             } catch {
                 print("Initialization failed with error: \(error)")
                 affiliateMarketingData = nil // Make sure to reset on failure
@@ -182,20 +172,20 @@ public class GoMarketMe:ObservableObject {
     }
 
 
-    // @objc private func appWillEnterForeground() {
-    //     Task {
-    //         await syncReceipt()
-    //     }
-    // }
+    @objc private func appWillEnterForeground() {
+        Task {
+            await syncExistingPurchases()
+        }
+    }
 
-    // deinit {
-    //     NotificationCenter.default.removeObserver(self)
-    //     SKPaymentQueue.default().remove(self)
-    // }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+        //SKPaymentQueue.default().remove(self)
+    }
 
-    // public func syncReceipt() async {
-    //     await refreshReceipt()
-    // }
+    public func syncReceipt() async {
+        await syncExistingPurchases()
+    }
 
     private func _postSDKInitialization(apiKey: String) async throws {
         var request = URLRequest(url: sdkInitializationUrl)
