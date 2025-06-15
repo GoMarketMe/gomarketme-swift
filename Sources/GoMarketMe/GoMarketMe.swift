@@ -188,15 +188,15 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
         }
     }
 
-    public func checkLatestTransaction(productID: String) async {
-        if let result = try? await Transaction.latest(for: productID) {
-            if case .verified(let transaction) = result {
-                print("🔁 Recovered past transaction: \(transaction.productID)")
-                // await transaction.finish()
-                // Send to backend
-            }
-        }
-    }
+    // public func checkLatestTransaction(productID: String) async {
+    //     if let result = try? await Transaction.latest(for: productID) {
+    //         if case .verified(let transaction) = result {
+    //             print("🔁 Recovered past transaction: \(transaction.productID)")
+    //             // await transaction.finish()
+    //             // Send to backend
+    //         }
+    //     }
+    // }
 
     public func syncTransaction(_ result: Product.PurchaseResult) async {
         switch result {
@@ -204,7 +204,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
             switch verification {
             case .verified(let transaction):
                 print("✅ SDK received transaction: \(transaction.productID)")
-                await checkLatestTransaction(productID: transaction.productID)
+                //await checkLatestTransaction(productID: transaction.productID)
                 //await transaction.finish()
                 // Send to backend, track attribution, etc.
             case .unverified(let transaction, let error):
@@ -375,6 +375,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
     }
 
     private func refreshReceipt() {
+        print("refreshReceipt 1")
         backgroundTaskID = UIApplication.shared.beginBackgroundTask(withName: "SKReceiptRefreshRequest") {
             self.endBackgroundTask()
         }
@@ -385,6 +386,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
     }
 
     private func refreshReceipt() async {
+        print("refreshReceipt2")
         backgroundTaskID = UIApplication.shared.beginBackgroundTask(withName: "SKReceiptRefreshRequest") {
             self.endBackgroundTask()
         }
