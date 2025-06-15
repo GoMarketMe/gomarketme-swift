@@ -334,12 +334,17 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymen
             return
         }
 
-        for await result in Transaction.all {
-            print("result")
-            print(result)
+        // Start with product IDs from the receipt verification
+        var productIDs = Set(result.product_ids)
+
+        // Add any product IDs from Transaction.all
+        for await transactionResult in Transaction.all {
+            productIDs.insert(transactionResult.productID)
         }
 
-        fetchProducts(for: result.product_ids) { products in
+        print("All collected product IDs: \(productIDs)")
+
+        fetchProducts(for: Array(productIDs)) { products in
             self._sendConsolidatedEncodedReceiptDetails(encodedReceipt, products: products)
             self.endBackgroundTask()
         }
