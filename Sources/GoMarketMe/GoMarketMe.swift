@@ -71,7 +71,8 @@ public struct GoMarketMeVerifyReceiptData: Decodable {
     public let product_ids: [String]
 }
 
-public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymentTransactionObserver {
+public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
+// public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymentTransactionObserver {
 //public class GoMarketMe: NSObject, ObservableObject {
 
     public static let shared = GoMarketMe()
@@ -189,11 +190,21 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymen
 
     public func syncTransaction(_ result: Product.PurchaseResult) async {
         switch result {
-            case .success(let verification):
-                switch verification {
-                case .verified(let transaction):
-                    print("✅ SDK received transaction: \(transaction.productID)")
+        case .success(let verification):
+            switch verification {
+            case .verified(let transaction):
+                print("✅ SDK received transaction: \(transaction.productID)")
+                await transaction.finish()
+                // Send to backend, track attribution, etc.
+            case .unverified(let transaction, let error):
+                print("❌ Unverified transaction: \(transaction.productID), error: \(error)")
             }
+        case .userCancelled:
+            print("ℹ️ User cancelled the purchase.")
+        case .pending:
+            print("⏳ Purchase is pending.")
+        @unknown default:
+            print("⚠️ Unknown purchase result.")
         }
 
         Task {
