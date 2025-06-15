@@ -317,6 +317,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymen
     }
 
     private func handleRequestDidFinish() async {
+        print("handleRequestDidFinish! 2")
         guard
             let receiptURL = Bundle.main.appStoreReceiptURL,
             let receiptData = try? Data(contentsOf: receiptURL)
@@ -333,6 +334,11 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymen
             return
         }
 
+        for await result in Transaction.all {
+            print("result")
+            print(result)
+        }
+
         fetchProducts(for: result.product_ids) { products in
             self._sendConsolidatedEncodedReceiptDetails(encodedReceipt, products: products)
             self.endBackgroundTask()
@@ -340,7 +346,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymen
     }
 
     public func requestDidFinish(_ request: SKRequest) {
-        print("requestDidFinish!")
+        print("requestDidFinish! 2")
         DispatchQueue.global().async {
             Task {
                 await self.handleRequestDidFinish()
@@ -441,7 +447,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymen
     }
 
     public func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        print("paymentQueue!")
+        print("paymentQueue! 2")
         for transaction in transactions {
             switch transaction.transactionState {
             case .purchased, .restored:
