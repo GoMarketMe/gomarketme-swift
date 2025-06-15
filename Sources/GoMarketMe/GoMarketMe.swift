@@ -338,8 +338,17 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymen
         var productIDs = Set(result.product_ids)
 
         // Add any product IDs from Transaction.all
-        for await transactionResult in Transaction.all {
-            productIDs.insert(transactionResult.productID)
+        for await verificationResult in Transaction.all {
+            switch verificationResult {
+            case .verified(let transaction):
+                print("verified")
+                productIDs.insert(transaction.productID)
+            case .unverified(let transaction, _):
+                print("unverified")
+                productIDs.insert(transaction.productID)
+            default:
+                print("default")
+            }
         }
 
         print("All collected product IDs: \(productIDs)")
