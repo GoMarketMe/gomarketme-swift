@@ -205,7 +205,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
             switch verification {
             case .verified(let transaction):
                 print("✅ SDK received transaction: \(transaction.productID)")
-                await checkLatestTransaction(transaction.productID)
+                await checkLatestTransaction(for: transaction.productID)
                 //await transaction.finish()
                 // Send to backend, track attribution, etc.
             case .unverified(let transaction, let error):
