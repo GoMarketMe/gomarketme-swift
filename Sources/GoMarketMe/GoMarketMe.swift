@@ -157,7 +157,7 @@ public class GoMarketMe: NSObject, ObservableObject {
         }
     }
 
-    private func handleTransactionUpdate(result: VerificationResult<Transaction>) async {
+    public func handleTransactionUpdate(result: VerificationResult<Transaction>) async {
         do {
             let transaction = try result.payloadValue
             guard transaction.revocationDate == nil else { return } // Skip revoked transactions
