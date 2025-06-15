@@ -71,7 +71,8 @@ public struct GoMarketMeVerifyReceiptData: Decodable {
     public let product_ids: [String]
 }
 
-public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
+public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymentTransactionObserver {
+
     public static let shared = GoMarketMe()
     private let sdkInitializedKey = "GOMARKETME_SDK_INITIALIZED"
     private let sdkType = "Swift"
@@ -95,6 +96,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
 
     public func initialize(apiKey: String) {
         self.apiKey = apiKey
+        SKPaymentQueue.default().add(self)
 
         Task {
             do {
@@ -146,6 +148,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
 
     deinit {
         NotificationCenter.default.removeObserver(self)
+        SKPaymentQueue.default().remove(self)
     }
 
     public func syncReceipt() async {
@@ -332,7 +335,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
 
         fetchProducts(for: result.product_ids) { products in
             self._sendConsolidatedEncodedReceiptDetails(encodedReceipt, products: products)
-            self.endBackgroundTask() // ✅ moved here to ensure background task ends *after* async work
+            self.endBackgroundTask()
         }
     }
 
@@ -434,5 +437,21 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
             completion?()
         }
         task.resume()
+    }
+
+    public func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        for transaction in transactions {
+            switch transaction.transactionState {
+            case .purchased, .restored:
+                Task {
+                    await self.syncReceipt()
+                }
+                SKPaymentQueue.default().finishTransaction(transaction)
+            case .failed:
+                SKPaymentQueue.default().finishTransaction(transaction)
+            default:
+                break
+            }
+        }
     }
 }
