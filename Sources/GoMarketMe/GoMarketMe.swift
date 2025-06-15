@@ -92,12 +92,11 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymen
     
     private override init() {
         super.init()
+        SKPaymentQueue.default().add(self)
     }
 
     public func initialize(apiKey: String) {
         self.apiKey = apiKey
-        
-        SKPaymentQueue.default().add(self)
 
         Task {
             do {
