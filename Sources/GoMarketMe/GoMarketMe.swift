@@ -441,6 +441,20 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymen
     }
 
     public func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        print("paymentQueue!")
+        for transaction in transactions {
+            switch transaction.transactionState {
+            case .purchased, .restored:
+                SKPaymentQueue.default().finishTransaction(transaction)
+            case .failed:
+                SKPaymentQueue.default().finishTransaction(transaction)
+            case .deferred, .purchasing:
+                break
+            @unknown default:
+                break
+            }
+        }
+        
         Task {
             await self.refreshReceipt()
         }
