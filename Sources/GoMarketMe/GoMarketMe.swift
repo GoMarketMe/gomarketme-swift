@@ -188,7 +188,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
         }
     }
 
-    public func checkLatestTransaction(for productID: String) async {
+    public func checkLatestTransaction(productID: String) async {
     guard let product = try? await Product.products(for: [productID]).first else { return }
     if let result = try? await Transaction.latest(for: product) {
         if case .verified(let transaction) = result {
@@ -205,7 +205,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
             switch verification {
             case .verified(let transaction):
                 print("✅ SDK received transaction: \(transaction.productID)")
-                await checkLatestTransaction(for: transaction.productID)
+                await checkLatestTransaction(transaction.productID)
                 //await transaction.finish()
                 // Send to backend, track attribution, etc.
             case .unverified(let transaction, let error):
