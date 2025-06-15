@@ -184,7 +184,7 @@ public class GoMarketMe: NSObject, ObservableObject {
         //SKPaymentQueue.default().remove(self)
     }
 
-    public func syncReceipt() async {
+    public func sync() async {
         await syncExistingPurchases()
     }
 
