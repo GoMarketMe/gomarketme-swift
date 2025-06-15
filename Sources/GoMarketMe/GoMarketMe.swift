@@ -71,8 +71,8 @@ public struct GoMarketMeVerifyReceiptData: Decodable {
     public let product_ids: [String]
 }
 
-//public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymentTransactionObserver {
-public class GoMarketMe: NSObject, ObservableObject {
+public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymentTransactionObserver {
+//public class GoMarketMe: NSObject, ObservableObject {
 
     public static let shared = GoMarketMe()
     private let sdkInitializedKey = "GOMARKETME_SDK_INITIALIZED"
@@ -173,7 +173,6 @@ public class GoMarketMe: NSObject, ObservableObject {
     @objc private func appWillEnterForeground() {
         Task {
             await syncExistingPurchases()
-            await self.refreshReceipt()
         }
     }
 
@@ -183,15 +182,19 @@ public class GoMarketMe: NSObject, ObservableObject {
 
     public func syncAllTransactions() async {
         await syncExistingPurchases()
+        Task {
+            await self.refreshReceipt()
+        }
     }
 
     public func syncTransaction(_ result: Product.PurchaseResult) async {
         switch result {
-        case .success(let verification):
-            switch verification {
-            case .verified(let transaction):
-                print("✅ SDK received transaction: \(transaction.productID)")
-
+            case .success(let verification):
+                switch verification {
+                case .verified(let transaction):
+                    print("✅ SDK received transaction: \(transaction.productID)")
+            }
+        }
 
         Task {
             await self.refreshReceipt()
