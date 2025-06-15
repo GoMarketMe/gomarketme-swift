@@ -96,6 +96,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymen
 
     public func initialize(apiKey: String) {
         self.apiKey = apiKey
+        
         SKPaymentQueue.default().add(self)
 
         Task {
@@ -124,14 +125,14 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymen
                     }
                 }
 
-                await syncReceipt()
+                //await syncReceipt()
 
-                NotificationCenter.default.addObserver(
-                    self,
-                    selector: #selector(appWillEnterForeground),
-                    name: UIApplication.willEnterForegroundNotification,
-                    object: nil
-                )
+                // NotificationCenter.default.addObserver(
+                //     self,
+                //     selector: #selector(appWillEnterForeground),
+                //     name: UIApplication.willEnterForegroundNotification,
+                //     object: nil
+                // )
             } catch {
                 print("Initialization failed with error: \(error)")
                 affiliateMarketingData = nil // Make sure to reset on failure
@@ -140,20 +141,20 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymen
     }
 
 
-    @objc private func appWillEnterForeground() {
-        Task {
-            await syncReceipt()
-        }
-    }
+    // @objc private func appWillEnterForeground() {
+    //     Task {
+    //         await syncReceipt()
+    //     }
+    // }
 
     deinit {
-        NotificationCenter.default.removeObserver(self)
+        //NotificationCenter.default.removeObserver(self)
         SKPaymentQueue.default().remove(self)
     }
 
-    public func syncReceipt() async {
-        refreshReceipt()
-    }
+    // public func syncReceipt() async {
+    //     refreshReceipt()
+    // }
 
     private func _postSDKInitialization(apiKey: String) async throws {
         var request = URLRequest(url: sdkInitializationUrl)
