@@ -151,9 +151,9 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymen
         SKPaymentQueue.default().remove(self)
     }
 
-    // public func syncReceipt() async {
-    //     refreshReceipt()
-    // }
+    public func syncReceipt() async {
+        refreshReceipt()
+    }
 
     private func _postSDKInitialization(apiKey: String) async throws {
         var request = URLRequest(url: sdkInitializationUrl)
