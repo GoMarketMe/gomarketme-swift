@@ -157,16 +157,13 @@ public class GoMarketMe: NSObject, ObservableObject {
         }
     }
 
-    public func handleTransactionUpdate(result: VerificationResult<Transaction>) async {
+    private func handleTransactionUpdate(result: VerificationResult<Transaction>) async {
         do {
             let transaction = try result.payloadValue
             guard transaction.revocationDate == nil else { return } // Skip revoked transactions
 
             // ✅ Forward to your SDK backend or notify the app
             print("🧾 Received transaction: \(transaction.productID) - \(transaction.purchaseDate)")
-
-            // Always finish the transaction
-            await transaction.finish()
         } catch {
             print("❌ Failed to verify transaction: \(error)")
         }
@@ -176,12 +173,12 @@ public class GoMarketMe: NSObject, ObservableObject {
     @objc private func appWillEnterForeground() {
         Task {
             await syncExistingPurchases()
+            await self.refreshReceipt()
         }
     }
 
     deinit {
         NotificationCenter.default.removeObserver(self)
-        //SKPaymentQueue.default().remove(self)
     }
 
     public func syncAllTransactions() async {
@@ -194,17 +191,10 @@ public class GoMarketMe: NSObject, ObservableObject {
             switch verification {
             case .verified(let transaction):
                 print("✅ SDK received transaction: \(transaction.productID)")
-                await transaction.finish()
-                // Send to backend, track attribution, etc.
-            case .unverified(let transaction, let error):
-                print("❌ Unverified transaction: \(transaction.productID), error: \(error)")
-            }
-        case .userCancelled:
-            print("ℹ️ User cancelled the purchase.")
-        case .pending:
-            print("⏳ Purchase is pending.")
-        @unknown default:
-            print("⚠️ Unknown purchase result.")
+
+
+        Task {
+            await self.refreshReceipt()
         }
     }
 
@@ -359,15 +349,15 @@ public class GoMarketMe: NSObject, ObservableObject {
         }
     }
 
-    // private func refreshReceipt() {
-    //     backgroundTaskID = UIApplication.shared.beginBackgroundTask(withName: "SKReceiptRefreshRequest") {
-    //         self.endBackgroundTask()
-    //     }
+    private func refreshReceipt() {
+        backgroundTaskID = UIApplication.shared.beginBackgroundTask(withName: "SKReceiptRefreshRequest") {
+            self.endBackgroundTask()
+        }
 
-    //     let request = SKReceiptRefreshRequest()
-    //     request.delegate = self
-    //     request.start()
-    // }
+        let request = SKReceiptRefreshRequest()
+        request.delegate = self
+        request.start()
+    }
 
     private func refreshReceipt() async {
         backgroundTaskID = UIApplication.shared.beginBackgroundTask(withName: "SKReceiptRefreshRequest") {
@@ -547,25 +537,5 @@ public class GoMarketMe: NSObject, ObservableObject {
             completion?()
         }
         task.resume()
-    }
-
-    public func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        print("paymentQueue! 2")
-        for transaction in transactions {
-            switch transaction.transactionState {
-            case .purchased, .restored:
-                SKPaymentQueue.default().finishTransaction(transaction)
-            case .failed:
-                SKPaymentQueue.default().finishTransaction(transaction)
-            case .deferred, .purchasing:
-                break
-            @unknown default:
-                break
-            }
-        }
-        
-        Task {
-            await self.refreshReceipt()
-        }
     }
 }
