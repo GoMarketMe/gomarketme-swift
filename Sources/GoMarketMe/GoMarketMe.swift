@@ -435,7 +435,25 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate, SKPaymen
         }
 
         requestData["products"] = productsArray
-        requestData["transactions"] = transactions
+
+        //
+
+        var transactionsArray: [[String: Any]] = []
+
+        for transaction in transactions {
+            let transactionInfo: [String: Any] = [
+                "productID": transaction.productID,
+                "transactionID": transaction.id,
+                "purchaseDate": ISO8601DateFormatter().string(from: transaction.purchaseDate),
+                "originalPurchaseDate": ISO8601DateFormatter().string(from: transaction.originalPurchaseDate),
+                "ownershipType": transaction.ownershipType.rawValue,
+                "isUpgraded": transaction.isUpgraded,
+                "revocationDate": transaction.revocationDate != nil ? ISO8601DateFormatter().string(from: transaction.revocationDate!) : NSNull()
+            ]
+            transactionsArray.append(transactionInfo)
+        }
+
+        requestData["transactions"] = transactionsArray
 
         self._sendEventToServer(eventType: "encoded-receipt", body: requestData)
     }
