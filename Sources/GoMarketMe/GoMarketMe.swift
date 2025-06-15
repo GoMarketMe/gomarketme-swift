@@ -88,7 +88,6 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
     @Published public var affiliateMarketingData: GoMarketMeAffiliateMarketingData?
 
     private var backgroundTaskID: UIBackgroundTaskIdentifier = UIBackgroundTaskIdentifier.invalid
-    private var currTransactions: [Transaction] = []
     
     private override init() {
         super.init()
@@ -147,15 +146,6 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
 
     deinit {
         NotificationCenter.default.removeObserver(self)
-    }
-
-    private func processTransactionResult(_ result: VerificationResult<Transaction>) async {
-        switch result {
-        case .verified(let transaction):
-            self.currTransactions.append(transaction)
-        case .unverified(let transaction, _):
-            self.currTransactions.append(transaction)
-        }
     }
 
     public func syncReceipt() async {
@@ -327,7 +317,6 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
         guard
             let receiptURL = Bundle.main.appStoreReceiptURL,
             let receiptData = try? Data(contentsOf: receiptURL),
-            let currTransaction = self.currTransaction
         else {
             self.endBackgroundTask()
             return
@@ -344,7 +333,6 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
         fetchProducts(for: result.product_ids) { products in
             self._sendConsolidatedEncodedReceiptDetails(encodedReceipt, products: products)
         }
-        
 
         self.endBackgroundTask()
     }
