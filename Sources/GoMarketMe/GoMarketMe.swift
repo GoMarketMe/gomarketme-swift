@@ -382,10 +382,6 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
         }
 
         var requestData: [String: Any] = [
-            "packageName": _packageName,
-            "deviceId": _deviceId,
-            "sdkType": sdkType,
-            "sdkVersion": sdkVersion,
             "encodedReceipt": encodedReceipt,
         ]
 
@@ -433,10 +429,13 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
         var request = URLRequest(url: eventUrl)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue(_affiliateCampaignCode, forHTTPHeaderField: "x-affiliate-campaign-code")
         request.addValue(self.apiKey, forHTTPHeaderField: "x-api-key")
         request.addValue(_deviceId, forHTTPHeaderField: "x-device-id")
-        request.addValue(_affiliateCampaignCode, forHTTPHeaderField: "x-affiliate-campaign-code")
         request.addValue(eventType, forHTTPHeaderField: "x-event-type")
+        request.addValue(_packageName, forHTTPHeaderField: "x-package-name")
+        request.addValue(sdkType, forHTTPHeaderField: "x-sdk-type")
+        request.addValue(sdkVersion, forHTTPHeaderField: "x-sdk-version")
         request.addValue("app_store", forHTTPHeaderField: "x-source-name")
         request.httpBody = try? JSONSerialization.data(withJSONObject: body)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
