@@ -185,7 +185,7 @@ public class GoMarketMe: NSObject, ObservableObject {
     }
 
     public func sync() async {
-        try await AppStore.sync()
+        await AppStore.sync()
         //await syncExistingPurchases()
     }
 
