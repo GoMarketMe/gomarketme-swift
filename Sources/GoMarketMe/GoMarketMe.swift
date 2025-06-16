@@ -66,26 +66,34 @@ public struct SaleDistribution: Decodable {
     }
 }
 
+public struct GoMarketMeVerifyReceiptData: Decodable {
+    public let is_valid: Bool
+    public let product_ids: [String]
+}
+
 public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
+
     public static let shared = GoMarketMe()
     private let sdkInitializedKey = "GOMARKETME_SDK_INITIALIZED"
     private let sdkType = "Swift"
-    private let sdkVersion = "2.2.1"
+    private let sdkVersion = "3.0.0"
     private var apiKey: String = ""
     private let sdkInitializationUrl = URL(string: "https://4v9008q1a5.execute-api.us-west-2.amazonaws.com/prod/v1/sdk-initialization")!
     private let systemInfoUrl = URL(string: "https://4v9008q1a5.execute-api.us-west-2.amazonaws.com/prod/v1/mobile/system-info")!
+    private let verifyReceiptUrl = URL(string: "https://4v9008q1a5.execute-api.us-west-2.amazonaws.com/prod/v1/mobile/app-store-verify-receipt")!
     private let eventUrl = URL(string: "https://4v9008q1a5.execute-api.us-west-2.amazonaws.com/prod/v1/event")!
     private var _affiliateCampaignCode: String = ""
     private var _deviceId: String = ""
     private var _packageName = ""
+    private var updatesTask: Task<Void, Never>?
     
     @Published public var affiliateMarketingData: GoMarketMeAffiliateMarketingData?
 
     private var backgroundTaskID: UIBackgroundTaskIdentifier = UIBackgroundTaskIdentifier.invalid
-    private var currTransaction: Transaction? = nil
-    
+
     private override init() {
         super.init()
+        listenForTransactions()
     }
 
     public func initialize(apiKey: String) {
@@ -104,62 +112,48 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
                 let identifierForVendor = deviceInfo["identifierForVendor"] as? String {
                     _deviceId = identifierForVendor
                 }
-
-                // Dispatch async task to main queue
                 DispatchQueue.main.async {
                     Task {
                         do {
                             self.affiliateMarketingData = try await self._postSystemInfo(data: systemInfo, apiKey: apiKey) // Update on the main thread
                         } catch {
                             print("Failed to post system info: \(error)")
-                            self.affiliateMarketingData = nil // Handle any errors during system info posting
+                            self.affiliateMarketingData = nil
                         }
                     }
                 }
 
-                await syncAllTransactions()
-
-                NotificationCenter.default.addObserver(
-                    self,
-                    selector: #selector(appWillEnterForeground),
-                    name: UIApplication.willEnterForegroundNotification,
-                    object: nil
-                )
             } catch {
                 print("Initialization failed with error: \(error)")
-                affiliateMarketingData = nil // Make sure to reset on failure
+                affiliateMarketingData = nil
             }
         }
     }
 
-
-    @objc private func appWillEnterForeground() {
-        Task {
-            await syncAllTransactions()
-        }
-    }
-
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-
-    private func processTransactionResult(_ result: VerificationResult<Transaction>) async {
-        switch result {
-        case .verified(let transaction):
-            await syncTransaction(transaction: transaction)
-        case .unverified(let transaction, _):
-            await syncTransaction(transaction: transaction)
+    private func listenForTransactions() {
+        updatesTask = Task.detached(priority: .background) {
+            var refreshReceiptNeeded = false
+            for await verificationResult in Transaction.all {
+                refreshReceiptNeeded = true
+                break
+            }
+            
+            if refreshReceiptNeeded {
+                await self.refreshReceipt()
+            }
         }
     }
 
     public func syncAllTransactions() async {
-            for await result in Transaction.all {
-                await processTransactionResult(result)
-            }
-    }
+        var refreshReceiptNeeded = false
+        for await result in Transaction.all {
+            refreshReceiptNeeded = true
+            break
+        }
 
-    public func syncTransaction(transaction: Transaction) async {
-            _fetchPurchaseDetails(transaction: transaction)
+        if refreshReceiptNeeded {
+            await self.refreshReceipt()
+        }
     }
 
     private func _postSDKInitialization(apiKey: String) async throws {
@@ -228,7 +222,6 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
             
             do {
                 let affiliateData = try decoder.decode(GoMarketMeAffiliateMarketingData.self, from: data)
-                print("System Info sent successfully")
                 return affiliateData
             } catch {
                 print("Error decoding response data: \(error.localizedDescription)")
@@ -237,6 +230,55 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
             
         } catch {
             print("Error during system info posting: \(error.localizedDescription)")
+            return nil
+        }
+    }
+
+    private func _postVerifyReceipt(encodedReceipt: String) async -> GoMarketMeVerifyReceiptData? {
+        
+        let requestData: [String: Any] = [
+            "package_name": _packageName,
+            "encoded_receipt": encodedReceipt
+        ]
+        
+        do {
+            let requestBody = try JSONSerialization.data(withJSONObject: requestData, options: [])
+            var request = URLRequest(url: verifyReceiptUrl)
+            request.httpMethod = "POST"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
+            request.addValue(_deviceId, forHTTPHeaderField: "x-device-id")
+            request.setValue(sdkType, forHTTPHeaderField: "x-sdk-type")
+            request.setValue(sdkVersion, forHTTPHeaderField: "x-sdk-version")
+            request.httpBody = requestBody
+            
+            let (data, response) = try await URLSession.shared.data(for: request)
+            
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                if let httpResponse = response as? HTTPURLResponse {
+                    print("HTTP error: Status code \(httpResponse.statusCode)")
+                } else {
+                    print("Failed to send receipt for verification: Invalid HTTP response")
+                }
+                return nil
+            }
+            
+            if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any], json.isEmpty {
+                return nil
+            }
+
+            let decoder = JSONDecoder()
+            
+            do {
+                let affiliateData = try decoder.decode(GoMarketMeVerifyReceiptData.self, from: data)
+                return affiliateData
+            } catch {
+                print("Error decoding response data: \(error.localizedDescription)")
+                return nil
+            }
+            
+        } catch {
+            print("Error during receipt validation posting: \(error.localizedDescription)")
             return nil
         }
     }
@@ -264,38 +306,82 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
         }
     }
 
-    private func refreshReceipt() {
+    private func refreshReceipt() async {
         backgroundTaskID = UIApplication.shared.beginBackgroundTask(withName: "SKReceiptRefreshRequest") {
             self.endBackgroundTask()
         }
 
-        let request = SKReceiptRefreshRequest()
-        request.delegate = self
-        request.start()
+        do {
+            try await AppStore.sync()
+            await handleRequestDidFinishOrFallback()
+        } catch {
+            print("AppStore.sync() failed: \(error)")
+            fallbackToSKReceiptRefreshRequest()
+        }
     }
 
-    public func requestDidFinish(_ request: SKRequest) {
-        guard
-            let receiptURL = Bundle.main.appStoreReceiptURL,
-            let receiptData = try? Data(contentsOf: receiptURL),
-            let currTransaction = self.currTransaction
-        else {
+    private func handleRequestDidFinishOrFallback() async {
+        var receiptData: Data? = nil
+        var receiptURL: URL? = nil
+
+        for attempt in 1...3 {
+            receiptURL = Bundle.main.appStoreReceiptURL
+
+            if let url = receiptURL,
+            let data = try? Data(contentsOf: url),
+            !data.isEmpty {
+                receiptData = data
+                break
+            }
+            try? await Task.sleep(nanoseconds: 500_000_000) // 0.5 sec
+        }
+
+        guard let receiptData else {
+            fallbackToSKReceiptRefreshRequest()
+            return
+        }
+
+        await processReceipt(receiptData)
+    }
+
+    private func fallbackToSKReceiptRefreshRequest() {
+        DispatchQueue.main.async {
+            let request = SKReceiptRefreshRequest()
+            request.delegate = self
+            request.start()
+        }
+    }
+
+    private func processReceipt(_ receiptData: Data) async {
+        let encodedReceipt = receiptData.base64EncodedString()
+
+        guard let result = await self._postVerifyReceipt(encodedReceipt: encodedReceipt), result.is_valid else {
             self.endBackgroundTask()
             return
         }
 
-        let base64EncodedReceipt = receiptData.base64EncodedString()
-        
-        fetchProducts(for: [currTransaction.productID]) { products in
-            self._sendConsolidatedPurchaseDetails(currTransaction, receipt: base64EncodedReceipt, products: products)
+        var productIDs = Set(result.product_ids)
+        for await verificationResult in Transaction.all {
+            switch verificationResult {
+            case .verified(let transaction):
+                productIDs.insert(transaction.productID)
+            case .unverified(let transaction, _):
+                productIDs.insert(transaction.productID)
+            }
         }
 
-        self.endBackgroundTask()
+        fetchProducts(for: Array(productIDs)) { products in
+            self._sendDetails(encodedReceipt, products: products)
+            self.endBackgroundTask()
+        }
     }
-    
-    private func _fetchPurchaseDetails(transaction: Transaction) {
-        self.currTransaction = transaction
-        refreshReceipt()
+
+    public func requestDidFinish(_ request: SKRequest) {
+        DispatchQueue.global().async {
+            Task {
+                await self.handleRequestDidFinishOrFallback()
+            }
+        }
     }
     
     private func fetchProducts(for productIDs: [String], completion: @escaping ([Product]) -> Void) {
@@ -310,7 +396,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
         }
     }
 
-    private func _sendConsolidatedPurchaseDetails(_ transaction: Transaction, receipt: String, products: [Product]) {
+    private func _sendDetails(_ encodedReceipt: String, products: [Product]) {
 
         func subscriptionUnitString(_ unit: Product.SubscriptionPeriod.Unit) -> String {
             switch unit {
@@ -322,20 +408,8 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
             }
         }
 
-        var purchaseInfo: [String: Any] = [
-            "packageName": _packageName,
-            "productID": transaction.productID,
-            "purchaseID": String(transaction.id),
-            "transactionDate": transaction.purchaseDate.timeIntervalSince1970,
-            "status": "",
-            "verificationData": [
-                "localVerificationData": receipt,
-                "serverVerificationData": receipt,
-                "source": "app_store"
-            ],
-            "pendingCompletePurchase": "",
-            "error": "",
-            "hashCode": String(transaction.hashValue)
+        var requestData: [String: Any] = [
+            "encodedReceipt": encodedReceipt,
         ]
 
         var productsArray: [[String: Any]] = []
@@ -372,20 +446,22 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
 
             productsArray.append(productInfo)
         }
+        requestData["products"] = productsArray
 
-        purchaseInfo["products"] = productsArray
-
-        self._sendEventToServer(eventType: "purchase", body: purchaseInfo)
+        self._sendEventToServer(eventType: "encoded-receipt", body: requestData)
     }
 
     private func _sendEventToServer(eventType: String, body: [String: Any], completion: (() -> Void)? = nil) {
         var request = URLRequest(url: eventUrl)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue(_affiliateCampaignCode, forHTTPHeaderField: "x-affiliate-campaign-code")
         request.addValue(self.apiKey, forHTTPHeaderField: "x-api-key")
         request.addValue(_deviceId, forHTTPHeaderField: "x-device-id")
-        request.addValue(_affiliateCampaignCode, forHTTPHeaderField: "x-affiliate-campaign-code")
         request.addValue(eventType, forHTTPHeaderField: "x-event-type")
+        request.addValue(_packageName, forHTTPHeaderField: "x-package-name")
+        request.addValue(sdkType, forHTTPHeaderField: "x-sdk-type")
+        request.addValue(sdkVersion, forHTTPHeaderField: "x-sdk-version")
         request.addValue("app_store", forHTTPHeaderField: "x-source-name")
         request.httpBody = try? JSONSerialization.data(withJSONObject: body)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in

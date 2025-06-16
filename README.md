@@ -14,7 +14,7 @@
 
 - File > Swift Packages > Add Package Dependency
 - Add `https://github.com/GoMarketMe/gomarketme-swift.git`
-- Select "Exact Version" > "2.2.1"
+- Select "Exact Version" > "3.0.0"
 
 
 
@@ -43,7 +43,7 @@ init() {
 }
 ```
 
-### Sync the Transaction (Recommended)
+### Sync the Transactions (Recommended)
 
 ```swift
 // Step 1: Retrieve the product
@@ -52,10 +52,7 @@ init() {
 switch result { 
 case .success(let verification):
     if case .verified(let transaction) = verification {
-
-        // RevenueCat user or don't have access to the transaction? 
-        // Use the following instead: await goMarketMe.syncAllTransactions().
-        await goMarketMe.syncTransaction(transaction: transaction) // <- add this line for faster processing
+        await goMarketMe.syncAllTransactions() // <- add this line for faster processing
     }
 }
 ```
