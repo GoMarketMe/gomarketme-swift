@@ -76,7 +76,7 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
     public static let shared = GoMarketMe()
     private let sdkInitializedKey = "GOMARKETME_SDK_INITIALIZED"
     private let sdkType = "Swift"
-    private let sdkVersion = "3.0.0"
+    private let sdkVersion = "3.0.1"
     private var apiKey: String = ""
     private let sdkInitializationUrl = URL(string: "https://4v9008q1a5.execute-api.us-west-2.amazonaws.com/prod/v1/sdk-initialization")!
     private let systemInfoUrl = URL(string: "https://4v9008q1a5.execute-api.us-west-2.amazonaws.com/prod/v1/mobile/system-info")!
@@ -300,87 +300,70 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
     }
 
     private func endBackgroundTask() {
-        if backgroundTaskID != UIBackgroundTaskIdentifier.invalid {
-            UIApplication.shared.endBackgroundTask(backgroundTaskID)
-            backgroundTaskID = UIBackgroundTaskIdentifier.invalid
+        let taskID = backgroundTaskID
+        backgroundTaskID = UIBackgroundTaskIdentifier.invalid
+        if taskID != .invalid {
+            UIApplication.shared.endBackgroundTask(taskID)
         }
     }
 
     private func refreshReceipt() async {
         backgroundTaskID = UIApplication.shared.beginBackgroundTask(withName: "SKReceiptRefreshRequest") {
-            self.endBackgroundTask()
+            UIApplication.shared.endBackgroundTask(self.backgroundTaskID)
+            self.backgroundTaskID = .invalid
         }
 
-        do {
-            try await AppStore.sync()
-            await handleRequestDidFinishOrFallback()
-        } catch {
-            print("AppStore.sync() failed: \(error)")
-            fallbackToSKReceiptRefreshRequest()
-        }
-    }
-
-    private func handleRequestDidFinishOrFallback() async {
-        var receiptData: Data? = nil
-        var receiptURL: URL? = nil
-
-        for attempt in 1...3 {
-            receiptURL = Bundle.main.appStoreReceiptURL
-
-            if let url = receiptURL,
-            let data = try? Data(contentsOf: url),
-            !data.isEmpty {
-                receiptData = data
-                break
-            }
-            try? await Task.sleep(nanoseconds: 500_000_000) // 0.5 sec
-        }
-
-        guard let receiptData else {
-            fallbackToSKReceiptRefreshRequest()
-            return
-        }
-
-        await processReceipt(receiptData)
-    }
-
-    private func fallbackToSKReceiptRefreshRequest() {
-        DispatchQueue.main.async {
-            let request = SKReceiptRefreshRequest()
-            request.delegate = self
-            request.start()
-        }
-    }
-
-    private func processReceipt(_ receiptData: Data) async {
-        let encodedReceipt = receiptData.base64EncodedString()
-
-        guard let result = await self._postVerifyReceipt(encodedReceipt: encodedReceipt), result.is_valid else {
-            self.endBackgroundTask()
-            return
-        }
-
-        var productIDs = Set(result.product_ids)
-        for await verificationResult in Transaction.all {
-            switch verificationResult {
-            case .verified(let transaction):
-                productIDs.insert(transaction.productID)
-            case .unverified(let transaction, _):
-                productIDs.insert(transaction.productID)
-            }
-        }
-
-        fetchProducts(for: Array(productIDs)) { products in
-            self._sendDetails(encodedReceipt, products: products)
-            self.endBackgroundTask()
-        }
+        let request = SKReceiptRefreshRequest()
+        request.delegate = self
+        request.start()
     }
 
     public func requestDidFinish(_ request: SKRequest) {
-        DispatchQueue.global().async {
-            Task {
-                await self.handleRequestDidFinishOrFallback()
+        Task {
+            defer {
+
+                request.cancel() // important
+                self.endBackgroundTask()
             }
+
+            guard
+                let receiptURL = Bundle.main.appStoreReceiptURL,
+                let receiptData = try? Data(contentsOf: receiptURL)
+            else {
+                return
+            }
+
+            let encodedReceipt = receiptData.base64EncodedString()
+
+            guard let verificationResult = await self._postVerifyReceipt(encodedReceipt: encodedReceipt),
+                verificationResult.is_valid else {
+                return
+            }
+
+            var productIDs = Set(verificationResult.product_ids)
+
+            for await verificationResult in Transaction.all {
+                switch verificationResult {
+                case .verified(let transaction):
+                    productIDs.insert(transaction.productID)
+                case .unverified(let transaction, _):
+                    productIDs.insert(transaction.productID)
+                }
+            }
+
+            fetchProducts(for: Array(productIDs)) { products in
+                self._sendDetails(encodedReceipt, products: products)
+                // endBackgroundTask is already handled by `defer`
+            }
+        }
+    }
+
+    public func request(_ request: SKRequest, didFailWithError error: Error) {
+        print("SKReceiptRefreshRequest failed with error: \(error)")
+
+        if backgroundTaskID != .invalid {
+            UIApplication.shared.endBackgroundTask(backgroundTaskID)
+            backgroundTaskID = .invalid
         }
     }
     
@@ -388,10 +371,14 @@ public class GoMarketMe: NSObject, ObservableObject, SKRequestDelegate {
         Task {
             do {
                 let products = try await Product.products(for: productIDs)
-                completion(products)
+                DispatchQueue.main.async {
+                    completion(products)
+                }
             } catch {
                 print("Failed to fetch products: \(error.localizedDescription)")
-                completion([])
+                DispatchQueue.main.async {
+                    completion([])
+                }
             }
         }
     }
