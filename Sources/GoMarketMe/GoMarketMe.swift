@@ -119,27 +119,38 @@ public class GoMarketMe: NSObject, ObservableObject {
         }
     }
 
+    // MARK: - Transaction Listening
+
     private func listenForTransactions() {
+        updatesTask?.cancel()
+        let capturedState = captureEventState()
         updatesTask = Task.detached(priority: .background) {
             for await result in Transaction.updates {
+                guard !Task.isCancelled else { break }
                 switch result {
                 case .verified(let transaction):
-                    let products = await self.fetchProducts(for: [transaction.productID])
-                    await self.sendDetails(transactions: [result.jwsRepresentation], products: products)
+                    let products = await Self.fetchProducts(for: [transaction.productID])
+                    await Self.sendDetails(
+                        transactions: [result.jwsRepresentation],
+                        products: products,
+                        state: capturedState
+                    )
                     await transaction.finish()
-                case .unverified(let transaction, _):
-                    let products = await self.fetchProducts(for: [transaction.productID])
-                    await self.sendDetails(transactions: [result.jwsRepresentation], products: products)
+                case .unverified:
+                    break
                 }
             }
         }
     }
 
     public func syncAllTransactions() async {
-        await processAllTransactions()
+        let state = captureEventState()
+        await Self.performSync(state: state)
     }
 
-    private nonisolated func processAllTransactions() async {
+    // MARK: - Bulk Transaction Sync
+
+    private nonisolated static func performSync(state: EventState) async {
         var productIDs = Set<String>()
         var jwsTransactions = [String]()
         var verifiedTransactions = [Transaction]()
@@ -150,21 +161,51 @@ public class GoMarketMe: NSObject, ObservableObject {
                 productIDs.insert(transaction.productID)
                 jwsTransactions.append(result.jwsRepresentation)
                 verifiedTransactions.append(transaction)
-            case .unverified(let transaction, _):
-                productIDs.insert(transaction.productID)
-                jwsTransactions.append(result.jwsRepresentation)
+            case .unverified:
+                break
             }
         }
 
         guard !productIDs.isEmpty else { return }
 
         let products = await fetchProducts(for: Array(productIDs))
-        await sendDetails(transactions: jwsTransactions, products: products)
+        await sendDetails(transactions: jwsTransactions, products: products, state: state)
 
         for transaction in verifiedTransactions {
             await transaction.finish()
         }
     }
+
+    private func processAllTransactions() async {
+        let state = captureEventState()
+        await Self.performSync(state: state)
+    }
+
+    // MARK: - State Capture
+
+    private struct EventState: Sendable {
+        let apiKey: String
+        let affiliateCampaignCode: String
+        let deviceId: String
+        let packageName: String
+        let sdkType: String
+        let sdkVersion: String
+        let eventUrl: URL
+    }
+
+    private func captureEventState() -> EventState {
+        EventState(
+            apiKey: apiKey,
+            affiliateCampaignCode: affiliateCampaignCode,
+            deviceId: deviceId,
+            packageName: packageName,
+            sdkType: sdkType,
+            sdkVersion: sdkVersion,
+            eventUrl: eventUrl
+        )
+    }
+
+    // MARK: - SDK Initialization
 
     private func postSDKInitialization(apiKey: String) async throws {
         var request = URLRequest(url: sdkInitializationUrl)
@@ -176,6 +217,8 @@ public class GoMarketMe: NSObject, ObservableObject {
             markSDKAsInitialized()
         }
     }
+
+    // MARK: - System Info
 
     private func getSystemInfo() -> [String: Any] {
         var systemInfo = [String: Any]()
@@ -195,7 +238,7 @@ public class GoMarketMe: NSObject, ObservableObject {
             let screen = windowScene.screen
             windowInfo["devicePixelRatio"] = screen.scale
             windowInfo["width"] = screen.bounds.width * screen.scale
-            windowInfo["height"] = screen.bounds.height
+            windowInfo["height"] = screen.bounds.height * screen.scale
         }
         systemInfo["window_info"] = windowInfo
         systemInfo["time_zone"] = TimeZone.current.identifier
@@ -252,6 +295,8 @@ public class GoMarketMe: NSObject, ObservableObject {
         }
     }
 
+    // MARK: - Helpers
+
     private var isSimulator: Bool {
         #if targetEnvironment(simulator)
         return true
@@ -268,7 +313,9 @@ public class GoMarketMe: NSObject, ObservableObject {
         UserDefaults.standard.set(true, forKey: sdkInitializedKey)
     }
 
-    private func fetchProducts(for productIDs: [String]) async -> [Product] {
+    // MARK: - Product & Event (nonisolated)
+
+    private nonisolated static func fetchProducts(for productIDs: [String]) async -> [Product] {
         do {
             return try await Product.products(for: productIDs)
         } catch {
@@ -277,7 +324,7 @@ public class GoMarketMe: NSObject, ObservableObject {
         }
     }
 
-    private func sendDetails(transactions: [String], products: [Product]) async {
+    private nonisolated static func sendDetails(transactions: [String], products: [Product], state: EventState) async {
 
         func subscriptionUnitString(_ unit: Product.SubscriptionPeriod.Unit) -> String {
             switch unit {
@@ -298,10 +345,10 @@ public class GoMarketMe: NSObject, ObservableObject {
         for product in products {
             let currencyCode = product.priceFormatStyle.currencyCode
             let localeId = NSLocale.localeIdentifier(fromComponents: [NSLocale.Key.currencyCode.rawValue: currencyCode])
-            let currencySymbol = NSLocale(localeIdentifier: localeId).displayName(forKey: .currencySymbol, value: currencyCode) ?? currencyCode
+            let currencySymbol = NSLocale(localeIdentifier: localeId).object(forKey: .currencySymbol) as? String ?? currencyCode
 
             var productInfo: [String: Any] = [
-                "packageName": packageName,
+                "packageName": state.packageName,
                 "productID": product.id,
                 "productTitle": product.displayName,
                 "productDescription": product.description,
@@ -333,20 +380,20 @@ public class GoMarketMe: NSObject, ObservableObject {
         }
         requestData["products"] = productsArray
 
-        await self.sendEventToServer(eventType: "transactions", body: requestData)
+        await sendEventToServer(eventType: "transactions", body: requestData, state: state)
     }
 
-    private func sendEventToServer(eventType: String, body: [String: Any]) async {
-        var request = URLRequest(url: eventUrl)
+    private nonisolated static func sendEventToServer(eventType: String, body: [String: Any], state: EventState) async {
+        var request = URLRequest(url: state.eventUrl)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue(affiliateCampaignCode, forHTTPHeaderField: "x-affiliate-campaign-code")
-        request.addValue(self.apiKey, forHTTPHeaderField: "x-api-key")
-        request.addValue(deviceId, forHTTPHeaderField: "x-device-id")
+        request.addValue(state.affiliateCampaignCode, forHTTPHeaderField: "x-affiliate-campaign-code")
+        request.addValue(state.apiKey, forHTTPHeaderField: "x-api-key")
+        request.addValue(state.deviceId, forHTTPHeaderField: "x-device-id")
         request.addValue(eventType, forHTTPHeaderField: "x-event-type")
-        request.addValue(packageName, forHTTPHeaderField: "x-package-name")
-        request.addValue(sdkType, forHTTPHeaderField: "x-sdk-type")
-        request.addValue(sdkVersion, forHTTPHeaderField: "x-sdk-version")
+        request.addValue(state.packageName, forHTTPHeaderField: "x-package-name")
+        request.addValue(state.sdkType, forHTTPHeaderField: "x-sdk-type")
+        request.addValue(state.sdkVersion, forHTTPHeaderField: "x-sdk-version")
         request.addValue("app_store", forHTTPHeaderField: "x-source-name")
         request.httpBody = try? JSONSerialization.data(withJSONObject: body)
         do {
