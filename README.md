@@ -1,41 +1,28 @@
 <div align="center">
     <img src="https://static.gomarketme.net/assets/gmm-icon.png" alt="GoMarketMe"/>
     <br>
-    <h1>GoMarketMe Swift</h1>
-    <p>Affiliate Marketing for iOS Applications.</p>
-    <br>
-    <br>
+    <h1>GoMarketMe Swift SDK</h1>
+    <p>Affiliate marketing for iOS applications.</p>
 </div>
-
 
 ## Installation
 
 ### Swift Package Manager
 
-- File > Swift Packages > Add Package Dependency
-- Add `https://github.com/GoMarketMe/gomarketme-swift.git`
-- Select "Exact Version" > "3.0.1"
-
-
-
-Using an older version of Xcode? Do this instead:
-
-- Navigate to the project navigator and select your project or the blue project icon.
-- Package Dependencies > Add a New Package > +
-- In the search bar that appears, enter `https://github.com/GoMarketMe/gomarketme-swift.git`
-- Press "Add Package"
+- In Xcode, go to **File > Add Package Dependencies**
+- Enter `https://github.com/GoMarketMe/gomarketme-swift.git`
+- Select **Up to Next Major Version**, min: **5.0.0**
+- Click **Add Package**
 
 ## Usage
 
-### Import Library
+⚙️ Basic Integration
+
+To initialize GoMarketMe, import the `GoMarketMe` package and initialize the SDK with your API key:
 
 ```swift
 import GoMarketMe
-```
 
-### Initialize Client
-
-```swift
 private let goMarketMe = GoMarketMe.shared
 
 init() {
@@ -43,20 +30,48 @@ init() {
 }
 ```
 
-### Sync the Transactions (Recommended)
+No further steps needed. The SDK automatically attributes and reports your affiliate sales in real time.
+
+> `syncAllTransactions()` is no longer needed in version `5.0.0`. It remains available as a deprecated no-op so existing apps can upgrade without immediately removing old calls.
+
+⚙️ OR - Advanced Integration ([Programmatic Affiliate Marketing](https://gomarketme.co/programmatic-affiliate-marketing/))
+
+Use this approach for more advanced scenarios, such as:
+
+- Affiliate-aware paywalls: Offer exclusive pricing or promotions to users acquired through affiliate campaigns.
+- Personalized onboarding: For example, a social or fitness app can automatically make new users follow the influencer who referred them, strengthening engagement and maximizing the affiliate's impact.
 
 ```swift
-// Step 1: Retrieve the product
-// Step 2: Attempt the purchase
-// Step 3: Handle the purchase result
-switch result { 
-case .success(let verification):
-    if case .verified(let transaction) = verification {
-        await goMarketMe.syncAllTransactions() // <- add this line for faster processing
+import GoMarketMe
+
+private let goMarketMe = GoMarketMe.shared
+
+init() {
+    let sdk = GoMarketMe.shared
+
+    Task {
+        let data = await sdk.initialize(apiKey: "API_KEY") // Initialize with your API key
+
+        if let data {
+            // maps to GoMarketMe > Affiliates > Export > id column
+            print("Affiliate ID:", data.affiliate.id)
+            
+            // maps to GoMarketMe > Campaigns > [Name] > Affiliate's Revenue Split (%)
+            print("Affiliate %:", data.saleDistribution.affiliatePercentage) 
+
+            // maps to GoMarketMe > Campaigns > [Name] > id in the URL
+            print("Campaign ID:", data.campaign.id)
+
+            // Use this data to customize onboarding, paywalls, promotions, or in-app experiences.
+        }
     }
 }
 ```
 
-Make sure to replace API_KEY with your actual GoMarketMe API key. You can find it on the onboarding page and under Profile > API Key.
+Make sure to replace `API_KEY` with your actual GoMarketMe API key. You can find it on the product onboarding page and under **Profile > API Key**.
 
-Check out our <a href="https://github.com/GoMarketMe/gomarketme-swift-sample-app" target="_blank">sample app</a> for an example.
+## Support
+
+Check out our sample iOS app at [https://github.com/GoMarketMe/gomarketme-swift-sample-app](https://github.com/GoMarketMe/gomarketme-swift-sample-app).
+
+If you run into any issues, please reach out to us at [integrations@gomarketme.co](mailto:integrations@gomarketme.co) or visit [https://gomarketme.co](https://gomarketme.co).

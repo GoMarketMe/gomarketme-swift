@@ -1,0 +1,85 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.2 effective-5.10 (swiftlang-6.2.0.19.9 clang-1700.3.19.1)
+// swift-module-flags: -target x86_64-apple-ios15.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -module-name GoMarketMeAppleCoreKit -package-name apple
+// swift-module-flags-ignorable:  -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2
+import Foundation
+import StoreKit
+import Swift
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+final public class GoMarketMeAppleApiClient : @unchecked Swift.Sendable {
+  public init(session: Foundation.URLSession = .shared)
+  final public func postSDKInitialization(configuration: GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration) async throws
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public func postSystemInfo(configuration: GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration, payload: [Swift.String : Any]) async throws -> [Swift.String : Any]?
+  #endif
+  final public func sendPurchaseEvent(configuration: GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration, event: GoMarketMeAppleCoreKit.GoMarketMeApplePurchaseEvent) async throws
+  @objc deinit
+}
+public struct GoMarketMeAppleCurrentPurchaseSyncResult : Swift.Sendable {
+  public let fetchedCount: Swift.Int
+  public let sentCount: Swift.Int
+  public let failedCount: Swift.Int
+  public let success: Swift.Bool
+  public init(fetchedCount: Swift.Int, sentCount: Swift.Int, failedCount: Swift.Int, success: Swift.Bool)
+}
+@available(iOS 15.0, *)
+final public class GoMarketMeAppleCore : @unchecked Swift.Sendable {
+  final public var onPurchase: ((GoMarketMeAppleCoreKit.GoMarketMeApplePurchaseEvent) -> Swift.Void)?
+  final public var onError: ((any Swift.Error) -> Swift.Void)?
+  public init(apiClient: GoMarketMeAppleCoreKit.GoMarketMeAppleApiClient = GoMarketMeAppleApiClient())
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public func prepareAttribution(configuration: GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration) async -> (configuration: GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration, affiliateMarketingData: [Swift.String : Any]?)
+  #endif
+  final public func configure(_ configuration: GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration)
+  final public func start()
+  final public func stop()
+  final public func currentPurchases() async throws -> [GoMarketMeAppleCoreKit.GoMarketMeApplePurchaseEvent]
+  final public func sendCurrentPurchases() async
+  final public func sendCurrentPurchasesForDebug() async -> Swift.Int
+  final public func sendCurrentPurchasesWithResult() async -> GoMarketMeAppleCoreKit.GoMarketMeAppleCurrentPurchaseSyncResult
+  final public func send(_ event: GoMarketMeAppleCoreKit.GoMarketMeApplePurchaseEvent) async
+  final public func debugAllTransactions() async -> [[Swift.String : Any]]
+  @objc deinit
+}
+public enum GoMarketMeAppleCoreEndpoints {
+  public static let sdkInitialization: Foundation.URL
+  public static let systemInfo: Foundation.URL
+  public static let event: Foundation.URL
+}
+public struct GoMarketMeAppleCoreConfiguration : Swift.Sendable {
+  public let apiKey: Swift.String
+  public let affiliateCampaignCode: Swift.String?
+  public let deviceId: Swift.String?
+  public let sourceName: Swift.String
+  public let sdkType: Swift.String?
+  public let sdkVersion: Swift.String?
+  public let packageName: Swift.String?
+  public let eventEndpoint: Foundation.URL
+  public let sdkInitializationEndpoint: Foundation.URL
+  public let systemInfoEndpoint: Foundation.URL
+  public let isProduction: Swift.Bool?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(apiKey: Swift.String, affiliateCampaignCode: Swift.String? = nil, deviceId: Swift.String? = nil, sourceName: Swift.String = "app_store", sdkType: Swift.String? = nil, sdkVersion: Swift.String? = nil, packageName: Swift.String? = nil, eventEndpoint: Foundation.URL = GoMarketMeAppleCoreEndpoints.event, sdkInitializationEndpoint: Foundation.URL = GoMarketMeAppleCoreEndpoints.sdkInitialization, systemInfoEndpoint: Foundation.URL = GoMarketMeAppleCoreEndpoints.systemInfo, isProduction: Swift.Bool? = nil)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func withAttribution(affiliateCampaignCode: Swift.String?, deviceId: Swift.String?, packageName: Swift.String?) -> GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration
+  #endif
+}
+@available(iOS 15.0, *)
+public struct GoMarketMeApplePurchaseEvent {
+  public let productID: Swift.String
+  public let transactionID: Swift.String
+  public let originalTransactionID: Swift.String
+  public let signedTransaction: Swift.String?
+  public let purchaseDate: Foundation.Date
+  public let expirationDate: Foundation.Date?
+  public let productType: Swift.String
+  public let products: [[Swift.String : Any]]
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(productID: Swift.String, transactionID: Swift.String, originalTransactionID: Swift.String, signedTransaction: Swift.String?, purchaseDate: Foundation.Date, expirationDate: Foundation.Date?, productType: Swift.String, products: [[Swift.String : Any]] = [])
+  #endif
+  public func toDictionary() -> [Swift.String : Any]
+}

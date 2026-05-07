@@ -1,29 +1,31 @@
-// swift-tools-version:5.5
+// swift-tools-version: 5.9
 import PackageDescription
 
 let package = Package(
     name: "GoMarketMe",
     platforms: [
-        .iOS(.v15)  // This ensures all dependencies are built with iOS in mind
+        .iOS(.v15)
     ],
     products: [
         .library(
             name: "GoMarketMe",
-            targets: ["GoMarketMe"]),
-    ],
-    dependencies: [
+            targets: ["GoMarketMe"]
+        )
     ],
     targets: [
         .target(
             name: "GoMarketMe",
-            dependencies: [
-            ],
-            path: "Sources"
+            dependencies: ["GoMarketMeAppleCoreKit"],
+            path: "Sources/GoMarketMe"
+        ),
+        .binaryTarget(
+            name: "GoMarketMeAppleCoreKit",
+            path: "Frameworks/GoMarketMeAppleCoreKit.xcframework"
         ),
         .testTarget(
             name: "GoMarketMeTests",
             dependencies: ["GoMarketMe"],
-            path: "Tests"
+            path: "Tests/GoMarketMeTests"
         )
     ],
     swiftLanguageVersions: [.v5]

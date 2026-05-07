@@ -6,3 +6,9 @@ DerivedData/
 .swiftpm/configuration/registries.json
 .swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
 .netrc
+
+# Local Apple debug symbols.
+# Useful when developing/testing locally, but not needed in source control.
+Frameworks/**/*.dSYM/
+Frameworks/**/dSYMs/
+Frameworks/**/BCSymbolMaps/

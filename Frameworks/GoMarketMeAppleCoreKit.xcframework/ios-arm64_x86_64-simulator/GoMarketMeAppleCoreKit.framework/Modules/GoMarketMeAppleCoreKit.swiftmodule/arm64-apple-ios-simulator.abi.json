@@ -1,0 +1,2855 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "GoMarketMeAppleCoreKit",
+    "printedName": "GoMarketMeAppleCoreKit",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GoMarketMeAppleCoreKit"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "GoMarketMeAppleApiClient",
+        "printedName": "GoMarketMeAppleApiClient",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(session:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "GoMarketMeAppleApiClient",
+                "printedName": "GoMarketMeAppleCoreKit.GoMarketMeAppleApiClient",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcD9ApiClientC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "URLSession",
+                "printedName": "Foundation.URLSession",
+                "hasDefaultArg": true,
+                "usr": "c:objc(cs)NSURLSession"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcD9ApiClientC7sessionACSo12NSURLSessionC_tcfc",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcD9ApiClientC7sessionACSo12NSURLSessionC_tcfc",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "postSDKInitialization",
+            "printedName": "postSDKInitialization(configuration:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GoMarketMeAppleCoreConfiguration",
+                "printedName": "GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcD9ApiClientC21postSDKInitialization13configurationyAA0abcdE13ConfigurationV_tYaKF",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcD9ApiClientC21postSDKInitialization13configurationyAA0abcdE13ConfigurationV_tYaKF",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "postSystemInfo",
+            "printedName": "postSystemInfo(configuration:payload:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Swift.String : Any]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : Any]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GoMarketMeAppleCoreConfiguration",
+                "printedName": "GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Any]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProtocolComposition",
+                    "printedName": "Any"
+                  }
+                ],
+                "usr": "s:SD"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcD9ApiClientC14postSystemInfo13configuration7payloadSDySSypGSgAA0abcdE13ConfigurationV_AGtYaKF",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcD9ApiClientC14postSystemInfo13configuration7payloadSDySSypGSgAA0abcdE13ConfigurationV_AGtYaKF",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "sendPurchaseEvent",
+            "printedName": "sendPurchaseEvent(configuration:event:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GoMarketMeAppleCoreConfiguration",
+                "printedName": "GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GoMarketMeApplePurchaseEvent",
+                "printedName": "GoMarketMeAppleCoreKit.GoMarketMeApplePurchaseEvent",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcD13PurchaseEventV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcD9ApiClientC17sendPurchaseEvent13configuration5eventyAA0abcdE13ConfigurationV_AA0abcdjK0VtYaKF",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcD9ApiClientC17sendPurchaseEvent13configuration5eventyAA0abcdE13ConfigurationV_AA0abcdjK0VtYaKF",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:22GoMarketMeAppleCoreKit0abcD9ApiClientC",
+        "mangledName": "$s22GoMarketMeAppleCoreKit0abcD9ApiClientC",
+        "moduleName": "GoMarketMeAppleCoreKit",
+        "declAttributes": [
+          "Final",
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GoMarketMeAppleCoreKit"
+      },
+      {
+        "kind": "Import",
+        "name": "StoreKit",
+        "printedName": "StoreKit",
+        "declKind": "Import",
+        "moduleName": "GoMarketMeAppleCoreKit"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "GoMarketMeAppleCoreKit"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "GoMarketMeAppleCurrentPurchaseSyncResult",
+        "printedName": "GoMarketMeAppleCurrentPurchaseSyncResult",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "fetchedCount",
+            "printedName": "fetchedCount",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcD25CurrentPurchaseSyncResultV12fetchedCountSivp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcD25CurrentPurchaseSyncResultV12fetchedCountSivp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcD25CurrentPurchaseSyncResultV12fetchedCountSivg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcD25CurrentPurchaseSyncResultV12fetchedCountSivg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "sentCount",
+            "printedName": "sentCount",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcD25CurrentPurchaseSyncResultV9sentCountSivp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcD25CurrentPurchaseSyncResultV9sentCountSivp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcD25CurrentPurchaseSyncResultV9sentCountSivg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcD25CurrentPurchaseSyncResultV9sentCountSivg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "failedCount",
+            "printedName": "failedCount",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcD25CurrentPurchaseSyncResultV11failedCountSivp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcD25CurrentPurchaseSyncResultV11failedCountSivp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcD25CurrentPurchaseSyncResultV11failedCountSivg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcD25CurrentPurchaseSyncResultV11failedCountSivg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "success",
+            "printedName": "success",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcD25CurrentPurchaseSyncResultV7successSbvp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcD25CurrentPurchaseSyncResultV7successSbvp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcD25CurrentPurchaseSyncResultV7successSbvg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcD25CurrentPurchaseSyncResultV7successSbvg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(fetchedCount:sentCount:failedCount:success:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "GoMarketMeAppleCurrentPurchaseSyncResult",
+                "printedName": "GoMarketMeAppleCoreKit.GoMarketMeAppleCurrentPurchaseSyncResult",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcD25CurrentPurchaseSyncResultV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcD25CurrentPurchaseSyncResultV12fetchedCount04sentL006failedL07successACSi_S2iSbtcfc",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcD25CurrentPurchaseSyncResultV12fetchedCount04sentL006failedL07successACSi_S2iSbtcfc",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:22GoMarketMeAppleCoreKit0abcD25CurrentPurchaseSyncResultV",
+        "mangledName": "$s22GoMarketMeAppleCoreKit0abcD25CurrentPurchaseSyncResultV",
+        "moduleName": "GoMarketMeAppleCoreKit",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "GoMarketMeAppleCore",
+        "printedName": "GoMarketMeAppleCore",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "onPurchase",
+            "printedName": "onPurchase",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((GoMarketMeAppleCoreKit.GoMarketMeApplePurchaseEvent) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(GoMarketMeAppleCoreKit.GoMarketMeApplePurchaseEvent) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "GoMarketMeApplePurchaseEvent",
+                        "printedName": "GoMarketMeAppleCoreKit.GoMarketMeApplePurchaseEvent",
+                        "usr": "s:22GoMarketMeAppleCoreKit0abcD13PurchaseEventV"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C10onPurchaseyAA0abcdH5EventVcSgvp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C10onPurchaseyAA0abcdH5EventVcSgvp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "((GoMarketMeAppleCoreKit.GoMarketMeApplePurchaseEvent) -> ())?",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "(GoMarketMeAppleCoreKit.GoMarketMeApplePurchaseEvent) -> ()",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "GoMarketMeApplePurchaseEvent",
+                            "printedName": "GoMarketMeAppleCoreKit.GoMarketMeApplePurchaseEvent",
+                            "usr": "s:22GoMarketMeAppleCoreKit0abcD13PurchaseEventV"
+                          }
+                        ]
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C10onPurchaseyAA0abcdH5EventVcSgvg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C10onPurchaseyAA0abcdH5EventVcSgvg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "((GoMarketMeAppleCoreKit.GoMarketMeApplePurchaseEvent) -> ())?",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "(GoMarketMeAppleCoreKit.GoMarketMeApplePurchaseEvent) -> ()",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "GoMarketMeApplePurchaseEvent",
+                            "printedName": "GoMarketMeAppleCoreKit.GoMarketMeApplePurchaseEvent",
+                            "usr": "s:22GoMarketMeAppleCoreKit0abcD13PurchaseEventV"
+                          }
+                        ]
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C10onPurchaseyAA0abcdH5EventVcSgvs",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C10onPurchaseyAA0abcdH5EventVcSgvs",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C10onPurchaseyAA0abcdH5EventVcSgvM",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C10onPurchaseyAA0abcdH5EventVcSgvM",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "intro_iOS": "15.0",
+                "declAttributes": [
+                  "Final",
+                  "Available"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "onError",
+            "printedName": "onError",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((any Swift.Error) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(any Swift.Error) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Error",
+                        "printedName": "any Swift.Error",
+                        "usr": "s:s5ErrorP"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C7onErrorys0H0_pcSgvp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C7onErrorys0H0_pcSgvp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "((any Swift.Error) -> ())?",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "(any Swift.Error) -> ()",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "any Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ]
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C7onErrorys0H0_pcSgvg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C7onErrorys0H0_pcSgvg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "((any Swift.Error) -> ())?",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "(any Swift.Error) -> ()",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "any Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ]
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C7onErrorys0H0_pcSgvs",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C7onErrorys0H0_pcSgvs",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C7onErrorys0H0_pcSgvM",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C7onErrorys0H0_pcSgvM",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "intro_iOS": "15.0",
+                "declAttributes": [
+                  "Final",
+                  "Available"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(apiClient:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "GoMarketMeAppleCore",
+                "printedName": "GoMarketMeAppleCoreKit.GoMarketMeAppleCore",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GoMarketMeAppleApiClient",
+                "printedName": "GoMarketMeAppleCoreKit.GoMarketMeAppleApiClient",
+                "hasDefaultArg": true,
+                "usr": "s:22GoMarketMeAppleCoreKit0abcD9ApiClientC"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C9apiClientAcA0abcd3ApiH0C_tcfc",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C9apiClientAcA0abcd3ApiH0C_tcfc",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "prepareAttribution",
+            "printedName": "prepareAttribution(configuration:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Tuple",
+                "printedName": "(configuration: GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration, affiliateMarketingData: [Swift.String : Any]?)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GoMarketMeAppleCoreConfiguration",
+                    "printedName": "GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration",
+                    "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "[Swift.String : Any]?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Dictionary",
+                        "printedName": "[Swift.String : Any]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "ProtocolComposition",
+                            "printedName": "Any"
+                          }
+                        ],
+                        "usr": "s:SD"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GoMarketMeAppleCoreConfiguration",
+                "printedName": "GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C18prepareAttribution13configurationAA0abcdE13ConfigurationVAE_SDySSypGSg22affiliateMarketingDatatAG_tYaF",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C18prepareAttribution13configurationAA0abcdE13ConfigurationVAE_SDySSypGSg22affiliateMarketingDatatAG_tYaF",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "configure",
+            "printedName": "configure(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GoMarketMeAppleCoreConfiguration",
+                "printedName": "GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C9configureyyAA0abcdE13ConfigurationVF",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C9configureyyAA0abcdE13ConfigurationVF",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "start",
+            "printedName": "start()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C5startyyF",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C5startyyF",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "stop",
+            "printedName": "stop()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C4stopyyF",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C4stopyyF",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "currentPurchases",
+            "printedName": "currentPurchases()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[GoMarketMeAppleCoreKit.GoMarketMeApplePurchaseEvent]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GoMarketMeApplePurchaseEvent",
+                    "printedName": "GoMarketMeAppleCoreKit.GoMarketMeApplePurchaseEvent",
+                    "usr": "s:22GoMarketMeAppleCoreKit0abcD13PurchaseEventV"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C16currentPurchasesSayAA0abcD13PurchaseEventVGyYaKF",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C16currentPurchasesSayAA0abcD13PurchaseEventVGyYaKF",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "sendCurrentPurchases",
+            "printedName": "sendCurrentPurchases()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C20sendCurrentPurchasesyyYaF",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C20sendCurrentPurchasesyyYaF",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "sendCurrentPurchasesForDebug",
+            "printedName": "sendCurrentPurchasesForDebug()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C28sendCurrentPurchasesForDebugSiyYaF",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C28sendCurrentPurchasesForDebugSiyYaF",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "sendCurrentPurchasesWithResult",
+            "printedName": "sendCurrentPurchasesWithResult()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "GoMarketMeAppleCurrentPurchaseSyncResult",
+                "printedName": "GoMarketMeAppleCoreKit.GoMarketMeAppleCurrentPurchaseSyncResult",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcD25CurrentPurchaseSyncResultV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C30sendCurrentPurchasesWithResultAA0abcdh12PurchaseSyncK0VyYaF",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C30sendCurrentPurchasesWithResultAA0abcdh12PurchaseSyncK0VyYaF",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "send",
+            "printedName": "send(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GoMarketMeApplePurchaseEvent",
+                "printedName": "GoMarketMeAppleCoreKit.GoMarketMeApplePurchaseEvent",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcD13PurchaseEventV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C4sendyyAA0abcD13PurchaseEventVYaF",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C4sendyyAA0abcD13PurchaseEventVYaF",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "debugAllTransactions",
+            "printedName": "debugAllTransactions()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[[Swift.String : Any]]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : Any]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C20debugAllTransactionsSaySDySSypGGyYaF",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C20debugAllTransactionsSaySDySSypGGyYaF",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C",
+        "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C",
+        "moduleName": "GoMarketMeAppleCoreKit",
+        "intro_iOS": "15.0",
+        "declAttributes": [
+          "Final",
+          "AccessControl",
+          "Available"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GoMarketMeAppleCoreKit"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "GoMarketMeAppleCoreEndpoints",
+        "printedName": "GoMarketMeAppleCoreEndpoints",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "sdkInitialization",
+            "printedName": "sdkInitialization",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE9EndpointsO17sdkInitialization10Foundation3URLVvpZ",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE9EndpointsO17sdkInitialization10Foundation3URLVvpZ",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "URL",
+                    "printedName": "Foundation.URL",
+                    "usr": "s:10Foundation3URLV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE9EndpointsO17sdkInitialization10Foundation3URLVvgZ",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE9EndpointsO17sdkInitialization10Foundation3URLVvgZ",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "systemInfo",
+            "printedName": "systemInfo",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE9EndpointsO10systemInfo10Foundation3URLVvpZ",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE9EndpointsO10systemInfo10Foundation3URLVvpZ",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "URL",
+                    "printedName": "Foundation.URL",
+                    "usr": "s:10Foundation3URLV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE9EndpointsO10systemInfo10Foundation3URLVvgZ",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE9EndpointsO10systemInfo10Foundation3URLVvgZ",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "event",
+            "printedName": "event",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE9EndpointsO5event10Foundation3URLVvpZ",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE9EndpointsO5event10Foundation3URLVvpZ",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "URL",
+                    "printedName": "Foundation.URL",
+                    "usr": "s:10Foundation3URLV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE9EndpointsO5event10Foundation3URLVvgZ",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE9EndpointsO5event10Foundation3URLVvgZ",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:22GoMarketMeAppleCoreKit0abcdE9EndpointsO",
+        "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE9EndpointsO",
+        "moduleName": "GoMarketMeAppleCoreKit",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "GoMarketMeAppleCoreConfiguration",
+        "printedName": "GoMarketMeAppleCoreConfiguration",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "apiKey",
+            "printedName": "apiKey",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV6apiKeySSvp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV6apiKeySSvp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV6apiKeySSvg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV6apiKeySSvg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "affiliateCampaignCode",
+            "printedName": "affiliateCampaignCode",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV21affiliateCampaignCodeSSSgvp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV21affiliateCampaignCodeSSSgvp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV21affiliateCampaignCodeSSSgvg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV21affiliateCampaignCodeSSSgvg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "deviceId",
+            "printedName": "deviceId",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV8deviceIdSSSgvp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV8deviceIdSSSgvp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV8deviceIdSSSgvg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV8deviceIdSSSgvg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "sourceName",
+            "printedName": "sourceName",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV10sourceNameSSvp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV10sourceNameSSvp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV10sourceNameSSvg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV10sourceNameSSvg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "sdkType",
+            "printedName": "sdkType",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV7sdkTypeSSSgvp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV7sdkTypeSSSgvp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV7sdkTypeSSSgvg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV7sdkTypeSSSgvg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "sdkVersion",
+            "printedName": "sdkVersion",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV10sdkVersionSSSgvp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV10sdkVersionSSSgvp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV10sdkVersionSSSgvg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV10sdkVersionSSSgvg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "packageName",
+            "printedName": "packageName",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV11packageNameSSSgvp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV11packageNameSSSgvp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV11packageNameSSSgvg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV11packageNameSSSgvg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "eventEndpoint",
+            "printedName": "eventEndpoint",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV13eventEndpoint10Foundation3URLVvp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV13eventEndpoint10Foundation3URLVvp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "URL",
+                    "printedName": "Foundation.URL",
+                    "usr": "s:10Foundation3URLV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV13eventEndpoint10Foundation3URLVvg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV13eventEndpoint10Foundation3URLVvg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "sdkInitializationEndpoint",
+            "printedName": "sdkInitializationEndpoint",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV25sdkInitializationEndpoint10Foundation3URLVvp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV25sdkInitializationEndpoint10Foundation3URLVvp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "URL",
+                    "printedName": "Foundation.URL",
+                    "usr": "s:10Foundation3URLV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV25sdkInitializationEndpoint10Foundation3URLVvg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV25sdkInitializationEndpoint10Foundation3URLVvg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "systemInfoEndpoint",
+            "printedName": "systemInfoEndpoint",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV18systemInfoEndpoint10Foundation3URLVvp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV18systemInfoEndpoint10Foundation3URLVvp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "URL",
+                    "printedName": "Foundation.URL",
+                    "usr": "s:10Foundation3URLV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV18systemInfoEndpoint10Foundation3URLVvg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV18systemInfoEndpoint10Foundation3URLVvg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "isProduction",
+            "printedName": "isProduction",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Bool?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV12isProductionSbSgvp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV12isProductionSbSgvp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Bool?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Bool",
+                        "printedName": "Swift.Bool",
+                        "usr": "s:Sb"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV12isProductionSbSgvg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV12isProductionSbSgvg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(apiKey:affiliateCampaignCode:deviceId:sourceName:sdkType:sdkVersion:packageName:eventEndpoint:sdkInitializationEndpoint:systemInfoEndpoint:isProduction:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "GoMarketMeAppleCoreConfiguration",
+                "printedName": "GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "hasDefaultArg": true,
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "hasDefaultArg": true,
+                "usr": "s:10Foundation3URLV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "hasDefaultArg": true,
+                "usr": "s:10Foundation3URLV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "hasDefaultArg": true,
+                "usr": "s:10Foundation3URLV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Bool?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV6apiKey21affiliateCampaignCode8deviceId10sourceName7sdkType0Q7Version07packageP013eventEndpoint0q14InitializationV0010systemInfoV012isProductionACSS_SSSgAOSSA3O10Foundation3URLVA2RSbSgtcfc",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV6apiKey21affiliateCampaignCode8deviceId10sourceName7sdkType0Q7Version07packageP013eventEndpoint0q14InitializationV0010systemInfoV012isProductionACSS_SSSgAOSSA3O10Foundation3URLVA2RSbSgtcfc",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "withAttribution",
+            "printedName": "withAttribution(affiliateCampaignCode:deviceId:packageName:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "GoMarketMeAppleCoreConfiguration",
+                "printedName": "GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV15withAttribution21affiliateCampaignCode8deviceId11packageNameACSSSg_A2HtF",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV15withAttribution21affiliateCampaignCode8deviceId11packageNameACSSSg_A2HtF",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV",
+        "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV",
+        "moduleName": "GoMarketMeAppleCoreKit",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GoMarketMeAppleCoreKit"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "GoMarketMeApplePurchaseEvent",
+        "printedName": "GoMarketMeApplePurchaseEvent",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "productID",
+            "printedName": "productID",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcD13PurchaseEventV9productIDSSvp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcD13PurchaseEventV9productIDSSvp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcD13PurchaseEventV9productIDSSvg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcD13PurchaseEventV9productIDSSvg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "transactionID",
+            "printedName": "transactionID",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcD13PurchaseEventV13transactionIDSSvp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcD13PurchaseEventV13transactionIDSSvp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcD13PurchaseEventV13transactionIDSSvg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcD13PurchaseEventV13transactionIDSSvg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "originalTransactionID",
+            "printedName": "originalTransactionID",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcD13PurchaseEventV21originalTransactionIDSSvp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcD13PurchaseEventV21originalTransactionIDSSvp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcD13PurchaseEventV21originalTransactionIDSSvg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcD13PurchaseEventV21originalTransactionIDSSvg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "signedTransaction",
+            "printedName": "signedTransaction",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcD13PurchaseEventV17signedTransactionSSSgvp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcD13PurchaseEventV17signedTransactionSSSgvp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcD13PurchaseEventV17signedTransactionSSSgvg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcD13PurchaseEventV17signedTransactionSSSgvg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "purchaseDate",
+            "printedName": "purchaseDate",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Date",
+                "printedName": "Foundation.Date",
+                "usr": "s:10Foundation4DateV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcD13PurchaseEventV12purchaseDate10Foundation0J0Vvp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcD13PurchaseEventV12purchaseDate10Foundation0J0Vvp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Date",
+                    "printedName": "Foundation.Date",
+                    "usr": "s:10Foundation4DateV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcD13PurchaseEventV12purchaseDate10Foundation0J0Vvg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcD13PurchaseEventV12purchaseDate10Foundation0J0Vvg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "expirationDate",
+            "printedName": "expirationDate",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.Date?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Date",
+                    "printedName": "Foundation.Date",
+                    "usr": "s:10Foundation4DateV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcD13PurchaseEventV14expirationDate10Foundation0J0VSgvp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcD13PurchaseEventV14expirationDate10Foundation0J0VSgvp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Foundation.Date?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Date",
+                        "printedName": "Foundation.Date",
+                        "usr": "s:10Foundation4DateV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcD13PurchaseEventV14expirationDate10Foundation0J0VSgvg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcD13PurchaseEventV14expirationDate10Foundation0J0VSgvg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "productType",
+            "printedName": "productType",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcD13PurchaseEventV11productTypeSSvp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcD13PurchaseEventV11productTypeSSvp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcD13PurchaseEventV11productTypeSSvg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcD13PurchaseEventV11productTypeSSvg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "products",
+            "printedName": "products",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[[Swift.String : Any]]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : Any]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcD13PurchaseEventV8productsSaySDySSypGGvp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcD13PurchaseEventV8productsSaySDySSypGGvp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[[Swift.String : Any]]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Dictionary",
+                        "printedName": "[Swift.String : Any]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "ProtocolComposition",
+                            "printedName": "Any"
+                          }
+                        ],
+                        "usr": "s:SD"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcD13PurchaseEventV8productsSaySDySSypGGvg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcD13PurchaseEventV8productsSaySDySSypGGvg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(productID:transactionID:originalTransactionID:signedTransaction:purchaseDate:expirationDate:productType:products:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "GoMarketMeApplePurchaseEvent",
+                "printedName": "GoMarketMeAppleCoreKit.GoMarketMeApplePurchaseEvent",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcD13PurchaseEventV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Date",
+                "printedName": "Foundation.Date",
+                "usr": "s:10Foundation4DateV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.Date?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Date",
+                    "printedName": "Foundation.Date",
+                    "usr": "s:10Foundation4DateV"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[[Swift.String : Any]]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : Any]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcD13PurchaseEventV9productID011transactionJ0019originalTransactionJ006signedM012purchaseDate010expirationP00I4Type8productsACSS_S3SSg10Foundation0P0VAOSgSSSaySDySSypGGtcfc",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcD13PurchaseEventV9productID011transactionJ0019originalTransactionJ006signedM012purchaseDate010expirationP00I4Type8productsACSS_S3SSg10Foundation0P0VAOSgSSSaySDySSypGGtcfc",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "toDictionary",
+            "printedName": "toDictionary()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Any]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProtocolComposition",
+                    "printedName": "Any"
+                  }
+                ],
+                "usr": "s:SD"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcD13PurchaseEventV12toDictionarySDySSypGyF",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcD13PurchaseEventV12toDictionarySDySSypGyF",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:22GoMarketMeAppleCoreKit0abcD13PurchaseEventV",
+        "mangledName": "$s22GoMarketMeAppleCoreKit0abcD13PurchaseEventV",
+        "moduleName": "GoMarketMeAppleCoreKit",
+        "intro_iOS": "15.0",
+        "declAttributes": [
+          "AccessControl",
+          "Available"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/tonipeinoit\/Documents\/Others\/GOMARKETME\/gomarketme-sdks-monorepo\/bridges\/apple\/Sources\/GoMarketMeAppleCore\/GoMarketMeAppleCore.swift",
+      "kind": "StringLiteral",
+      "offset": 820,
+      "length": 35,
+      "value": "\"co.gomarketme.apple.purchase.core\""
+    },
+    {
+      "filePath": "\/Users\/tonipeinoit\/Documents\/Others\/GOMARKETME\/gomarketme-sdks-monorepo\/bridges\/apple\/Sources\/GoMarketMeAppleCore\/GoMarketMeAppleCoreConfiguration.swift",
+      "kind": "StringLiteral",
+      "offset": 116,
+      "length": 83,
+      "value": "\"https:\/\/4v9008q1a5.execute-api.us-west-2.amazonaws.com\/prod\/v1\/sdk-initialization\""
+    },
+    {
+      "filePath": "\/Users\/tonipeinoit\/Documents\/Others\/GOMARKETME\/gomarketme-sdks-monorepo\/bridges\/apple\/Sources\/GoMarketMeAppleCore\/GoMarketMeAppleCoreConfiguration.swift",
+      "kind": "StringLiteral",
+      "offset": 249,
+      "length": 83,
+      "value": "\"https:\/\/4v9008q1a5.execute-api.us-west-2.amazonaws.com\/prod\/v1\/mobile\/system-info\""
+    },
+    {
+      "filePath": "\/Users\/tonipeinoit\/Documents\/Others\/GOMARKETME\/gomarketme-sdks-monorepo\/bridges\/apple\/Sources\/GoMarketMeAppleCore\/GoMarketMeAppleCoreConfiguration.swift",
+      "kind": "StringLiteral",
+      "offset": 377,
+      "length": 70,
+      "value": "\"https:\/\/4v9008q1a5.execute-api.us-west-2.amazonaws.com\/prod\/v1\/event\""
+    },
+    {
+      "filePath": "\/Users\/tonipeinoit\/Documents\/Others\/GOMARKETME\/gomarketme-sdks-monorepo\/bridges\/apple\/Sources\/GoMarketMeAppleCore\/GoMarketMeAppleCoreConfiguration.swift",
+      "kind": "StringLiteral",
+      "offset": 1062,
+      "length": 11,
+      "value": "\"app_store\""
+    },
+    {
+      "filePath": "\/Users\/tonipeinoit\/Documents\/Others\/GOMARKETME\/gomarketme-sdks-monorepo\/bridges\/apple\/Sources\/GoMarketMeAppleCore\/GoMarketMeApplePurchaseEvent.swift",
+      "kind": "Array",
+      "offset": 667,
+      "length": 2,
+      "value": "[]"
+    }
+  ]
+}
