@@ -508,6 +508,57 @@
         "children": [
           {
             "kind": "Var",
+            "name": "isDebugLoggingEnabled",
+            "printedName": "isDebugLoggingEnabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C21isDebugLoggingEnabledSbvpZ",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C21isDebugLoggingEnabledSbvpZ",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C21isDebugLoggingEnabledSbvgZ",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C21isDebugLoggingEnabledSbvgZ",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
             "name": "onPurchase",
             "printedName": "onPurchase",
             "children": [
@@ -2811,8 +2862,15 @@
   "ConstValues": [
     {
       "filePath": "\/Users\/tonipeinoit\/Documents\/Others\/GOMARKETME\/gomarketme-sdks-monorepo\/bridges\/apple\/Sources\/GoMarketMeAppleCore\/GoMarketMeAppleCore.swift",
+      "kind": "BooleanLiteral",
+      "offset": 651,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/tonipeinoit\/Documents\/Others\/GOMARKETME\/gomarketme-sdks-monorepo\/bridges\/apple\/Sources\/GoMarketMeAppleCore\/GoMarketMeAppleCore.swift",
       "kind": "StringLiteral",
-      "offset": 820,
+      "offset": 873,
       "length": 35,
       "value": "\"co.gomarketme.apple.purchase.core\""
     },

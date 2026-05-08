@@ -27,6 +27,7 @@ public struct GoMarketMeAppleCurrentPurchaseSyncResult : Swift.Sendable {
 }
 @available(iOS 15.0, *)
 final public class GoMarketMeAppleCore : @unchecked Swift.Sendable {
+  public static let isDebugLoggingEnabled: Swift.Bool
   final public var onPurchase: ((GoMarketMeAppleCoreKit.GoMarketMeApplePurchaseEvent) -> Swift.Void)?
   final public var onError: ((any Swift.Error) -> Swift.Void)?
   public init(apiClient: GoMarketMeAppleCoreKit.GoMarketMeAppleApiClient = GoMarketMeAppleApiClient())
