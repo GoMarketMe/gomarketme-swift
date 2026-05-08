@@ -11,7 +11,7 @@
 
 - In Xcode, go to **File > Add Package Dependencies**
 - Enter `https://github.com/GoMarketMe/gomarketme-swift.git`
-- Select **Up to Next Major Version**, min: **5.0.1**
+- Select **Up to Next Major Version**, min: **5.0.2**
 - Click **Add Package**
 
 ## Usage
