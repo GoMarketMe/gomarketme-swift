@@ -11,14 +11,16 @@
 
 - In Xcode, go to **File > Add Package Dependencies**
 - Enter `https://github.com/GoMarketMe/gomarketme-swift.git`
-- Select **Up to Next Major Version**, min: **5.0.2**
+- Select **Up to Next Major Version**, min: **5.0.3**
 - Click **Add Package**
 
 ## Usage
 
-⚙️ Basic Integration
+GoMarketMe takes only a few lines to set up.
 
-To initialize GoMarketMe, import the `GoMarketMe` package and initialize the SDK with your API key:
+### Step 1/3: Initialize GoMarketMe
+
+Import the `GoMarketMe` package and initialize the SDK with your API key.
 
 ```swift
 import GoMarketMe
@@ -26,20 +28,17 @@ import GoMarketMe
 private let goMarketMe = GoMarketMe.shared
 
 init() {
-    goMarketMe.initialize(apiKey: "API_KEY") // Initialize with your API key
+    goMarketMe.initialize(apiKey: "API_KEY")
 }
 ```
 
-No further steps needed. The SDK automatically attributes and reports your affiliate sales in real time.
+Replace `API_KEY` with your actual GoMarketMe API key. You can find it on the product onboarding page and under **Profile > API Key**.
 
-> `syncAllTransactions()` is no longer needed in version `5.0.0`. It remains available as a deprecated no-op so existing apps can upgrade without immediately removing old calls.
+### Alternative Step 1/3: Programmatic Affiliate Marketing
 
-⚙️ OR - Advanced Integration ([Programmatic Affiliate Marketing](https://gomarketme.co/programmatic-affiliate-marketing/))
+For apps that want to customize the user experience based on affiliate attribution, initialize GoMarketMe and read affiliate marketing data after initialization.
 
-Use this approach for more advanced scenarios, such as:
-
-- Affiliate-aware paywalls: Offer exclusive pricing or promotions to users acquired through affiliate campaigns.
-- Personalized onboarding: For example, a social or fitness app can automatically make new users follow the influencer who referred them, strengthening engagement and maximizing the affiliate's impact.
+This enables [Programmatic Affiliate Marketing](https://gomarketme.co/programmatic-affiliate-marketing/), including affiliate-aware paywalls, personalized onboarding, promotions, and custom in-app experiences.
 
 ```swift
 import GoMarketMe
@@ -48,16 +47,15 @@ private let goMarketMe = GoMarketMe.shared
 
 init() {
     let sdk = GoMarketMe.shared
-
     Task {
-        let data = await sdk.initialize(apiKey: "API_KEY") // Initialize with your API key
+        let data = await sdk.initialize(apiKey: "API_KEY")
 
         if let data {
             // maps to GoMarketMe > Affiliates > Export > id column
             print("Affiliate ID:", data.affiliate.id)
-            
+
             // maps to GoMarketMe > Campaigns > [Name] > Affiliate's Revenue Split (%)
-            print("Affiliate %:", data.saleDistribution.affiliatePercentage) 
+            print("Affiliate %:", data.saleDistribution.affiliatePercentage)
 
             // maps to GoMarketMe > Campaigns > [Name] > id in the URL
             print("Campaign ID:", data.campaign.id)
@@ -68,10 +66,69 @@ init() {
 }
 ```
 
-Make sure to replace `API_KEY` with your actual GoMarketMe API key. You can find it on the product onboarding page and under **Profile > API Key**.
+### Step 2/3: Sync after purchase
+
+After your app completes a purchase through StoreKit, RevenueCat, Adapty, or another in-app purchase provider, call:
+
+```swift
+await GoMarketMe.shared.syncAllTransactions()
+```
+
+If your purchase library lets you decide when to finish, acknowledge, consume, or complete the transaction, call `syncAllTransactions()` first.
+
+```swift
+let result = try await product.purchase()
+
+switch result {
+case .success(let verification):
+    if case .verified(let transaction) = verification {
+        
+        await GoMarketMe.shared.syncAllTransactions()
+
+        await transaction.finish()
+    }
+case .userCancelled, .pending:
+    break
+@unknown default:
+    break
+}
+```
+
+### Step 3/3: iOS consumables only
+
+If your iOS app sells consumable in-app purchases, add this key to your app's `Info.plist`:
+
+```xml
+<key>SKIncludeConsumableInAppPurchaseHistory</key>
+<true/>
+```
+
+That's it. GoMarketMe automatically attributes and reports affiliate sales.
+
+## Platform Support
+
+| Platform | Support | Notes |
+|---|---:|---|
+| iOS | ✅ | StoreKit 2, requires iOS 15+ |
+
+## IAP Provider Compatibility
+
+| Provider | Support | Notes |
+|---|---:|---|
+| StoreKit | ✅ | Full support |
+| RevenueCat | ✅ | Supports Apple IAPs |
+| Adapty | ✅ | Supports Apple IAPs |
+
+GoMarketMe works alongside StoreKit, RevenueCat, Adapty, and other IAP providers.
+
+## Sample app
+
+Check out the sample iOS app:
+
+[https://github.com/GoMarketMe/gomarketme-swift-sample-app](https://github.com/GoMarketMe/gomarketme-swift-sample-app)
 
 ## Support
 
 Check out our sample iOS app at [https://github.com/GoMarketMe/gomarketme-swift-sample-app](https://github.com/GoMarketMe/gomarketme-swift-sample-app).
 
-If you run into any issues, please reach out to us at [integrations@gomarketme.co](mailto:integrations@gomarketme.co) or visit [https://gomarketme.co](https://gomarketme.co).
+For integration support, contact [integrations@gomarketme.co](mailto:integrations@gomarketme.co) or visit [https://gomarketme.co](https://gomarketme.co).

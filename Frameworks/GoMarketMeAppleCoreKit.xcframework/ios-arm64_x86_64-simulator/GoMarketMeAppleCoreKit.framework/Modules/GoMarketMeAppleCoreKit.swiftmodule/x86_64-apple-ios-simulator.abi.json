@@ -1034,6 +1034,28 @@
           },
           {
             "kind": "Function",
+            "name": "syncAllTransactions",
+            "printedName": "syncAllTransactions()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "GoMarketMeAppleCurrentPurchaseSyncResult",
+                "printedName": "GoMarketMeAppleCoreKit.GoMarketMeAppleCurrentPurchaseSyncResult",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcD25CurrentPurchaseSyncResultV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C19syncAllTransactionsAA0abcD25CurrentPurchaseSyncResultVyYaF",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C19syncAllTransactionsAA0abcD25CurrentPurchaseSyncResultVyYaF",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "currentPurchases",
             "printedName": "currentPurchases()",
             "children": [
@@ -1065,67 +1087,64 @@
           },
           {
             "kind": "Function",
-            "name": "sendCurrentPurchases",
-            "printedName": "sendCurrentPurchases()",
+            "name": "unfinishedPurchases",
+            "printedName": "unfinishedPurchases()",
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
+                "name": "Array",
+                "printedName": "[GoMarketMeAppleCoreKit.GoMarketMeApplePurchaseEvent]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GoMarketMeApplePurchaseEvent",
+                    "printedName": "GoMarketMeAppleCoreKit.GoMarketMeApplePurchaseEvent",
+                    "usr": "s:22GoMarketMeAppleCoreKit0abcD13PurchaseEventV"
+                  }
+                ],
+                "usr": "s:Sa"
               }
             ],
             "declKind": "Func",
-            "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C20sendCurrentPurchasesyyYaF",
-            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C20sendCurrentPurchasesyyYaF",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C19unfinishedPurchasesSayAA0abcD13PurchaseEventVGyYaKF",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C19unfinishedPurchasesSayAA0abcD13PurchaseEventVGyYaKF",
             "moduleName": "GoMarketMeAppleCoreKit",
             "declAttributes": [
               "Final",
               "AccessControl"
             ],
+            "throwing": true,
             "funcSelfKind": "NonMutating"
           },
           {
             "kind": "Function",
-            "name": "sendCurrentPurchasesForDebug",
-            "printedName": "sendCurrentPurchasesForDebug()",
+            "name": "allPurchases",
+            "printedName": "allPurchases()",
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "Int",
-                "printedName": "Swift.Int",
-                "usr": "s:Si"
+                "name": "Array",
+                "printedName": "[GoMarketMeAppleCoreKit.GoMarketMeApplePurchaseEvent]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GoMarketMeApplePurchaseEvent",
+                    "printedName": "GoMarketMeAppleCoreKit.GoMarketMeApplePurchaseEvent",
+                    "usr": "s:22GoMarketMeAppleCoreKit0abcD13PurchaseEventV"
+                  }
+                ],
+                "usr": "s:Sa"
               }
             ],
             "declKind": "Func",
-            "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C28sendCurrentPurchasesForDebugSiyYaF",
-            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C28sendCurrentPurchasesForDebugSiyYaF",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C12allPurchasesSayAA0abcD13PurchaseEventVGyYaKF",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C12allPurchasesSayAA0abcD13PurchaseEventVGyYaKF",
             "moduleName": "GoMarketMeAppleCoreKit",
             "declAttributes": [
               "Final",
               "AccessControl"
             ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "sendCurrentPurchasesWithResult",
-            "printedName": "sendCurrentPurchasesWithResult()",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "GoMarketMeAppleCurrentPurchaseSyncResult",
-                "printedName": "GoMarketMeAppleCoreKit.GoMarketMeAppleCurrentPurchaseSyncResult",
-                "usr": "s:22GoMarketMeAppleCoreKit0abcD25CurrentPurchaseSyncResultV"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C30sendCurrentPurchasesWithResultAA0abcdh12PurchaseSyncK0VyYaF",
-            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C30sendCurrentPurchasesWithResultAA0abcdh12PurchaseSyncK0VyYaF",
-            "moduleName": "GoMarketMeAppleCoreKit",
-            "declAttributes": [
-              "Final",
-              "AccessControl"
-            ],
+            "throwing": true,
             "funcSelfKind": "NonMutating"
           },
           {

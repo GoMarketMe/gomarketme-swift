@@ -56,6 +56,30 @@ public struct Affiliate: Decodable, Sendable {
     }
 }
 
+
+public struct GoMarketMeTransactionSyncResult: Sendable {
+    public let fetchedCount: Int
+    public let sentCount: Int
+    public let failedCount: Int
+    public let success: Bool
+
+    public init(fetchedCount: Int, sentCount: Int, failedCount: Int, success: Bool) {
+        self.fetchedCount = fetchedCount
+        self.sentCount = sentCount
+        self.failedCount = failedCount
+        self.success = success
+    }
+
+    init(_ result: GoMarketMeAppleCurrentPurchaseSyncResult) {
+        self.init(
+            fetchedCount: result.fetchedCount,
+            sentCount: result.sentCount,
+            failedCount: result.failedCount,
+            success: result.success
+        )
+    }
+}
+
 public struct SaleDistribution: Decodable, Sendable {
     public let platformPercentage: String
     public let affiliatePercentage: String
@@ -71,7 +95,7 @@ public final class GoMarketMe: ObservableObject, @unchecked Sendable {
     public static let shared = GoMarketMe()
 
     public static let sdkType = "Swift"
-    public static let sdkVersion = "5.0.2"
+    public static let sdkVersion = "5.0.3"
 
     @Published public private(set) var affiliateMarketingData: GoMarketMeAffiliateMarketingData?
     @Published public private(set) var isInitialized = false
@@ -180,13 +204,22 @@ public final class GoMarketMe: ObservableObject, @unchecked Sendable {
         }
     }
 
-    @available(*, deprecated, message: "syncAllTransactions() is no longer needed. GoMarketMe now syncs automatically after purchases.")
-    public func syncAllTransactions() async {
-        // No-op. Kept for source compatibility with SDK versions before 5.0.0.
+    public func syncAllTransactions() async -> GoMarketMeTransactionSyncResult {
+        guard isInitialized else {
+            debugPrint("[GoMarketMe Swift] Transaction sync skipped because SDK is not initialized.")
+            return GoMarketMeTransactionSyncResult(
+                fetchedCount: 0,
+                sentCount: 0,
+                failedCount: 0,
+                success: false
+            )
+        }
+
+        let result = await core.syncAllTransactions()
+        return GoMarketMeTransactionSyncResult(result)
     }
 
-    @available(*, deprecated, message: "syncAllTransactions() is no longer needed. GoMarketMe now syncs automatically after purchases.")
-    public static func syncAllTransactions() async {
+    public static func syncAllTransactions() async -> GoMarketMeTransactionSyncResult {
         await shared.syncAllTransactions()
     }
 

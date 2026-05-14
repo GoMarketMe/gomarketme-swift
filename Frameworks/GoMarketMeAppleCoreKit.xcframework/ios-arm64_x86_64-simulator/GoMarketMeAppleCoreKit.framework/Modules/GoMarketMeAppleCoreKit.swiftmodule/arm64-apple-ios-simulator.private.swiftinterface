@@ -37,10 +37,10 @@ final public class GoMarketMeAppleCore : @unchecked Swift.Sendable {
   final public func configure(_ configuration: GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration)
   final public func start()
   final public func stop()
+  final public func syncAllTransactions() async -> GoMarketMeAppleCoreKit.GoMarketMeAppleCurrentPurchaseSyncResult
   final public func currentPurchases() async throws -> [GoMarketMeAppleCoreKit.GoMarketMeApplePurchaseEvent]
-  final public func sendCurrentPurchases() async
-  final public func sendCurrentPurchasesForDebug() async -> Swift.Int
-  final public func sendCurrentPurchasesWithResult() async -> GoMarketMeAppleCoreKit.GoMarketMeAppleCurrentPurchaseSyncResult
+  final public func unfinishedPurchases() async throws -> [GoMarketMeAppleCoreKit.GoMarketMeApplePurchaseEvent]
+  final public func allPurchases() async throws -> [GoMarketMeAppleCoreKit.GoMarketMeApplePurchaseEvent]
   final public func send(_ event: GoMarketMeAppleCoreKit.GoMarketMeApplePurchaseEvent) async
   final public func debugAllTransactions() async -> [[Swift.String : Any]]
   @objc deinit
