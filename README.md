@@ -11,7 +11,7 @@
 
 - In Xcode, go to **File > Add Package Dependencies**
 - Enter `https://github.com/GoMarketMe/gomarketme-swift.git`
-- Select **Up to Next Major Version**, min: **5.0.3**
+- Select **Up to Next Major Version**, min: **5.0.4**
 - Click **Add Package**
 
 ## Usage
@@ -82,7 +82,7 @@ let result = try await product.purchase()
 switch result {
 case .success(let verification):
     if case .verified(let transaction) = verification {
-        
+
         await GoMarketMe.shared.syncAllTransactions()
 
         await transaction.finish()
@@ -109,7 +109,13 @@ That's it. GoMarketMe automatically attributes and reports affiliate sales.
 
 | Platform | Support | Notes |
 |---|---:|---|
-| iOS | ✅ | StoreKit 2, requires iOS 15+ |
+| iOS | ✅ | Requires iOS 15+ |
+| Mac Catalyst | ✅ | For iOS apps that support Mac Catalyst |
+| Apple Watch companion app | ✅ | Supported through the iOS app |
+| Native macOS | Upon request | Contact us if your app requires native macOS support |
+| Standalone watchOS | Upon request | Contact us if your app requires standalone watchOS support |
+| tvOS | Upon request | Contact us if your app requires tvOS support |
+| visionOS | Upon request | Contact us if your app requires visionOS support |
 
 ## IAP Provider Compatibility
 

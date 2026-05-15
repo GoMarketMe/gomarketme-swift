@@ -95,7 +95,7 @@ public final class GoMarketMe: ObservableObject, @unchecked Sendable {
     public static let shared = GoMarketMe()
 
     public static let sdkType = "Swift"
-    public static let sdkVersion = "5.0.3"
+    public static let sdkVersion = "5.0.4"
 
     @Published public private(set) var affiliateMarketingData: GoMarketMeAffiliateMarketingData?
     @Published public private(set) var isInitialized = false
