@@ -32,7 +32,7 @@ init() {
 }
 ```
 
-Replace `API_KEY` with your actual GoMarketMe API key. You can find it on the product onboarding page and under **Profile > API Key**.
+Replace `API_KEY` with your actual GoMarketMe API key. You can find it during onboarding or in **Profile > [API Key](https://gomarketme.net/marketer/profile/#account-settings)**.
 
 ### Alternative Step 1/3: Programmatic Affiliate Marketing
 
@@ -68,10 +68,10 @@ init() {
 
 ### Step 2/3: Sync after purchase
 
-After your app completes a purchase through StoreKit, RevenueCat, Adapty, or another in-app purchase provider, call:
+After your app completes a purchase through StoreKit, RevenueCat, Adapty, or another provider, call:
 
 ```swift
-await GoMarketMe.shared.syncAllTransactions()
+await goMarketMe.syncAllTransactions()
 ```
 
 If your purchase library lets you decide when to finish, acknowledge, consume, or complete the transaction, call `syncAllTransactions()` first.
@@ -83,7 +83,7 @@ switch result {
 case .success(let verification):
     if case .verified(let transaction) = verification {
 
-        await GoMarketMe.shared.syncAllTransactions()
+        await goMarketMe.syncAllTransactions()
 
         await transaction.finish()
     }
@@ -112,10 +112,10 @@ That's it. GoMarketMe automatically attributes and reports affiliate sales.
 | iOS | ✅ | Requires iOS 15+ |
 | Mac Catalyst | ✅ | For iOS apps that support Mac Catalyst |
 | Apple Watch companion app | ✅ | Supported through the iOS app |
-| Native macOS | Upon request | Contact us if your app requires native macOS support |
-| Standalone watchOS | Upon request | Contact us if your app requires standalone watchOS support |
-| tvOS | Upon request | Contact us if your app requires tvOS support |
-| visionOS | Upon request | Contact us if your app requires visionOS support |
+| Native macOS | Upon request | [Contact us](mailto:integrations@gomarketme.co) if your app requires native macOS support |
+| Standalone watchOS | Upon request | [Contact us](mailto:integrations@gomarketme.co) if your app requires standalone watchOS support |
+| tvOS | Upon request | [Contact us](mailto:integrations@gomarketme.co) if your app requires tvOS support |
+| visionOS | Upon request | [Contact us](mailto:integrations@gomarketme.co) if your app requires visionOS support |
 
 ## IAP Provider Compatibility
 
@@ -126,12 +126,6 @@ That's it. GoMarketMe automatically attributes and reports affiliate sales.
 | Adapty | ✅ | Supports Apple IAPs |
 
 GoMarketMe works alongside StoreKit, RevenueCat, Adapty, and other IAP providers.
-
-## Sample app
-
-Check out the sample iOS app:
-
-[https://github.com/GoMarketMe/gomarketme-swift-sample-app](https://github.com/GoMarketMe/gomarketme-swift-sample-app)
 
 ## Support
 
