@@ -9,6 +9,7 @@ public struct GoMarketMeAffiliateMarketingData: Decodable, Sendable {
     public let affiliateCampaignCode: String
     public let deviceId: String
     public let offerCode: String?
+    public let referralCode: String?
 
     enum CodingKeys: String, CodingKey {
         case campaign
@@ -17,6 +18,7 @@ public struct GoMarketMeAffiliateMarketingData: Decodable, Sendable {
         case affiliateCampaignCode = "affiliate_campaign_code"
         case deviceId = "device_id"
         case offerCode = "offer_code"
+        case referralCode = "referral_code"
     }
 }
 
@@ -95,7 +97,7 @@ public final class GoMarketMe: ObservableObject, @unchecked Sendable {
     public static let shared = GoMarketMe()
 
     public static let sdkType = "Swift"
-    public static let sdkVersion = "5.0.4"
+    public static let sdkVersion = "6.0.0"
 
     @Published public private(set) var affiliateMarketingData: GoMarketMeAffiliateMarketingData?
     @Published public private(set) var isInitialized = false
@@ -187,6 +189,35 @@ public final class GoMarketMe: ObservableObject, @unchecked Sendable {
         debugPrint("[GoMarketMe Swift] initialized")
 
         return decodedAffiliateData
+    }
+
+    /// Returns the applied affiliate data, or nil when the user dismisses the sheet.
+    @MainActor
+    public func showReferralCodeSheet(showTrigger: Bool = false) async throws -> GoMarketMeAffiliateMarketingData? {
+        guard isInitialized else { throw NSError(domain: "GoMarketMe", code: 1, userInfo: [NSLocalizedDescriptionKey: "Initialize GoMarketMe first."]) }
+        return try await withCheckedThrowingContinuation { continuation in
+            Task { @MainActor in
+                do {
+                    try await core.showReferralCodeSheet(showTrigger: showTrigger) { [weak self] response in
+                        let data = Self.decodeAffiliateMarketingData(response)
+                        if response != nil { self?.affiliateMarketingData = data }
+                        continuation.resume(returning: data)
+                    }
+                } catch { continuation.resume(throwing: error) }
+            }
+        }
+    }
+
+    /// Loads the complete remotely configured referral-code appearance.
+    public func referralCodeSettings() async throws -> [String: Any] {
+        guard isInitialized else {
+            throw NSError(
+                domain: "GoMarketMe",
+                code: 1,
+                userInfo: [NSLocalizedDescriptionKey: "Initialize GoMarketMe first."]
+            )
+        }
+        return try await core.referralCodeSettings()
     }
 
     public func stop() {

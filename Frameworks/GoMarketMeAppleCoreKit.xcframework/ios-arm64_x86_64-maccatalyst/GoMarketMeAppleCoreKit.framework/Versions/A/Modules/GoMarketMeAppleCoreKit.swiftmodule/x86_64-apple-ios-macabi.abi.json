@@ -174,6 +174,98 @@
             ],
             "throwing": true,
             "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getReferralCodeSettings",
+            "printedName": "getReferralCodeSettings(configuration:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Any]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProtocolComposition",
+                    "printedName": "Any"
+                  }
+                ],
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GoMarketMeAppleCoreConfiguration",
+                "printedName": "GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcD9ApiClientC23getReferralCodeSettings13configurationSDySSypGAA0abcdE13ConfigurationV_tYaKF",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcD9ApiClientC23getReferralCodeSettings13configurationSDySSypGAA0abcdE13ConfigurationV_tYaKF",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "redeemReferralCode",
+            "printedName": "redeemReferralCode(configuration:code:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Any]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProtocolComposition",
+                    "printedName": "Any"
+                  }
+                ],
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GoMarketMeAppleCoreConfiguration",
+                "printedName": "GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcD9ApiClientC18redeemReferralCode13configuration4codeSDySSypGAA0abcdE13ConfigurationV_SStYaKF",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcD9ApiClientC18redeemReferralCode13configuration4codeSDySSypGAA0abcdE13ConfigurationV_SStYaKF",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
           }
         ],
         "declKind": "Class",
@@ -992,6 +1084,230 @@
           },
           {
             "kind": "Function",
+            "name": "showReferralCodeSheet",
+            "printedName": "showReferralCodeSheet(showTrigger:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "([Swift.String : Any]?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "[Swift.String : Any]?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Dictionary",
+                        "printedName": "[Swift.String : Any]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "ProtocolComposition",
+                            "printedName": "Any"
+                          }
+                        ],
+                        "usr": "s:SD"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C21showReferralCodeSheet0G7Trigger10completionySb_ySDySSypGSgctYaKF",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C21showReferralCodeSheet0G7Trigger10completionySb_ySDySSypGSgctYaKF",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "Custom"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "referralCodeSettings",
+            "printedName": "referralCodeSettings()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Any]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProtocolComposition",
+                    "printedName": "Any"
+                  }
+                ],
+                "usr": "s:SD"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C20referralCodeSettingsSDySSypGyYaKF",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C20referralCodeSettingsSDySSypGyYaKF",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "showReferralCodeSheet",
+            "printedName": "showReferralCodeSheet(from:showTrigger:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIViewController",
+                "printedName": "UIKit.UIViewController",
+                "usr": "c:objc(cs)UIViewController"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "([Swift.String : Any]?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "[Swift.String : Any]?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Dictionary",
+                        "printedName": "[Swift.String : Any]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "ProtocolComposition",
+                            "printedName": "Any"
+                          }
+                        ],
+                        "usr": "s:SD"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C21showReferralCodeSheet4from0G7Trigger10completionySo16UIViewControllerC_SbySDySSypGSgctYaKF",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C21showReferralCodeSheet4from0G7Trigger10completionySo16UIViewControllerC_SbySDySSypGSgctYaKF",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "Custom",
+              "RawDocComment"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "redeemReferralCode",
+            "printedName": "redeemReferralCode(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Any]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProtocolComposition",
+                    "printedName": "Any"
+                  }
+                ],
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C18redeemReferralCodeySDySSypGSSYaKF",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C18redeemReferralCodeySDySSypGSSYaKF",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "start",
             "printedName": "start()",
             "children": [
@@ -1358,6 +1674,100 @@
                 "declKind": "Accessor",
                 "usr": "s:22GoMarketMeAppleCoreKit0abcdE9EndpointsO10systemInfo10Foundation3URLVvgZ",
                 "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE9EndpointsO10systemInfo10Foundation3URLVvgZ",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "referralCodeSettings",
+            "printedName": "referralCodeSettings",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE9EndpointsO20referralCodeSettings10Foundation3URLVvpZ",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE9EndpointsO20referralCodeSettings10Foundation3URLVvpZ",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "URL",
+                    "printedName": "Foundation.URL",
+                    "usr": "s:10Foundation3URLV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE9EndpointsO20referralCodeSettings10Foundation3URLVvgZ",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE9EndpointsO20referralCodeSettings10Foundation3URLVvgZ",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "referralCodeRedeem",
+            "printedName": "referralCodeRedeem",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE9EndpointsO18referralCodeRedeem10Foundation3URLVvpZ",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE9EndpointsO18referralCodeRedeem10Foundation3URLVvpZ",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "URL",
+                    "printedName": "Foundation.URL",
+                    "usr": "s:10Foundation3URLV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE9EndpointsO18referralCodeRedeem10Foundation3URLVvgZ",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE9EndpointsO18referralCodeRedeem10Foundation3URLVvgZ",
                 "moduleName": "GoMarketMeAppleCoreKit",
                 "static": true,
                 "implicit": true,
@@ -1964,6 +2374,94 @@
           },
           {
             "kind": "Var",
+            "name": "referralCodeSettingsEndpoint",
+            "printedName": "referralCodeSettingsEndpoint",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV28referralCodeSettingsEndpoint10Foundation3URLVvp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV28referralCodeSettingsEndpoint10Foundation3URLVvp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "URL",
+                    "printedName": "Foundation.URL",
+                    "usr": "s:10Foundation3URLV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV28referralCodeSettingsEndpoint10Foundation3URLVvg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV28referralCodeSettingsEndpoint10Foundation3URLVvg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "referralCodeRedeemEndpoint",
+            "printedName": "referralCodeRedeemEndpoint",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV26referralCodeRedeemEndpoint10Foundation3URLVvp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV26referralCodeRedeemEndpoint10Foundation3URLVvp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "URL",
+                    "printedName": "Foundation.URL",
+                    "usr": "s:10Foundation3URLV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV26referralCodeRedeemEndpoint10Foundation3URLVvg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV26referralCodeRedeemEndpoint10Foundation3URLVvg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
             "name": "isProduction",
             "printedName": "isProduction",
             "children": [
@@ -2025,7 +2523,7 @@
           {
             "kind": "Constructor",
             "name": "init",
-            "printedName": "init(apiKey:affiliateCampaignCode:deviceId:sourceName:sdkType:sdkVersion:packageName:eventEndpoint:sdkInitializationEndpoint:systemInfoEndpoint:isProduction:)",
+            "printedName": "init(apiKey:affiliateCampaignCode:deviceId:sourceName:sdkType:sdkVersion:packageName:eventEndpoint:sdkInitializationEndpoint:systemInfoEndpoint:isProduction:referralCodeSettingsEndpoint:referralCodeRedeemEndpoint:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -2156,11 +2654,25 @@
                 ],
                 "hasDefaultArg": true,
                 "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "hasDefaultArg": true,
+                "usr": "s:10Foundation3URLV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "hasDefaultArg": true,
+                "usr": "s:10Foundation3URLV"
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV6apiKey21affiliateCampaignCode8deviceId10sourceName7sdkType0Q7Version07packageP013eventEndpoint0q14InitializationV0010systemInfoV012isProductionACSS_SSSgAOSSA3O10Foundation3URLVA2RSbSgtcfc",
-            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV6apiKey21affiliateCampaignCode8deviceId10sourceName7sdkType0Q7Version07packageP013eventEndpoint0q14InitializationV0010systemInfoV012isProductionACSS_SSSgAOSSA3O10Foundation3URLVA2RSbSgtcfc",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV6apiKey21affiliateCampaignCode8deviceId10sourceName7sdkType0Q7Version07packageP013eventEndpoint0q14InitializationV0010systemInfoV012isProduction08referrall8SettingsV008referrall6RedeemV0ACSS_SSSgAQSSA3Q10Foundation3URLVA2TSbSgA2Ttcfc",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV6apiKey21affiliateCampaignCode8deviceId10sourceName7sdkType0Q7Version07packageP013eventEndpoint0q14InitializationV0010systemInfoV012isProduction08referrall8SettingsV008referrall6RedeemV0ACSS_SSSgAQSSA3Q10Foundation3URLVA2TSbSgA2Ttcfc",
             "moduleName": "GoMarketMeAppleCoreKit",
             "declAttributes": [
               "AccessControl"
@@ -2874,6 +3386,239 @@
             "mangledName": "$ss9EscapableP"
           }
         ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GoMarketMeAppleCoreKit"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "GoMarketMeReferralError",
+        "printedName": "GoMarketMeReferralError",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "code",
+            "printedName": "code",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abC13ReferralErrorV4codeSSvp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abC13ReferralErrorV4codeSSvp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abC13ReferralErrorV4codeSSvg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abC13ReferralErrorV4codeSSvg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "statusCode",
+            "printedName": "statusCode",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abC13ReferralErrorV10statusCodeSivp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abC13ReferralErrorV10statusCodeSivp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abC13ReferralErrorV10statusCodeSivg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abC13ReferralErrorV10statusCodeSivg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "errorDescription",
+            "printedName": "errorDescription",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abC13ReferralErrorV16errorDescriptionSSSgvp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abC13ReferralErrorV16errorDescriptionSSSgvp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abC13ReferralErrorV16errorDescriptionSSSgvg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abC13ReferralErrorV16errorDescriptionSSSgvg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:22GoMarketMeAppleCoreKit0abC13ReferralErrorV",
+        "mangledName": "$s22GoMarketMeAppleCoreKit0abC13ReferralErrorV",
+        "moduleName": "GoMarketMeAppleCoreKit",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "LocalizedError",
+            "printedName": "LocalizedError",
+            "usr": "s:10Foundation14LocalizedErrorP",
+            "mangledName": "$s10Foundation14LocalizedErrorP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Error",
+            "printedName": "Error",
+            "usr": "s:s5ErrorP",
+            "mangledName": "$ss5ErrorP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GoMarketMeAppleCoreKit",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "GoMarketMeAppleCoreKit"
+      },
+      {
+        "kind": "Import",
+        "name": "WebKit",
+        "printedName": "WebKit",
+        "declKind": "Import",
+        "moduleName": "GoMarketMeAppleCoreKit"
       }
     ],
     "json_format_version": 8
@@ -2894,6 +3639,48 @@
       "value": "\"co.gomarketme.apple.purchase.core\""
     },
     {
+      "filePath": "\/Users\/tonipeinoit\/Documents\/Others\/GOMARKETME\/gomarketme-sdks-monorepo\/bridges\/apple\/Sources\/GoMarketMeAppleCore\/GoMarketMeAppleCore.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1018,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/tonipeinoit\/Documents\/Others\/GOMARKETME\/gomarketme-sdks-monorepo\/bridges\/apple\/Sources\/GoMarketMeAppleCore\/GoMarketMeAppleCore.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1055,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/tonipeinoit\/Documents\/Others\/GOMARKETME\/gomarketme-sdks-monorepo\/bridges\/apple\/Sources\/GoMarketMeAppleCore\/GoMarketMeAppleCore.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1138,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/tonipeinoit\/Documents\/Others\/GOMARKETME\/gomarketme-sdks-monorepo\/bridges\/apple\/Sources\/GoMarketMeAppleCore\/GoMarketMeAppleCore.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1263,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/tonipeinoit\/Documents\/Others\/GOMARKETME\/gomarketme-sdks-monorepo\/bridges\/apple\/Sources\/GoMarketMeAppleCore\/GoMarketMeAppleCore.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5731,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/tonipeinoit\/Documents\/Others\/GOMARKETME\/gomarketme-sdks-monorepo\/bridges\/apple\/Sources\/GoMarketMeAppleCore\/GoMarketMeAppleCore.swift",
+      "kind": "BooleanLiteral",
+      "offset": 7343,
+      "length": 5,
+      "value": "false"
+    },
+    {
       "filePath": "\/Users\/tonipeinoit\/Documents\/Others\/GOMARKETME\/gomarketme-sdks-monorepo\/bridges\/apple\/Sources\/GoMarketMeAppleCore\/GoMarketMeAppleCoreConfiguration.swift",
       "kind": "StringLiteral",
       "offset": 116,
@@ -2910,14 +3697,28 @@
     {
       "filePath": "\/Users\/tonipeinoit\/Documents\/Others\/GOMARKETME\/gomarketme-sdks-monorepo\/bridges\/apple\/Sources\/GoMarketMeAppleCore\/GoMarketMeAppleCoreConfiguration.swift",
       "kind": "StringLiteral",
-      "offset": 377,
+      "offset": 392,
+      "length": 93,
+      "value": "\"https:\/\/4v9008q1a5.execute-api.us-west-2.amazonaws.com\/prod\/v1\/mobile\/referral-code-setting\""
+    },
+    {
+      "filePath": "\/Users\/tonipeinoit\/Documents\/Others\/GOMARKETME\/gomarketme-sdks-monorepo\/bridges\/apple\/Sources\/GoMarketMeAppleCore\/GoMarketMeAppleCoreConfiguration.swift",
+      "kind": "StringLiteral",
+      "offset": 543,
+      "length": 92,
+      "value": "\"https:\/\/4v9008q1a5.execute-api.us-west-2.amazonaws.com\/prod\/v1\/mobile\/referral-code\/redeem\""
+    },
+    {
+      "filePath": "\/Users\/tonipeinoit\/Documents\/Others\/GOMARKETME\/gomarketme-sdks-monorepo\/bridges\/apple\/Sources\/GoMarketMeAppleCore\/GoMarketMeAppleCoreConfiguration.swift",
+      "kind": "StringLiteral",
+      "offset": 680,
       "length": 70,
       "value": "\"https:\/\/4v9008q1a5.execute-api.us-west-2.amazonaws.com\/prod\/v1\/event\""
     },
     {
       "filePath": "\/Users\/tonipeinoit\/Documents\/Others\/GOMARKETME\/gomarketme-sdks-monorepo\/bridges\/apple\/Sources\/GoMarketMeAppleCore\/GoMarketMeAppleCoreConfiguration.swift",
       "kind": "StringLiteral",
-      "offset": 1062,
+      "offset": 1461,
       "length": 11,
       "value": "\"app_store\""
     },
@@ -2927,6 +3728,34 @@
       "offset": 667,
       "length": 2,
       "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/tonipeinoit\/Documents\/Others\/GOMARKETME\/gomarketme-sdks-monorepo\/bridges\/apple\/Sources\/GoMarketMeAppleCore\/GoMarketMeReferralHTML.swift",
+      "kind": "StringLiteral",
+      "offset": 166,
+      "length": 13934,
+      "value": "\"PCFkb2N0eXBlIGh0bWw+CjxodG1sIGxhbmc9ImVuIj48aGVhZD48bWV0YSBjaGFyc2V0PSJ1dGYtOCI+CjxtZXRhIG5hbWU9InZpZXdwb3J0IiBjb250ZW50PSJ3aWR0aD1kZXZpY2Utd2lkdGgsIGluaXRpYWwtc2NhbGU9MSwgdmlld3BvcnQtZml0PWNvdmVyIj4KPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1TZWN1cml0eS1Qb2xpY3kiIGNvbnRlbnQ9ImRlZmF1bHQtc3JjICdub25lJzsgc2NyaXB0LXNyYyAndW5zYWZlLWlubGluZSc7IHN0eWxlLXNyYyAndW5zYWZlLWlubGluZSc7IGNvbm5lY3Qtc3JjICdub25lJzsgaW1nLXNyYyAnbm9uZSc7IGZvcm0tYWN0aW9uICdub25lJzsgYmFzZS11cmkgJ25vbmUnIj4KPHN0eWxlPgoqe2JveC1zaXppbmc6Ym9yZGVyLWJveH1odG1sLGJvZHl7bWFyZ2luOjA7aGVpZ2h0OjEwMCU7YmFja2dyb3VuZDp0cmFuc3BhcmVudDtmb250LWZhbWlseTpzeXN0ZW0tdWksLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmfQpib2R5e2Rpc3BsYXk6ZmxleDtmbGV4LWRpcmVjdGlvbjpjb2x1bW47anVzdGlmeS1jb250ZW50OmZsZXgtZW5kfWJ1dHRvbixpbnB1dHtmb250OmluaGVyaXR9YnV0dG9ue2N1cnNvcjpwb2ludGVyO21pbi1oZWlnaHQ6NDRweH1idXR0b246ZGlzYWJsZWR7b3BhY2l0eTouNjtjdXJzb3I6ZGVmYXVsdH0KI3RyaWdnZXJDb250YWluZXJ7ZmxleDoxO3BhZGRpbmc6MjRweDtkaXNwbGF5OmZsZXg7YWxpZ24taXRlbXM6Y2VudGVyfSN0cmlnZ2VyQ29udGFpbmVyW2hpZGRlbl17ZGlzcGxheTpub25lfSN0cmlnZ2Vye21heC13aWR0aDoxMDAlO292ZXJmbG93LXdyYXA6YW55d2hlcmV9I3NoZWV0e3Bvc2l0aW9uOnJlbGF0aXZlO292ZXJmbG93OmF1dG87bWF4LWhlaWdodDoxMDAlO2JvcmRlcjoxcHggc29saWQ7cGFkZGluZy1ib3R0b206bWF4KDI0cHgsZW52KHNhZmUtYXJlYS1pbnNldC1ib3R0b20pKTt9CiNoZWFkaW5ne3BhZGRpbmctcmlnaHQ6NDRweH1oMXttYXJnaW46MDtvdmVyZmxvdy13cmFwOmFueXdoZXJlfXB7bWFyZ2luOjZweCAwIDA7b3ZlcmZsb3ctd3JhcDphbnl3aGVyZX0jY29kZXt3aWR0aDoxMDAlO21pbi1oZWlnaHQ6NDRweDtib3JkZXItc3R5bGU6c29saWQ7Ym9yZGVyLXJhZGl1czoxMnB4O3BhZGRpbmc6MTJweCAxNHB4O291dGxpbmUtb2Zmc2V0OjJweH0KI2J1dHRvbnN7ZGlzcGxheTpmbGV4fSNhcHBseXtmbGV4OjE7Ym9yZGVyOjA7Y29sb3I6d2hpdGU7cGFkZGluZzoxMnB4IDE2cHg7Zm9udC13ZWlnaHQ6NjAwfSNza2lwe2JhY2tncm91bmQ6dHJhbnNwYXJlbnQ7Ym9yZGVyOjFweCBzb2xpZDtwYWRkaW5nLXRvcDoxMnB4O3BhZGRpbmctYm90dG9tOjEycHh9CiNtZXNzYWdlOmVtcHR5e2Rpc3BsYXk6bm9uZX0jbWVzc2FnZXtvdmVyZmxvdy13cmFwOmFueXdoZXJlfSNjbG9zZXtwb3NpdGlvbjphYnNvbHV0ZTt0b3A6MTJweDtyaWdodDoxMnB4O2JhY2tncm91bmQ6dHJhbnNwYXJlbnQ7Ym9yZGVyOjA7Y29sb3I6aW5oZXJpdDtmb250LXNpemU6MjRweDttaW4td2lkdGg6NDRweH0KPC9zdHlsZT48L2hlYWQ+PGJvZHk+CjxkaXYgaWQ9InRyaWdnZXJDb250YWluZXIiIGhpZGRlbj48YnV0dG9uIGlkPSJ0cmlnZ2VyIiB0eXBlPSJidXR0b24iPjwvYnV0dG9uPjwvZGl2Pgo8c2VjdGlvbiBpZD0ic2hlZXQiIHJvbGU9ImRpYWxvZyIgYXJpYS1tb2RhbD0idHJ1ZSIgYXJpYS1sYWJlbGxlZGJ5PSJ0aXRsZSIgaGlkZGVuPgo8YnV0dG9uIGlkPSJjbG9zZSIgdHlwZT0iYnV0dG9uIiBhcmlhLWxhYmVsPSJDbG9zZSByZWZlcnJhbCBjb2RlIHNoZWV0Ij7DlzwvYnV0dG9uPgo8ZGl2IGlkPSJoZWFkaW5nIj48aDEgaWQ9InRpdGxlIj48L2gxPjxwIGlkPSJzdWJ0aXRsZSI+PC9wPjwvZGl2Pgo8Zm9ybSBpZD0iZm9ybSI+PGlucHV0IGlkPSJjb2RlIiB0eXBlPSJ0ZXh0IiBhdXRvY29tcGxldGU9Im9mZiIgc3BlbGxjaGVjaz0iZmFsc2UiIG1heGxlbmd0aD0iMTI4IiBhcmlhLWxhYmVsPSJSZWZlcnJhbCBjb2RlIiBhcmlhLWRlc2NyaWJlZGJ5PSJtZXNzYWdlIj4KPGRpdiBpZD0ibWVzc2FnZSIgcm9sZT0ic3RhdHVzIiBhcmlhLWxpdmU9InBvbGl0ZSI+PC9kaXY+CjxkaXYgaWQ9ImJ1dHRvbnMiPjxidXR0b24gaWQ9InNraXAiIHR5cGU9ImJ1dHRvbiI+PC9idXR0b24+PGJ1dHRvbiBpZD0iYXBwbHkiIHR5cGU9InN1Ym1pdCI+PC9idXR0b24+PC9kaXY+PC9mb3JtPjwvc2VjdGlvbj4KPHNjcmlwdD4KJ3VzZSBzdHJpY3QnOwpjb25zdCBkZWZhdWx0cyA9IHsKIHRyaWdnZXJUeXBlOidsaW5rJyx0cmlnZ2VyVGV4dDonSGF2ZSBhIHJlZmVycmFsIGNvZGU\/Jyx0cmlnZ2VyQWxpZ25tZW50OidjZW50ZXInLHRyaWdnZXJGb250U2l6ZToxNSx0cmlnZ2VyRm9udFdlaWdodDonNTAwJyx0cmlnZ2VyTGlua0NvbG9yOicjMUYyOTM3Jyx0cmlnZ2VyTGlua1VuZGVybGluZTpmYWxzZSx0cmlnZ2VyQnV0dG9uQmFja2dyb3VuZDonIzNCODJGNicsdHJpZ2dlckJ1dHRvblRleHRDb2xvcjonI0ZGRkZGRicsdHJpZ2dlckJ1dHRvbkJvcmRlcjonIzNCODJGNicsdHJpZ2dlckJ1dHRvbkJvcmRlcldpZHRoOjEsdHJpZ2dlckJ1dHRvbkJvcmRlclJhZGl1czoxMCx0cmlnZ2VyQnV0dG9uUGFkZGluZ0hvcml6b250YWw6MTYsdHJpZ2dlckJ1dHRvblBhZGRpbmdWZXJ0aWNhbDoxMCwKIGJhY2tncm91bmQ6JyNGRkZGRkYnLGJvcmRlcjonI0QxRDVEQicsZXJyb3I6JyNFRjQ0NDQnLGlucHV0QmFja2dyb3VuZDonI0Y5RkFGQicscHJpbWFyeTonIzNCODJGNicsc3VjY2VzczonIzEwQjk4MScsdGV4dDonIzFGMjkzNycsdGV4dFNlY29uZGFyeTonIzZCNzI4MCcsZmFtaWx5Om51bGwsc2l6ZUlucHV0OjE4LHNpemVNZXNzYWdlOjE0LHNpemVTa2lwQnV0dG9uOjE1LHNpemVTdWJ0aXRsZToxNCxzaXplVGl0bGU6MjIsc2l6ZVZhbGlkYXRlQnV0dG9uOjE3LHN1YnRpdGxlQ29sb3I6JyM2NjY2NjYnLHRpdGxlRm9udFdlaWdodDonYm9sZCcsCiBlcnJvck1lc3NhZ2U6J0Nvbm5lY3Rpb24gZXJyb3InLGludmFsaWRNZXNzYWdlOidJbnZhbGlkIGNvZGUnLHBsYWNlaG9sZGVyOidFbnRlciBjb2RlJyxwcmVmaWxsZWRNZXNzYWdlOidDb2RlIGRldGVjdGVkIGZyb20gbGluaycsc2tpcEJ1dHRvbjonU2tpcCcsc3VidGl0bGU6J0VudGVyIHlvdXIgcmVmZXJyYWwgY29kZScsdGl0bGU6J0hhdmUgYSByZWZlcnJhbCBjb2RlPycsdmFsaWRhdGVCdXR0b246J0FwcGx5IENvZGUnLHZhbGlkYXRpbmdNZXNzYWdlOidDaGVja2luZy4uLicsdmFsaWRNZXNzYWdlOidDb2RlIGFwcGxpZWQhJywKIGJ1dHRvbkNvbnRhaW5lckZsZXhEaXJlY3Rpb246J3JvdycsYnV0dG9uQ29udGFpbmVyR2FwOjEyLGNvbnRhaW5lckJvcmRlclJhZGl1czoxNixjb250YWluZXJQYWRkaW5nOjI0LGlucHV0Qm9yZGVyV2lkdGg6MixpbnB1dENvbnRhaW5lck1hcmdpbkJvdHRvbToxNixpbnB1dEhlaWdodDo1NixtZXNzYWdlQ29udGFpbmVyUGFkZGluZzoxMixtZXNzYWdlVGV4dEFsaWduOidjZW50ZXInLHNraXBCdXR0b25QYWRkaW5nSG9yaXpvbnRhbDoyMCx0aXRsZUNvbnRhaW5lck1hcmdpbkJvdHRvbToyMCx2YWxpZGF0ZUJ1dHRvbkJvcmRlclJhZGl1czoxMiwKIGNvZGVBdXRvVXBwZXJjYXNlOnRydWUsZGlzbWlzc09uU3VjY2Vzczp0cnVlLHNraXBCdXR0b25FbmFibGVkOnRydWUsc3VjY2Vzc0Rpc21pc3NEZWxheU1zOjc1MAp9OwpmdW5jdGlvbiBub3JtYWxpemVTZXR0aW5ncyhyYXcpIHsKIGlmKHJhdyAmJiB0eXBlb2YgcmF3PT09J29iamVjdCcgJiYgKHJhdy5kZWZhdWx0X3NldHRpbmdzIHx8IHJhdy5tYXJrZXRlcl9zZXR0aW5ncykpIHJhdz1yYXcubWFya2V0ZXJfc2V0dGluZ3MgPz8gcmF3LmRlZmF1bHRfc2V0dGluZ3M7CiBjb25zdCByZXN1bHQ9ey4uLmRlZmF1bHRzfTsKIGlmICghcmF3IHx8IHR5cGVvZiByYXchPT0nb2JqZWN0JyB8fCBBcnJheS5pc0FycmF5KHJhdykpIHJldHVybiByZXN1bHQ7CiBmb3IoY29uc3Qga2V5IG9mIE9iamVjdC5rZXlzKGRlZmF1bHRzKSkgewogIGNvbnN0IHZhbHVlPXJhd1trZXldLCBmYWxsYmFjaz1kZWZhdWx0c1trZXldOwogIGlmKHR5cGVvZiBmYWxsYmFjaz09PSdudW1iZXInICYmIHR5cGVvZiB2YWx1ZT09PSdudW1iZXInICYmIE51bWJlci5pc0Zpbml0ZSh2YWx1ZSkpIHJlc3VsdFtrZXldPU1hdGgubWF4KGtleS5zdGFydHNXaXRoKCdzaXplJyl8fGtleT09PSd0cmlnZ2VyRm9udFNpemUnPzEwOjAsTWF0aC5taW4oa2V5PT09J3N1Y2Nlc3NEaXNtaXNzRGVsYXlNcyc\/MTAwMDA6MjAwLHZhbHVlKSk7CiAgZWxzZSBpZih0eXBlb2YgZmFsbGJhY2s9PT0nYm9vbGVhbicgJiYgdHlwZW9mIHZhbHVlPT09J2Jvb2xlYW4nKSByZXN1bHRba2V5XT12YWx1ZTsKICBlbHNlIGlmKHR5cGVvZiBmYWxsYmFjaz09PSdzdHJpbmcnICYmIHR5cGVvZiB2YWx1ZT09PSdzdHJpbmcnKSB7CiAgIGlmKGZhbGxiYWNrLnN0YXJ0c1dpdGgoJyMnKSkgeyBpZigvXiNbMC05YS1mXXs2fShbMC05YS1mXXsyfSk\/JC9pLnRlc3QodmFsdWUpKSByZXN1bHRba2V5XT12YWx1ZTsgfQogICBlbHNlIHJlc3VsdFtrZXldPXZhbHVlLnNsaWNlKDAsMjAwMCk7CiAgfSBlbHNlIGlmKGtleT09PSdmYW1pbHknICYmICh2YWx1ZT09PW51bGwgfHwgdHlwZW9mIHZhbHVlPT09J3N0cmluZycpKSByZXN1bHRba2V5XT12YWx1ZTsKIH0KIGNvbnN0IGVudW1zPXt0cmlnZ2VyVHlwZTpbJ2xpbmsnLCdidXR0b24nXSx0cmlnZ2VyQWxpZ25tZW50OlsnbGVmdCcsJ2NlbnRlcicsJ3JpZ2h0J10sYnV0dG9uQ29udGFpbmVyRmxleERpcmVjdGlvbjpbJ3JvdycsJ3Jvdy1yZXZlcnNlJywnY29sdW1uJywnY29sdW1uLXJldmVyc2UnXSxtZXNzYWdlVGV4dEFsaWduOlsnbGVmdCcsJ2NlbnRlcicsJ3JpZ2h0J10sdGl0bGVGb250V2VpZ2h0Olsnbm9ybWFsJywnYm9sZCcsJzEwMCcsJzIwMCcsJzMwMCcsJzQwMCcsJzUwMCcsJzYwMCcsJzcwMCcsJzgwMCcsJzkwMCddLHRyaWdnZXJGb250V2VpZ2h0Olsnbm9ybWFsJywnYm9sZCcsJzQwMCcsJzUwMCcsJzYwMCcsJzcwMCddfTsKIGZvcihjb25zdCBba2V5LHZhbHVlc10gb2YgT2JqZWN0LmVudHJpZXMoZW51bXMpKSBpZighdmFsdWVzLmluY2x1ZGVzKHJlc3VsdFtrZXldKSkgcmVzdWx0W2tleV09ZGVmYXVsdHNba2V5XTsKIHJldHVybiByZXN1bHQ7Cn0KY29uc3QgZWw9aWQ9PmRvY3VtZW50LmdldEVsZW1lbnRCeUlkKGlkKTsKY29uc3Qgc2VuZD1tZXNzYWdlPT57Y29uc3QganNvbj1KU09OLnN0cmluZ2lmeShtZXNzYWdlKTtpZih3aW5kb3cud2Via2l0Py5tZXNzYWdlSGFuZGxlcnM\/LnJlZmVycmFsKXdpbmRvdy53ZWJraXQubWVzc2FnZUhhbmRsZXJzLnJlZmVycmFsLnBvc3RNZXNzYWdlKGpzb24pO2Vsc2UgaWYod2luZG93LkdvTWFya2V0TWVSZWZlcnJhbCl3aW5kb3cuR29NYXJrZXRNZVJlZmVycmFsLnBvc3RNZXNzYWdlKGpzb24pO307CmxldCBzZXR0aW5ncz1kZWZhdWx0cyxidXN5PWZhbHNlLGFwcGxpZWQ9ZmFsc2UsYXR0cmlidXRlZD1mYWxzZSx0aW1lcjsKZnVuY3Rpb24gcmVuZGVyU3RhdGUoc3RhdGUpIHsKIGJ1c3k9c3RhdGU9PT0ndmFsaWRhdGluZyc7YXBwbGllZD1zdGF0ZT09PSd2YWxpZCd8fGF0dHJpYnV0ZWQ7CiBlbCgnYXBwbHknKS5kaXNhYmxlZD1idXN5fHwoIWF0dHJpYnV0ZWQmJiFlbCgnY29kZScpLnZhbHVlLnRyaW0oKSk7ZWwoJ2NvZGUnKS5kaXNhYmxlZD1idXN5O2VsKCdjb2RlJykucmVhZE9ubHk9YXR0cmlidXRlZHx8YnVzeTsKIGVsKCdza2lwJykuZGlzYWJsZWQ9YnVzeTtlbCgnY2xvc2UnKS5kaXNhYmxlZD1idXN5OwogY29uc3Qga2V5PXtwcmVmaWxsZWQ6J3ByZWZpbGxlZE1lc3NhZ2UnLHZhbGlkYXRpbmc6J3ZhbGlkYXRpbmdNZXNzYWdlJyx2YWxpZDondmFsaWRNZXNzYWdlJyxpbnZhbGlkOidpbnZhbGlkTWVzc2FnZScsZXJyb3I6J2Vycm9yTWVzc2FnZSd9W3N0YXRlXTsKIGVsKCdtZXNzYWdlJykudGV4dENvbnRlbnQ9a2V5P3NldHRpbmdzW2tleV06Jyc7CiBlbCgnbWVzc2FnZScpLnN0eWxlLmNvbG9yPXN0YXRlPT09J3ZhbGlkJz9zZXR0aW5ncy5zdWNjZXNzOlsnaW52YWxpZCcsJ2Vycm9yJ10uaW5jbHVkZXMoc3RhdGUpP3NldHRpbmdzLmVycm9yOnNldHRpbmdzLnRleHRTZWNvbmRhcnk7CiBlbCgnY29kZScpLnNldEF0dHJpYnV0ZSgnYXJpYS1pbnZhbGlkJyxTdHJpbmcoc3RhdGU9PT0naW52YWxpZCcpKTsKIGlmKGFwcGxpZWQmJnNldHRpbmdzLmRpc21pc3NPblN1Y2Nlc3MpdGltZXI9c2V0VGltZW91dCgoKT0+c2VuZCh7YWN0aW9uOidjbG9zZSd9KSxzZXR0aW5ncy5zdWNjZXNzRGlzbWlzc0RlbGF5TXMpOwp9CndpbmRvdy5Hb01hcmtldE1lUmVmZXJyYWxVST17CiBjb25maWd1cmUocmF3LHByZWZpbGwsc2hvd1RyaWdnZXI9ZmFsc2UsaXNBdHRyaWJ1dGVkPWZhbHNlKXsKICBhdHRyaWJ1dGVkPUJvb2xlYW4oaXNBdHRyaWJ1dGVkKTsKICBzZXR0aW5ncz1ub3JtYWxpemVTZXR0aW5ncyhyYXcpO2NvbnN0IHM9c2V0dGluZ3Msc3R5bGU9KGlkLHZhbHVlcyk9Pk9iamVjdC5hc3NpZ24oZWwoaWQpLnN0eWxlLHZhbHVlcykscHg9bj0+bisncHgnOwogIGZvcihjb25zdCBbaWQsa2V5XSBvZiBPYmplY3QuZW50cmllcyh7dGl0bGU6J3RpdGxlJyxzdWJ0aXRsZTonc3VidGl0bGUnLHNraXA6J3NraXBCdXR0b24nLGFwcGx5Oid2YWxpZGF0ZUJ1dHRvbid9KSllbChpZCkudGV4dENvbnRlbnQ9c1trZXldOwogIHN0eWxlKCdzaGVldCcse2JhY2tncm91bmQ6cy5iYWNrZ3JvdW5kLGNvbG9yOnMudGV4dCxib3JkZXJDb2xvcjpzLmJvcmRlcixib3JkZXJSYWRpdXM6cHgocy5jb250YWluZXJCb3JkZXJSYWRpdXMpKycgJytweChzLmNvbnRhaW5lckJvcmRlclJhZGl1cykrJyAwIDAnLHBhZGRpbmc6cHgocy5jb250YWluZXJQYWRkaW5nKSxwYWRkaW5nQm90dG9tOidtYXgoJytweChzLmNvbnRhaW5lclBhZGRpbmcpKycsZW52KHNhZmUtYXJlYS1pbnNldC1ib3R0b20pKScsZm9udEZhbWlseTpzLmZhbWlseT9KU09OLnN0cmluZ2lmeShzLmZhbWlseSkrJyxzeXN0ZW0tdWknOidzeXN0ZW0tdWksLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmJ30pOwogIHN0eWxlKCdoZWFkaW5nJyx7bWFyZ2luQm90dG9tOnB4KHMudGl0bGVDb250YWluZXJNYXJnaW5Cb3R0b20pfSk7c3R5bGUoJ3RpdGxlJyx7Zm9udFNpemU6cHgocy5zaXplVGl0bGUpLGZvbnRXZWlnaHQ6cy50aXRsZUZvbnRXZWlnaHR9KTtzdHlsZSgnc3VidGl0bGUnLHtmb250U2l6ZTpweChzLnNpemVTdWJ0aXRsZSksY29sb3I6cy5zdWJ0aXRsZUNvbG9yfSk7CiAgc3R5bGUoJ2NvZGUnLHtiYWNrZ3JvdW5kOnMuaW5wdXRCYWNrZ3JvdW5kLGNvbG9yOnMudGV4dCxib3JkZXJDb2xvcjpzLmJvcmRlcixib3JkZXJXaWR0aDpweChzLmlucHV0Qm9yZGVyV2lkdGgpLG1pbkhlaWdodDpweChNYXRoLm1heCg0NCxzLmlucHV0SGVpZ2h0KSksZm9udFNpemU6cHgocy5zaXplSW5wdXQpLG1hcmdpbkJvdHRvbTpweChzLmlucHV0Q29udGFpbmVyTWFyZ2luQm90dG9tKX0pOwogIHN0eWxlKCdtZXNzYWdlJyx7cGFkZGluZzpweChzLm1lc3NhZ2VDb250YWluZXJQYWRkaW5nKSxmb250U2l6ZTpweChzLnNpemVNZXNzYWdlKSx0ZXh0QWxpZ246cy5tZXNzYWdlVGV4dEFsaWdufSk7c3R5bGUoJ2J1dHRvbnMnLHtmbGV4RGlyZWN0aW9uOnMuYnV0dG9uQ29udGFpbmVyRmxleERpcmVjdGlvbixnYXA6cHgocy5idXR0b25Db250YWluZXJHYXApfSk7CiAgc3R5bGUoJ3NraXAnLHtjb2xvcjpzLnRleHRTZWNvbmRhcnksYm9yZGVyQ29sb3I6cy5ib3JkZXIsYm9yZGVyUmFkaXVzOnB4KHMudmFsaWRhdGVCdXR0b25Cb3JkZXJSYWRpdXMpLGZvbnRTaXplOnB4KHMuc2l6ZVNraXBCdXR0b24pLHBhZGRpbmdMZWZ0OnB4KHMuc2tpcEJ1dHRvblBhZGRpbmdIb3Jpem9udGFsKSxwYWRkaW5nUmlnaHQ6cHgocy5za2lwQnV0dG9uUGFkZGluZ0hvcml6b250YWwpfSk7CiAgc3R5bGUoJ2FwcGx5Jyx7YmFja2dyb3VuZDpzLnByaW1hcnksYm9yZGVyUmFkaXVzOnB4KHMudmFsaWRhdGVCdXR0b25Cb3JkZXJSYWRpdXMpLGZvbnRTaXplOnB4KHMuc2l6ZVZhbGlkYXRlQnV0dG9uKX0pOwogIGVsKCdza2lwJykuaGlkZGVuPWF0dHJpYnV0ZWR8fCFzLnNraXBCdXR0b25FbmFibGVkO2VsKCdjb2RlJykucGxhY2Vob2xkZXI9cy5wbGFjZWhvbGRlcjtlbCgnY29kZScpLmF1dG9jYXBpdGFsaXplPXMuY29kZUF1dG9VcHBlcmNhc2U\/J2NoYXJhY3RlcnMnOidub25lJztlbCgnY29kZScpLnZhbHVlPXR5cGVvZiBwcmVmaWxsPT09J3N0cmluZyc\/cHJlZmlsbC5zbGljZSgwLDEyOCk6Jyc7CiAgaWYocy5jb2RlQXV0b1VwcGVyY2FzZSllbCgnY29kZScpLnZhbHVlPWVsKCdjb2RlJykudmFsdWUudG9VcHBlckNhc2UoKTsKICBpZihhdHRyaWJ1dGVkKXtjb25zdCBoYXNDb2RlPUJvb2xlYW4oZWwoJ2NvZGUnKS52YWx1ZSk7ZWwoJ3RpdGxlJykudGV4dENvbnRlbnQ9aGFzQ29kZT8nUmVmZXJyYWwgY29kZSBhbHJlYWR5IGFwcGxpZWQnOidZb3VyIHJlZmVycmFsIGhhcyBhbHJlYWR5IGJlZW4gYXBwbGllZCc7ZWwoJ3N1YnRpdGxlJykuaGlkZGVuPXRydWU7ZWwoJ2NvZGUnKS5oaWRkZW49IWhhc0NvZGU7ZWwoJ2NvZGUnKS5yZWFkT25seT10cnVlO2VsKCdjb2RlJykuc2V0QXR0cmlidXRlKCdhcmlhLXJlYWRvbmx5JywndHJ1ZScpO2VsKCdhcHBseScpLnRleHRDb250ZW50PSdEb25lJzt9CiAgZWwoJ3RyaWdnZXInKS50ZXh0Q29udGVudD1zLnRyaWdnZXJUZXh0OwogIHN0eWxlKCd0cmlnZ2VyQ29udGFpbmVyJyx7anVzdGlmeUNvbnRlbnQ6e2xlZnQ6J2ZsZXgtc3RhcnQnLGNlbnRlcjonY2VudGVyJyxyaWdodDonZmxleC1lbmQnfVtzLnRyaWdnZXJBbGlnbm1lbnRdfSk7CiAgc3R5bGUoJ3RyaWdnZXInLHtmb250RmFtaWx5OnMuZmFtaWx5P0pTT04uc3RyaW5naWZ5KHMuZmFtaWx5KSsnLHN5c3RlbS11aSc6J3N5c3RlbS11aScsZm9udFNpemU6cHgocy50cmlnZ2VyRm9udFNpemUpLGZvbnRXZWlnaHQ6cy50cmlnZ2VyRm9udFdlaWdodCxjb2xvcjpzLnRyaWdnZXJUeXBlPT09J2xpbmsnP3MudHJpZ2dlckxpbmtDb2xvcjpzLnRyaWdnZXJCdXR0b25UZXh0Q29sb3IsYmFja2dyb3VuZDpzLnRyaWdnZXJUeXBlPT09J2xpbmsnPyd0cmFuc3BhcmVudCc6cy50cmlnZ2VyQnV0dG9uQmFja2dyb3VuZCxib3JkZXI6cy50cmlnZ2VyVHlwZT09PSdsaW5rJz8nMCc6cHgocy50cmlnZ2VyQnV0dG9uQm9yZGVyV2lkdGgpKycgc29saWQgJytzLnRyaWdnZXJCdXR0b25Cb3JkZXIsYm9yZGVyUmFkaXVzOnB4KHMudHJpZ2dlckJ1dHRvbkJvcmRlclJhZGl1cykscGFkZGluZzpzLnRyaWdnZXJUeXBlPT09J2xpbmsnPycwJzpweChzLnRyaWdnZXJCdXR0b25QYWRkaW5nVmVydGljYWwpKycgJytweChzLnRyaWdnZXJCdXR0b25QYWRkaW5nSG9yaXpvbnRhbCksdGV4dERlY29yYXRpb246cy50cmlnZ2VyVHlwZT09PSdsaW5rJyYmcy50cmlnZ2VyTGlua1VuZGVybGluZT8ndW5kZXJsaW5lJzonbm9uZSd9KTsKICBlbCgndHJpZ2dlckNvbnRhaW5lcicpLmhpZGRlbj0hc2hvd1RyaWdnZXI7ZWwoJ3NoZWV0JykuaGlkZGVuPXNob3dUcmlnZ2VyO3JlbmRlclN0YXRlKGF0dHJpYnV0ZWQ\/J2F0dHJpYnV0ZWQnOmVsKCdjb2RlJykudmFsdWU\/J3ByZWZpbGxlZCc6J2RlZmF1bHQnKTsKIH0sCiByZXN1bHQoc3RhdGUpe2lmKGJ1c3kmJlsndmFsaWQnLCdpbnZhbGlkJywnZXJyb3InXS5pbmNsdWRlcyhzdGF0ZSkpcmVuZGVyU3RhdGUoc3RhdGUpO30KfTsKZWwoJ3RyaWdnZXInKS5hZGRFdmVudExpc3RlbmVyKCdjbGljaycsKCk9PntlbCgnc2hlZXQnKS5oaWRkZW49ZmFsc2U7ZWwoJ3RyaWdnZXJDb250YWluZXInKS5oaWRkZW49dHJ1ZTtzZW5kKHthY3Rpb246J3NoZWV0T3BlbmVkJ30pO2lmKCFhdHRyaWJ1dGVkKWVsKCdjb2RlJykuZm9jdXMoKTt9KTsKZWwoJ2NvZGUnKS5hZGRFdmVudExpc3RlbmVyKCdpbnB1dCcsKCk9PntpZihhdHRyaWJ1dGVkKXJldHVybjtpZihzZXR0aW5ncy5jb2RlQXV0b1VwcGVyY2FzZSllbCgnY29kZScpLnZhbHVlPWVsKCdjb2RlJykudmFsdWUudG9VcHBlckNhc2UoKTtyZW5kZXJTdGF0ZSgnZGVmYXVsdCcpO30pOwplbCgnZm9ybScpLmFkZEV2ZW50TGlzdGVuZXIoJ3N1Ym1pdCcsZXZlbnQ9PntldmVudC5wcmV2ZW50RGVmYXVsdCgpO2lmKGJ1c3kpcmV0dXJuO2lmKGF0dHJpYnV0ZWQpe3NlbmQoe2FjdGlvbjonY2xvc2UnfSk7cmV0dXJuO31pZihhcHBsaWVkKXJldHVybjtjb25zdCBjb2RlPWVsKCdjb2RlJykudmFsdWUudHJpbSgpO2lmKCFjb2RlKXJldHVybjtyZW5kZXJTdGF0ZSgndmFsaWRhdGluZycpO3NlbmQoe2FjdGlvbjoncmVkZWVtJyxjb2RlfSk7fSk7CmZvcihjb25zdCBpZCBvZiBbJ3NraXAnLCdjbG9zZSddKWVsKGlkKS5hZGRFdmVudExpc3RlbmVyKCdjbGljaycsKCk9PntpZighYnVzeSl7Y2xlYXJUaW1lb3V0KHRpbWVyKTtzZW5kKHthY3Rpb246J2Nsb3NlJ30pO319KTsKc2VuZCh7YWN0aW9uOidyZWFkeSd9KTsKPC9zY3JpcHQ+PC9ib2R5PjwvaHRtbD4K\""
+    },
+    {
+      "filePath": "\/Users\/tonipeinoit\/Documents\/Others\/GOMARKETME\/gomarketme-sdks-monorepo\/bridges\/apple\/Sources\/GoMarketMeAppleCore\/GoMarketMeReferralSheet.swift",
+      "kind": "BooleanLiteral",
+      "offset": 653,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/tonipeinoit\/Documents\/Others\/GOMARKETME\/gomarketme-sdks-monorepo\/bridges\/apple\/Sources\/GoMarketMeAppleCore\/GoMarketMeReferralSheet.swift",
+      "kind": "BooleanLiteral",
+      "offset": 685,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/tonipeinoit\/Documents\/Others\/GOMARKETME\/gomarketme-sdks-monorepo\/bridges\/apple\/Sources\/GoMarketMeAppleCore\/GoMarketMeReferralSheet.swift",
+      "kind": "BooleanLiteral",
+      "offset": 718,
+      "length": 5,
+      "value": "false"
     }
   ]
 }

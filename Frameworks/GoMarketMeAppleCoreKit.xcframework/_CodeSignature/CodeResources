@@ -6,131 +6,175 @@
 	<dict>
 		<key>ios-arm64/GoMarketMeAppleCoreKit.framework/GoMarketMeAppleCoreKit</key>
 		<data>
-		PFr91myEuu5Ri7wMittyS/fKFPE=
+		8QwbyeC9SNx0gRHjyvbSKKysr2E=
 		</data>
 		<key>ios-arm64/GoMarketMeAppleCoreKit.framework/Info.plist</key>
 		<data>
-		+urtwOFtO8LG+V0XJNju83qfuOg=
+		1GOWPM/Wt+Q6MetrrNrbu1xDFuk=
 		</data>
 		<key>ios-arm64/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		Yz4ssEF/NnpZM1MBvyHhbgpqN/E=
+		ZWp/6vKThWWr5ei+B4hsbjTr98A=
 		</data>
 		<key>ios-arm64/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios.package.swiftinterface</key>
 		<data>
-		R41YTeGtI1bYu7VmqbL1XXJs8N0=
+		BNOWjKMX6M41txE+1tP4pntH4PQ=
 		</data>
 		<key>ios-arm64/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		R41YTeGtI1bYu7VmqbL1XXJs8N0=
+		BNOWjKMX6M41txE+1tP4pntH4PQ=
 		</data>
 		<key>ios-arm64/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		wftYZdCeUc+JPoA0XBQMdNUPIoQ=
+		xnaDIN29raIkisDf5427e/JPwRo=
 		</data>
 		<key>ios-arm64/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		R41YTeGtI1bYu7VmqbL1XXJs8N0=
+		BNOWjKMX6M41txE+1tP4pntH4PQ=
 		</data>
-		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-macabi.abi.json</key>
+		<key>ios-arm64/GoMarketMeAppleCoreKit.framework/_CodeSignature/CodeDirectory</key>
 		<data>
-		Yz4ssEF/NnpZM1MBvyHhbgpqN/E=
+		d1Tatun9zjZKkpHfB/fIwK1pbpc=
 		</data>
-		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-macabi.package.swiftinterface</key>
+		<key>ios-arm64/GoMarketMeAppleCoreKit.framework/_CodeSignature/CodeRequirements</key>
 		<data>
-		VZlcOyGOxI0P4uO/N0Ep/PU1+98=
+		UoyS2ydtIJibjCgTCa/AKORiXlQ=
 		</data>
-		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-macabi.private.swiftinterface</key>
+		<key>ios-arm64/GoMarketMeAppleCoreKit.framework/_CodeSignature/CodeResources</key>
 		<data>
-		VZlcOyGOxI0P4uO/N0Ep/PU1+98=
+		qGs6kvAzxtIHz9CTfc5pffQ9eR0=
 		</data>
-		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-macabi.swiftdoc</key>
+		<key>ios-arm64/GoMarketMeAppleCoreKit.framework/_CodeSignature/CodeSignature</key>
 		<data>
-		3coFIXLqXN9v65izYqAr7qzzwHg=
-		</data>
-		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-macabi.swiftinterface</key>
-		<data>
-		VZlcOyGOxI0P4uO/N0Ep/PU1+98=
-		</data>
-		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-macabi.abi.json</key>
-		<data>
-		Yz4ssEF/NnpZM1MBvyHhbgpqN/E=
-		</data>
-		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-macabi.package.swiftinterface</key>
-		<data>
-		vhY0axkl8a4/fQ6yXxgzLGogBa0=
-		</data>
-		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-macabi.private.swiftinterface</key>
-		<data>
-		vhY0axkl8a4/fQ6yXxgzLGogBa0=
-		</data>
-		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-macabi.swiftdoc</key>
-		<data>
-		KURLmAQwop9Pq26EjJoN23KEe5Q=
-		</data>
-		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-macabi.swiftinterface</key>
-		<data>
-		vhY0axkl8a4/fQ6yXxgzLGogBa0=
+		5+ujdvi4JBCZt04MAf7nUenqkQI=
 		</data>
 		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Versions/A/GoMarketMeAppleCoreKit</key>
 		<data>
-		ti0QGmBgXWzPcsZw2p6bz0hmqgQ=
+		69mMN14P1zL4LpSkN9czzd2M1uQ=
+		</data>
+		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Versions/A/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-macabi.abi.json</key>
+		<data>
+		ZWp/6vKThWWr5ei+B4hsbjTr98A=
+		</data>
+		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Versions/A/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-macabi.package.swiftinterface</key>
+		<data>
+		z+Y6JvE6aWWyni05WBJNtSXsheE=
+		</data>
+		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Versions/A/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-macabi.private.swiftinterface</key>
+		<data>
+		z+Y6JvE6aWWyni05WBJNtSXsheE=
+		</data>
+		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Versions/A/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-macabi.swiftdoc</key>
+		<data>
+		uoViYITtbwgnLKhtXXmvJfEYSDg=
+		</data>
+		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Versions/A/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-macabi.swiftinterface</key>
+		<data>
+		z+Y6JvE6aWWyni05WBJNtSXsheE=
+		</data>
+		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Versions/A/Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-macabi.abi.json</key>
+		<data>
+		ZWp/6vKThWWr5ei+B4hsbjTr98A=
+		</data>
+		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Versions/A/Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-macabi.package.swiftinterface</key>
+		<data>
+		LQSviOmUgX4v+bfnbglLZ/N/UIM=
+		</data>
+		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Versions/A/Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-macabi.private.swiftinterface</key>
+		<data>
+		LQSviOmUgX4v+bfnbglLZ/N/UIM=
+		</data>
+		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Versions/A/Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-macabi.swiftdoc</key>
+		<data>
+		7WNvktP7Ijf4a+Cl4JpA5KdG7j8=
+		</data>
+		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Versions/A/Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-macabi.swiftinterface</key>
+		<data>
+		LQSviOmUgX4v+bfnbglLZ/N/UIM=
 		</data>
 		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Versions/A/Resources/Info.plist</key>
 		<data>
-		DT0xcJ4+Q3TSKcekZldpWYu+DH0=
+		GZ7H60m5xdhBrHxdAlffRXqparA=
+		</data>
+		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Versions/A/_CodeSignature/CodeDirectory</key>
+		<data>
+		8InSLdOnfup50J/9lt2cNNoOjEU=
+		</data>
+		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Versions/A/_CodeSignature/CodeRequirements</key>
+		<data>
+		UoyS2ydtIJibjCgTCa/AKORiXlQ=
+		</data>
+		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Versions/A/_CodeSignature/CodeResources</key>
+		<data>
+		A9leMpYC4yoqB0nyyP8Wl1OL5YM=
+		</data>
+		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Versions/A/_CodeSignature/CodeSignature</key>
+		<data>
+		TD7H+pDoL9UQqejLAQxCGpsE44k=
 		</data>
 		<key>ios-arm64_x86_64-simulator/GoMarketMeAppleCoreKit.framework/GoMarketMeAppleCoreKit</key>
 		<data>
-		k41cceKhEXt2xJSrOcroWNWqEKg=
+		eQ8rw2mY2tRzDfayYrm9RIqJiyU=
 		</data>
 		<key>ios-arm64_x86_64-simulator/GoMarketMeAppleCoreKit.framework/Info.plist</key>
 		<data>
-		Rc1+/vsJ/wHJUwdPatviVV27UIM=
+		71Oa2QH0WvKoIiFhou5B3UFeTGk=
 		</data>
 		<key>ios-arm64_x86_64-simulator/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		Yz4ssEF/NnpZM1MBvyHhbgpqN/E=
+		ZWp/6vKThWWr5ei+B4hsbjTr98A=
 		</data>
 		<key>ios-arm64_x86_64-simulator/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-simulator.package.swiftinterface</key>
 		<data>
-		U31cbXyjrR6VdlwTSAttlD7FQSs=
+		/eh8TsWXQiaw9jVYCWxjlFQTwZY=
 		</data>
 		<key>ios-arm64_x86_64-simulator/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		U31cbXyjrR6VdlwTSAttlD7FQSs=
+		/eh8TsWXQiaw9jVYCWxjlFQTwZY=
 		</data>
 		<key>ios-arm64_x86_64-simulator/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		H9xXBv15IC0MI/mPmteqeN3SL40=
+		biw/kJ+d3rTTGd6BNqMlqr/MCec=
 		</data>
 		<key>ios-arm64_x86_64-simulator/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		U31cbXyjrR6VdlwTSAttlD7FQSs=
+		/eh8TsWXQiaw9jVYCWxjlFQTwZY=
 		</data>
 		<key>ios-arm64_x86_64-simulator/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		Yz4ssEF/NnpZM1MBvyHhbgpqN/E=
+		ZWp/6vKThWWr5ei+B4hsbjTr98A=
 		</data>
 		<key>ios-arm64_x86_64-simulator/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-simulator.package.swiftinterface</key>
 		<data>
-		BH9/4V207MlEWxsBswSDQtUJcVw=
+		OrlglL1pGr8ia3X31GaYbC+D+n4=
 		</data>
 		<key>ios-arm64_x86_64-simulator/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		BH9/4V207MlEWxsBswSDQtUJcVw=
+		OrlglL1pGr8ia3X31GaYbC+D+n4=
 		</data>
 		<key>ios-arm64_x86_64-simulator/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		EhYlJMy9MzyhO/LayA7kz0okZC4=
+		sC8czWc6OYWsoX1FoOJ5M0c1DUc=
 		</data>
 		<key>ios-arm64_x86_64-simulator/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		BH9/4V207MlEWxsBswSDQtUJcVw=
+		OrlglL1pGr8ia3X31GaYbC+D+n4=
+		</data>
+		<key>ios-arm64_x86_64-simulator/GoMarketMeAppleCoreKit.framework/_CodeSignature/CodeDirectory</key>
+		<data>
+		sj+IYeAQUpNirrdilvy+jcZMVX8=
+		</data>
+		<key>ios-arm64_x86_64-simulator/GoMarketMeAppleCoreKit.framework/_CodeSignature/CodeRequirements</key>
+		<data>
+		UoyS2ydtIJibjCgTCa/AKORiXlQ=
 		</data>
 		<key>ios-arm64_x86_64-simulator/GoMarketMeAppleCoreKit.framework/_CodeSignature/CodeResources</key>
 		<data>
-		dUmeZqEtMYc/Tcp4e7QDRmbSSyE=
+		zRd0IA1ez+QxJfqKWj+rxNLdGUU=
+		</data>
+		<key>ios-arm64_x86_64-simulator/GoMarketMeAppleCoreKit.framework/_CodeSignature/CodeSignature</key>
+		<data>
+		MU6OxQLFeramMA5ZFFeVrMOdcfo=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -139,49 +183,77 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			UNtouTVgexTIU0fd7+MePY8ays1MrS2ZyKiANN/e+vM=
+			PKM9/1tkLqWbw/Wew1YQwPtS3jLwrz3a0fMUsMbVkJY=
 			</data>
 		</dict>
 		<key>ios-arm64/GoMarketMeAppleCoreKit.framework/Info.plist</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			DKOW10BZDvd2EXgWY0UoIKc2q/NVaTwml9DQUnhYfGE=
+			sBqvvFvNo1HF4La3d3gadNTbQcCfw5bPXHm6L5Prw2M=
 			</data>
 		</dict>
 		<key>ios-arm64/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ARslbRhI/ezGwy0P22CuqnMcUKmRfyZEP/Dip4QdMdc=
+			+3rSSTbf7gDecoy6UiHTaNGxJb6l52rcFENkRvvvyTk=
 			</data>
 		</dict>
 		<key>ios-arm64/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios.package.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ALLIeN4Cz9b4qhfEWantx9HjBWZQuTib9AsiAjEXbYM=
+			2FhlmQ03xWkdod+7l3xNgICmPgAcUMWnBbRLcFpnGZI=
 			</data>
 		</dict>
 		<key>ios-arm64/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ALLIeN4Cz9b4qhfEWantx9HjBWZQuTib9AsiAjEXbYM=
+			2FhlmQ03xWkdod+7l3xNgICmPgAcUMWnBbRLcFpnGZI=
 			</data>
 		</dict>
 		<key>ios-arm64/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			IRPvjnrMoSpzVZpI93QfV0NKL+uh/RAqOYHle5YmteY=
+			SJN930tDMhcXG7Q9OFwC89+FgUZw8HwZPCAPG9GaKcc=
 			</data>
 		</dict>
 		<key>ios-arm64/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ALLIeN4Cz9b4qhfEWantx9HjBWZQuTib9AsiAjEXbYM=
+			2FhlmQ03xWkdod+7l3xNgICmPgAcUMWnBbRLcFpnGZI=
+			</data>
+		</dict>
+		<key>ios-arm64/GoMarketMeAppleCoreKit.framework/_CodeSignature/CodeDirectory</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			9XlwugrxuKglXIEF9ki2mNtHBCcMf0IxABuXmpajJds=
+			</data>
+		</dict>
+		<key>ios-arm64/GoMarketMeAppleCoreKit.framework/_CodeSignature/CodeRequirements</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			qQLkBPV8rTSK8fWlujXImV/cN/WPxcwFljO81/RZTqA=
+			</data>
+		</dict>
+		<key>ios-arm64/GoMarketMeAppleCoreKit.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			bwB2hbHytyNZgaaCaU6g9Tm51gI8D8SyHKLLFm1U5Zc=
+			</data>
+		</dict>
+		<key>ios-arm64/GoMarketMeAppleCoreKit.framework/_CodeSignature/CodeSignature</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			bn4ZjcMKdQfSeSsR0tKSTEEnVbbCe3pxZbOgD0xC2Ls=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/GoMarketMeAppleCoreKit</key>
@@ -189,75 +261,10 @@
 			<key>symlink</key>
 			<string>Versions/Current/GoMarketMeAppleCoreKit</string>
 		</dict>
-		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-macabi.abi.json</key>
+		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Modules</key>
 		<dict>
-			<key>hash2</key>
-			<data>
-			ARslbRhI/ezGwy0P22CuqnMcUKmRfyZEP/Dip4QdMdc=
-			</data>
-		</dict>
-		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-macabi.package.swiftinterface</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			QFm5Y1H2MPeEn70xio1JsN7Wre00ewrfdNLXHUyqcHk=
-			</data>
-		</dict>
-		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-macabi.private.swiftinterface</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			QFm5Y1H2MPeEn70xio1JsN7Wre00ewrfdNLXHUyqcHk=
-			</data>
-		</dict>
-		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-macabi.swiftdoc</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			Jo166SVCHKhdZ4D19SWGTI5huFu+i3NC8ZVTKDqTxBM=
-			</data>
-		</dict>
-		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-macabi.swiftinterface</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			QFm5Y1H2MPeEn70xio1JsN7Wre00ewrfdNLXHUyqcHk=
-			</data>
-		</dict>
-		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-macabi.abi.json</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			ARslbRhI/ezGwy0P22CuqnMcUKmRfyZEP/Dip4QdMdc=
-			</data>
-		</dict>
-		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-macabi.package.swiftinterface</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			9DUcaGfLohIoa0WzJJygFt/6thQiFqz4WaaZPA6+HqU=
-			</data>
-		</dict>
-		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-macabi.private.swiftinterface</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			9DUcaGfLohIoa0WzJJygFt/6thQiFqz4WaaZPA6+HqU=
-			</data>
-		</dict>
-		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-macabi.swiftdoc</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			2BZvvrJK1J9AVo285mjGY+mpUNckwIPA952mSNRsK+o=
-			</data>
-		</dict>
-		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-macabi.swiftinterface</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			9DUcaGfLohIoa0WzJJygFt/6thQiFqz4WaaZPA6+HqU=
-			</data>
+			<key>symlink</key>
+			<string>Versions/Current/Modules</string>
 		</dict>
 		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Resources</key>
 		<dict>
@@ -268,14 +275,112 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			tIWUjHICLO5CvQo943PnDsupiFdej7AnHWZe6cNzhO0=
+			2mf3X9hwmbTkWh3FihnqFFCV9hpzsnzexz5/Ecl5YpI=
+			</data>
+		</dict>
+		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Versions/A/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-macabi.abi.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			+3rSSTbf7gDecoy6UiHTaNGxJb6l52rcFENkRvvvyTk=
+			</data>
+		</dict>
+		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Versions/A/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-macabi.package.swiftinterface</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ZMSUGGW/FfJ6FbM78+tInsNCGWoK2PdEJ/i8xmiD5Qc=
+			</data>
+		</dict>
+		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Versions/A/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-macabi.private.swiftinterface</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ZMSUGGW/FfJ6FbM78+tInsNCGWoK2PdEJ/i8xmiD5Qc=
+			</data>
+		</dict>
+		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Versions/A/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-macabi.swiftdoc</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			SDb3F88SOLYt9URvwG03DMqLMZdlvx4lm4jYQUYofSI=
+			</data>
+		</dict>
+		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Versions/A/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-macabi.swiftinterface</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ZMSUGGW/FfJ6FbM78+tInsNCGWoK2PdEJ/i8xmiD5Qc=
+			</data>
+		</dict>
+		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Versions/A/Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-macabi.abi.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			+3rSSTbf7gDecoy6UiHTaNGxJb6l52rcFENkRvvvyTk=
+			</data>
+		</dict>
+		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Versions/A/Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-macabi.package.swiftinterface</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			3joYgt3k92oqNT94i9Z+CoAqsnoE1Hl18XlEL9wsaG4=
+			</data>
+		</dict>
+		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Versions/A/Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-macabi.private.swiftinterface</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			3joYgt3k92oqNT94i9Z+CoAqsnoE1Hl18XlEL9wsaG4=
+			</data>
+		</dict>
+		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Versions/A/Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-macabi.swiftdoc</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			InWM7YzRxtbgK6YHk+ffFEgiq5TpLESrRFdp2rFFlHY=
+			</data>
+		</dict>
+		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Versions/A/Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-macabi.swiftinterface</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			3joYgt3k92oqNT94i9Z+CoAqsnoE1Hl18XlEL9wsaG4=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Versions/A/Resources/Info.plist</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			b+BksBqWToyb7ySiNhitDU1mb4TqVkvIAdGkQoWCXhA=
+			0FHB7r4KaYyaxBQHZ177IyE2wWXkq0+vFqw4KxxjndQ=
+			</data>
+		</dict>
+		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Versions/A/_CodeSignature/CodeDirectory</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			bxcLZA9q43BytYvcTZ7pd4y/L2JWQAAuSe/78eplivU=
+			</data>
+		</dict>
+		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Versions/A/_CodeSignature/CodeRequirements</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			qQLkBPV8rTSK8fWlujXImV/cN/WPxcwFljO81/RZTqA=
+			</data>
+		</dict>
+		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Versions/A/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			DiE4hTsntdlsUP2WblncJN+ox/1P5FIByjfCbqrgs3M=
+			</data>
+		</dict>
+		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Versions/A/_CodeSignature/CodeSignature</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			K65ZCoqXIC3EMgM9GdJIRnXezAZPK0v1fi7UolV1CDA=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-maccatalyst/GoMarketMeAppleCoreKit.framework/Versions/Current</key>
@@ -287,91 +392,112 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			TBbCpHy03DZ6Z3E3roJj6AYdgfDhrS8r4FG1qmshnOM=
+			if63wHib8D7lj3g1jZUXQSrGOmw2nWNHzHpYDUhargk=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/GoMarketMeAppleCoreKit.framework/Info.plist</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			RdSUdAZUJ+/jBUsHUjjZFSGrj2/qXGRG8hrkNgy50lU=
+			NrDnISC79KlQPoChrswvr4bRrrMj/en3fl2ureYgusk=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ARslbRhI/ezGwy0P22CuqnMcUKmRfyZEP/Dip4QdMdc=
+			+3rSSTbf7gDecoy6UiHTaNGxJb6l52rcFENkRvvvyTk=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-simulator.package.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			DDFq5RyjUcGgwnr1HAc4MYH+DYtfVfgnB8sASTv4YLA=
+			thADUn0sJgHy94ch6k2oEx574eg2huawug06RszOcx0=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			DDFq5RyjUcGgwnr1HAc4MYH+DYtfVfgnB8sASTv4YLA=
+			thADUn0sJgHy94ch6k2oEx574eg2huawug06RszOcx0=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			p2bJSOo0h4A/pdDvSi6nHlLf6FcPd7B1q4kLbPf4PH8=
+			AvoQYdKB5UCnle7Cs28WSkCcx60YYY3n9j1+4+Z+cBA=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			DDFq5RyjUcGgwnr1HAc4MYH+DYtfVfgnB8sASTv4YLA=
+			thADUn0sJgHy94ch6k2oEx574eg2huawug06RszOcx0=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ARslbRhI/ezGwy0P22CuqnMcUKmRfyZEP/Dip4QdMdc=
+			+3rSSTbf7gDecoy6UiHTaNGxJb6l52rcFENkRvvvyTk=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-simulator.package.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			se2xidXXkqmC5ATKH250NvlPBZQ8DpPS7X2MfNqfhX4=
+			aa84aPyNaMn0uGBNalwhtjIn7FnnItWz7apizPbz3To=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			se2xidXXkqmC5ATKH250NvlPBZQ8DpPS7X2MfNqfhX4=
+			aa84aPyNaMn0uGBNalwhtjIn7FnnItWz7apizPbz3To=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			a21sExwyYzxFZnY23P4qV5puXRHfkpFoY8QcWmzwuw8=
+			b4/0gg2wtRk2VLF6YYnE27EpVVyPnNrloJYnSzNDUxQ=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/GoMarketMeAppleCoreKit.framework/Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			se2xidXXkqmC5ATKH250NvlPBZQ8DpPS7X2MfNqfhX4=
+			aa84aPyNaMn0uGBNalwhtjIn7FnnItWz7apizPbz3To=
+			</data>
+		</dict>
+		<key>ios-arm64_x86_64-simulator/GoMarketMeAppleCoreKit.framework/_CodeSignature/CodeDirectory</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			BFoLbzouhEoQ1w6ilA5NYxaapfKzh6/3cAAke3fc53I=
+			</data>
+		</dict>
+		<key>ios-arm64_x86_64-simulator/GoMarketMeAppleCoreKit.framework/_CodeSignature/CodeRequirements</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			qQLkBPV8rTSK8fWlujXImV/cN/WPxcwFljO81/RZTqA=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/GoMarketMeAppleCoreKit.framework/_CodeSignature/CodeResources</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			bkezG2sQLDIdg+tKLph+8sfHzJ3iuu6unUn4F51kKHg=
+			x0lmfDyRyn4SlHRG9r5pwnkd7SGQ/S4mS1OvH11h0VA=
+			</data>
+		</dict>
+		<key>ios-arm64_x86_64-simulator/GoMarketMeAppleCoreKit.framework/_CodeSignature/CodeSignature</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Hh8ZXvdShBQgeRXZbs0gz8d7uvWAeIhk06888HjNlVg=
 			</data>
 		</dict>
 	</dict>
