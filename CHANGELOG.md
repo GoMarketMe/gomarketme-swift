@@ -1,3 +1,9 @@
+## 6.0.1
+
+- Expose free-form campaign, affiliate, and affiliate-campaign metadata in attribution results.
+- Add `redeemReferralCode(_:)` for apps that provide their own code-entry UI.
+- Expose structured referral-code errors with semantic code, HTTP status, and retryability.
+
 ## 6.0.0
 
 - Add a shared, remotely configurable referral-code sheet and optional trigger.
