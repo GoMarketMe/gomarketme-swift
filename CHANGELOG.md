@@ -1,3 +1,10 @@
+## 6.0.2
+
+- Improved support for referral-code attribution.
+- Added automatic updates to attribution settings.
+- Improved privacy in Referral Codes Only mode.
+- Improved compatibility and reliability.
+
 ## 6.0.1
 
 - Expose free-form campaign, affiliate, and affiliate-campaign metadata in attribution results.

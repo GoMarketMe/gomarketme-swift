@@ -1,5 +1,6 @@
 import Foundation
 import Combine
+import UIKit
 import GoMarketMeAppleCoreKit
 
 public typealias GoMarketMeMetadata = [String: GoMarketMeJSONValue]
@@ -111,6 +112,7 @@ public struct GoMarketMeAffiliateMarketingData: Decodable, Sendable {
     public let saleDistribution: SaleDistribution
     public let affiliateCampaignCode: String
     public let deviceId: String
+    public let appInstallRef: String?
     public let offerCode: String?
     public let referralCode: String?
 
@@ -121,6 +123,7 @@ public struct GoMarketMeAffiliateMarketingData: Decodable, Sendable {
         case saleDistribution = "sale_distribution"
         case affiliateCampaignCode = "affiliate_campaign_code"
         case deviceId = "device_id"
+        case appInstallRef = "app_install_ref"
         case offerCode = "offer_code"
         case referralCode = "referral_code"
     }
@@ -132,7 +135,8 @@ public struct GoMarketMeAffiliateMarketingData: Decodable, Sendable {
         affiliateCampaign = try container.decodeIfPresent(AffiliateCampaign.self, forKey: .affiliateCampaign) ?? AffiliateCampaign()
         saleDistribution = try container.decode(SaleDistribution.self, forKey: .saleDistribution)
         affiliateCampaignCode = try container.decode(String.self, forKey: .affiliateCampaignCode)
-        deviceId = try container.decode(String.self, forKey: .deviceId)
+        appInstallRef = try container.decodeIfPresent(String.self, forKey: .appInstallRef)
+        deviceId = appInstallRef == nil ? (try container.decodeIfPresent(String.self, forKey: .deviceId) ?? "") : ""
         offerCode = try container.decodeIfPresent(String.self, forKey: .offerCode)
         referralCode = try container.decodeIfPresent(String.self, forKey: .referralCode)
     }
@@ -254,11 +258,13 @@ public final class GoMarketMe: ObservableObject, @unchecked Sendable {
     public static let shared = GoMarketMe()
 
     public static let sdkType = "Swift"
-    public static let sdkVersion = "6.0.1"
+    public static let sdkVersion = "6.0.2"
 
     @Published public private(set) var affiliateMarketingData: GoMarketMeAffiliateMarketingData?
     @Published public private(set) var isInitialized = false
     @Published public private(set) var isInitializing = false
+    @Published public private(set) var appInstallRef: String?
+    @Published public private(set) var attributionMode: String?
 
     public var onPurchase: ((GoMarketMeApplePurchaseEvent) -> Void)? {
         didSet {
@@ -276,12 +282,23 @@ public final class GoMarketMe: ObservableObject, @unchecked Sendable {
     private let stateQueue = DispatchQueue(label: "co.gomarketme.swift.sdk")
     private var hasStartedInitialization = false
     private var apiKey: String?
+    private var foregroundObserver: NSObjectProtocol?
 
     public init(core: GoMarketMeAppleCore = GoMarketMeAppleCore()) {
         self.core = core
         self.core.onError = { error in
             debugPrint("[GoMarketMe Swift] core error: \(error.localizedDescription)")
         }
+        foregroundObserver = NotificationCenter.default.addObserver(
+            forName: UIApplication.didBecomeActiveNotification, object: nil, queue: .main
+        ) { [weak self] _ in
+            guard let self, let apiKey = self.stateQueue.sync(execute: { self.apiKey }) else { return }
+            self.initialize(apiKey: apiKey)
+        }
+    }
+
+    deinit {
+        if let foregroundObserver { NotificationCenter.default.removeObserver(foregroundObserver) }
     }
 
     public func initialize(apiKey: String) {
@@ -311,11 +328,14 @@ public final class GoMarketMe: ObservableObject, @unchecked Sendable {
         }
 
         guard shouldStart else {
-            debugPrint("[GoMarketMe Swift] Initialization skipped because SDK is already initialized or initializing.")
+            debugPrint("[GoMarketMe Swift] Configuration refresh is already in progress.")
             return affiliateMarketingData
         }
+        defer { stateQueue.sync { hasStartedInitialization = false } }
 
         await setInitializing(true)
+        await MainActor.run { self.isInitialized = false }
+        core.stop()
 
         let initialConfiguration = GoMarketMeAppleCoreConfiguration(
             apiKey: trimmedApiKey,
@@ -329,7 +349,14 @@ public final class GoMarketMe: ObservableObject, @unchecked Sendable {
             debugPrint("[GoMarketMe Swift] core error: \(error.localizedDescription)")
         }
 
-        let prepared = await core.prepareAttribution(configuration: initialConfiguration)
+        let prepared: (configuration: GoMarketMeAppleCoreConfiguration, affiliateMarketingData: [String: Any]?)
+        do {
+            prepared = try await core.prepareAppInstallAttribution(configuration: initialConfiguration)
+        } catch {
+            await setInitializing(false)
+            core.onError?(error)
+            return nil
+        }
         core.configure(prepared.configuration)
         core.start()
 
@@ -339,6 +366,8 @@ public final class GoMarketMe: ObservableObject, @unchecked Sendable {
 
         await MainActor.run {
             self.affiliateMarketingData = decodedAffiliateData
+            self.appInstallRef = prepared.configuration.appInstallRef
+            self.attributionMode = prepared.configuration.attributionMode
             self.isInitialized = true
             self.isInitializing = false
         }
@@ -433,6 +462,8 @@ public final class GoMarketMe: ObservableObject, @unchecked Sendable {
             self.isInitialized = false
             self.isInitializing = false
             self.affiliateMarketingData = nil
+            self.appInstallRef = nil
+            self.attributionMode = nil
         }
     }
 
@@ -466,7 +497,8 @@ public final class GoMarketMe: ObservableObject, @unchecked Sendable {
     private static func decodeAffiliateMarketingData(
         _ dictionary: [String: Any]?
     ) -> GoMarketMeAffiliateMarketingData? {
-        guard let dictionary, !dictionary.isEmpty else {
+        guard let dictionary, let affiliateCampaignCode = dictionary["affiliate_campaign_code"] as? String,
+              !affiliateCampaignCode.isEmpty else {
             return nil
         }
 

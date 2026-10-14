@@ -13,6 +13,7 @@ import _SwiftConcurrencyShims
 final public class GoMarketMeAppleApiClient : @unchecked Swift.Sendable {
   public init(session: Foundation.URLSession = .shared)
   final public func postSDKInitialization(configuration: GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration) async throws
+  final public func appInstallInitialization(configuration: GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration) async throws -> Swift.String
   #if compiler(>=5.3) && $NonescapableTypes
   final public func postSystemInfo(configuration: GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration, payload: [Swift.String : Any]) async throws -> [Swift.String : Any]?
   #endif
@@ -37,13 +38,16 @@ final public class GoMarketMeAppleCore : @unchecked Swift.Sendable {
   #endif
   final public func configure(_ configuration: GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration)
   #if compiler(>=5.3) && $NonescapableTypes
+  final public func prepareAppInstallAttribution(configuration: GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration) async throws -> (configuration: GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration, affiliateMarketingData: [Swift.String : Any]?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @_Concurrency.MainActor final public func showReferralCodeSheet(showTrigger: Swift.Bool = false, completion: @escaping ([Swift.String : Any]?) -> Swift.Void) async throws
   #endif
   final public func referralCodeSettings() async throws -> [Swift.String : Any]
   #if compiler(>=5.3) && $NonescapableTypes
   @_Concurrency.MainActor final public func showReferralCodeSheet(from presenter: UIKit.UIViewController, showTrigger: Swift.Bool = false, completion: @escaping ([Swift.String : Any]?) -> Swift.Void) async throws
   #endif
-  final public func redeemReferralCode(_ code: Swift.String) async throws -> [Swift.String : Any]
+  final public func redeemReferralCode(_ code: Swift.String, referralEntrySource: Swift.String = "programmatic") async throws -> [Swift.String : Any]
   final public func start()
   final public func stop()
   final public func syncAllTransactions() async -> GoMarketMeAppleCoreKit.GoMarketMeAppleCurrentPurchaseSyncResult
@@ -75,8 +79,13 @@ public struct GoMarketMeAppleCoreConfiguration : Swift.Sendable {
   public let referralCodeSettingsEndpoint: Foundation.URL
   public let referralCodeRedeemEndpoint: Foundation.URL
   public let isProduction: Swift.Bool?
+  public var appInstallRef: Swift.String?
+  public var attributionMode: Swift.String?
+  public var isPrivacyFirst: Swift.Bool {
+    get
+  }
   #if compiler(>=5.3) && $NonescapableTypes
-  public init(apiKey: Swift.String, affiliateCampaignCode: Swift.String? = nil, deviceId: Swift.String? = nil, sourceName: Swift.String = "app_store", sdkType: Swift.String? = nil, sdkVersion: Swift.String? = nil, packageName: Swift.String? = nil, eventEndpoint: Foundation.URL = GoMarketMeAppleCoreEndpoints.event, sdkInitializationEndpoint: Foundation.URL = GoMarketMeAppleCoreEndpoints.sdkInitialization, systemInfoEndpoint: Foundation.URL = GoMarketMeAppleCoreEndpoints.systemInfo, isProduction: Swift.Bool? = nil, referralCodeSettingsEndpoint: Foundation.URL = GoMarketMeAppleCoreEndpoints.referralCodeSettings, referralCodeRedeemEndpoint: Foundation.URL = GoMarketMeAppleCoreEndpoints.referralCodeRedeem)
+  public init(apiKey: Swift.String, affiliateCampaignCode: Swift.String? = nil, deviceId: Swift.String? = nil, sourceName: Swift.String = "app_store", sdkType: Swift.String? = nil, sdkVersion: Swift.String? = nil, packageName: Swift.String? = nil, eventEndpoint: Foundation.URL = GoMarketMeAppleCoreEndpoints.event, sdkInitializationEndpoint: Foundation.URL = GoMarketMeAppleCoreEndpoints.sdkInitialization, systemInfoEndpoint: Foundation.URL = GoMarketMeAppleCoreEndpoints.systemInfo, isProduction: Swift.Bool? = nil, referralCodeSettingsEndpoint: Foundation.URL = GoMarketMeAppleCoreEndpoints.referralCodeSettings, referralCodeRedeemEndpoint: Foundation.URL = GoMarketMeAppleCoreEndpoints.referralCodeRedeem, appInstallRef: Swift.String? = nil, attributionMode: Swift.String? = nil)
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
   public func withAttribution(affiliateCampaignCode: Swift.String?, deviceId: Swift.String?, packageName: Swift.String?) -> GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration
@@ -108,5 +117,5 @@ public struct GoMarketMeReferralError : Foundation.LocalizedError {
 }
 extension GoMarketMeAppleCoreKit.GoMarketMeAppleApiClient {
   final public func getReferralCodeSettings(configuration: GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration) async throws -> [Swift.String : Any]
-  final public func redeemReferralCode(configuration: GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration, code: Swift.String) async throws -> [Swift.String : Any]
+  final public func redeemReferralCode(configuration: GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration, code: Swift.String, referralEntrySource: Swift.String = "programmatic") async throws -> [Swift.String : Any]
 }

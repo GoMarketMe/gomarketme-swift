@@ -16,7 +16,7 @@
 
 - In Xcode, go to **File > Add Package Dependencies**.
 - Enter `https://github.com/GoMarketMe/gomarketme-swift.git`.
-- Select **Up to Next Major Version** with a minimum version of **6.0.1**.
+- Select **Up to Next Major Version** with a minimum version of **6.0.2**.
 - Click **Add Package**.
 
 ## Usage
@@ -137,7 +137,8 @@ The returned data includes:
     "affiliatePercentage": "20"
   },
   "affiliateCampaignCode": "affiliate-campaign-code",
-  "deviceId": "device-id",
+  "appInstallRef": "installation-uuid",
+  "deviceId": "", // deprecated in 6.0.2 - use appInstallRef instead
   "offerCode": null, // null unless this is an offer-code campaign
   "referralCode": "ASHLEY10" // null unless attribution used a referral code
 }
@@ -146,7 +147,7 @@ The returned data includes:
 - `campaign.metadata` is configured under **Campaign detail > Advanced > Campaign-level metadata**.
 - `affiliateCampaign.metadata` is configured under **Campaign detail > Affiliates > Invite or edit affiliate > Advanced > Affiliate-level metadata for this campaign**.
 
-Every property shown above is present when attribution exists. Optional values are `nil` when they do not apply. The configurable metadata dictionaries are always present and are empty when no metadata is configured; GoMarketMe returns their free-form contents without interpreting them. If no attribution exists, `affiliateMarketingData` is `nil`.
+Every property shown above is present when attribution exists. Optional values are `nil` when they do not apply. Metadata dictionaries are empty when no metadata is configured; GoMarketMe returns their contents without interpreting them. If `affiliateMarketingData.affiliateCampaignCode` is populated, the app install is attributed to an affiliate.
 
 Learn more about [Programmatic Affiliate Marketing](https://gomarketme.co/programmatic-affiliate-marketing/).
 

@@ -10,43 +10,43 @@
 		</data>
 		<key>Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		ZWp/6vKThWWr5ei+B4hsbjTr98A=
+		+b0C2HpUzKVcj0mALVuM8FkBDVU=
 		</data>
 		<key>Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-simulator.package.swiftinterface</key>
 		<data>
-		/eh8TsWXQiaw9jVYCWxjlFQTwZY=
+		q1ei5Nn4XPPT5RM6IDWU5H7J1ek=
 		</data>
 		<key>Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		/eh8TsWXQiaw9jVYCWxjlFQTwZY=
+		q1ei5Nn4XPPT5RM6IDWU5H7J1ek=
 		</data>
 		<key>Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		biw/kJ+d3rTTGd6BNqMlqr/MCec=
+		GJubzufOIZMzbdfr7INYCtBCTMw=
 		</data>
 		<key>Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		/eh8TsWXQiaw9jVYCWxjlFQTwZY=
+		q1ei5Nn4XPPT5RM6IDWU5H7J1ek=
 		</data>
 		<key>Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		ZWp/6vKThWWr5ei+B4hsbjTr98A=
+		+b0C2HpUzKVcj0mALVuM8FkBDVU=
 		</data>
 		<key>Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-simulator.package.swiftinterface</key>
 		<data>
-		OrlglL1pGr8ia3X31GaYbC+D+n4=
+		3QumhtvbYFHDn79c0B0V6B5hz0Q=
 		</data>
 		<key>Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		OrlglL1pGr8ia3X31GaYbC+D+n4=
+		3QumhtvbYFHDn79c0B0V6B5hz0Q=
 		</data>
 		<key>Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		sC8czWc6OYWsoX1FoOJ5M0c1DUc=
+		ecAHw/01dJ+SGaxsSf9FNPnEU/w=
 		</data>
 		<key>Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		OrlglL1pGr8ia3X31GaYbC+D+n4=
+		3QumhtvbYFHDn79c0B0V6B5hz0Q=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -55,70 +55,70 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			+3rSSTbf7gDecoy6UiHTaNGxJb6l52rcFENkRvvvyTk=
+			Vn4Y/+OoW5Mi/c4RZnZY29l6wHtU22S9U8FUDY5Lmmk=
 			</data>
 		</dict>
 		<key>Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-simulator.package.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			thADUn0sJgHy94ch6k2oEx574eg2huawug06RszOcx0=
+			Cn9PvObImWmj2dmWnQk3cxaZmDSu44ZcBrX66hXPK5E=
 			</data>
 		</dict>
 		<key>Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			thADUn0sJgHy94ch6k2oEx574eg2huawug06RszOcx0=
+			Cn9PvObImWmj2dmWnQk3cxaZmDSu44ZcBrX66hXPK5E=
 			</data>
 		</dict>
 		<key>Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			AvoQYdKB5UCnle7Cs28WSkCcx60YYY3n9j1+4+Z+cBA=
+			j0JoKLoe7hLwvIZyKoAaMMcTn0gc/e8ml7Nmnt0lk74=
 			</data>
 		</dict>
 		<key>Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			thADUn0sJgHy94ch6k2oEx574eg2huawug06RszOcx0=
+			Cn9PvObImWmj2dmWnQk3cxaZmDSu44ZcBrX66hXPK5E=
 			</data>
 		</dict>
 		<key>Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			+3rSSTbf7gDecoy6UiHTaNGxJb6l52rcFENkRvvvyTk=
+			Vn4Y/+OoW5Mi/c4RZnZY29l6wHtU22S9U8FUDY5Lmmk=
 			</data>
 		</dict>
 		<key>Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-simulator.package.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			aa84aPyNaMn0uGBNalwhtjIn7FnnItWz7apizPbz3To=
+			HYE9XR0iQsV3dQye/0YbJDApCiAeBUwA2LYrhu1m8js=
 			</data>
 		</dict>
 		<key>Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			aa84aPyNaMn0uGBNalwhtjIn7FnnItWz7apizPbz3To=
+			HYE9XR0iQsV3dQye/0YbJDApCiAeBUwA2LYrhu1m8js=
 			</data>
 		</dict>
 		<key>Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			b4/0gg2wtRk2VLF6YYnE27EpVVyPnNrloJYnSzNDUxQ=
+			2RJN9IXqV+j2qeki8mq1VAGqEesWzIZYnmLTPIyI7As=
 			</data>
 		</dict>
 		<key>Modules/GoMarketMeAppleCoreKit.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			aa84aPyNaMn0uGBNalwhtjIn7FnnItWz7apizPbz3To=
+			HYE9XR0iQsV3dQye/0YbJDApCiAeBUwA2LYrhu1m8js=
 			</data>
 		</dict>
 	</dict>

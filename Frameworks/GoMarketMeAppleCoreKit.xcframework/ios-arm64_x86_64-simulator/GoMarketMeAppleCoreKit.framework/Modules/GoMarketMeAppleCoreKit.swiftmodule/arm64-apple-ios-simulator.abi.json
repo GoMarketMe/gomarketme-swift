@@ -12,6 +12,13 @@
         "moduleName": "GoMarketMeAppleCoreKit"
       },
       {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GoMarketMeAppleCoreKit"
+      },
+      {
         "kind": "TypeDecl",
         "name": "GoMarketMeAppleApiClient",
         "printedName": "GoMarketMeAppleApiClient",
@@ -64,6 +71,35 @@
             "declKind": "Func",
             "usr": "s:22GoMarketMeAppleCoreKit0abcD9ApiClientC21postSDKInitialization13configurationyAA0abcdE13ConfigurationV_tYaKF",
             "mangledName": "$s22GoMarketMeAppleCoreKit0abcD9ApiClientC21postSDKInitialization13configurationyAA0abcdE13ConfigurationV_tYaKF",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "appInstallInitialization",
+            "printedName": "appInstallInitialization(configuration:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GoMarketMeAppleCoreConfiguration",
+                "printedName": "GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcD9ApiClientC24appInstallInitialization13configurationSSAA0abcdE13ConfigurationV_tYaKF",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcD9ApiClientC24appInstallInitialization13configurationSSAA0abcdE13ConfigurationV_tYaKF",
             "moduleName": "GoMarketMeAppleCoreKit",
             "declAttributes": [
               "Final",
@@ -221,7 +257,7 @@
           {
             "kind": "Function",
             "name": "redeemReferralCode",
-            "printedName": "redeemReferralCode(configuration:code:)",
+            "printedName": "redeemReferralCode(configuration:code:referralEntrySource:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -253,11 +289,18 @@
                 "name": "String",
                 "printedName": "Swift.String",
                 "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "hasDefaultArg": true,
+                "usr": "s:SS"
               }
             ],
             "declKind": "Func",
-            "usr": "s:22GoMarketMeAppleCoreKit0abcD9ApiClientC18redeemReferralCode13configuration4codeSDySSypGAA0abcdE13ConfigurationV_SStYaKF",
-            "mangledName": "$s22GoMarketMeAppleCoreKit0abcD9ApiClientC18redeemReferralCode13configuration4codeSDySSypGAA0abcdE13ConfigurationV_SStYaKF",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcD9ApiClientC18redeemReferralCode13configuration4code19referralEntrySourceSDySSypGAA0abcdE13ConfigurationV_S2StYaKF",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcD9ApiClientC18redeemReferralCode13configuration4code19referralEntrySourceSDySSypGAA0abcdE13ConfigurationV_S2StYaKF",
             "moduleName": "GoMarketMeAppleCoreKit",
             "declAttributes": [
               "Final",
@@ -1084,6 +1127,70 @@
           },
           {
             "kind": "Function",
+            "name": "prepareAppInstallAttribution",
+            "printedName": "prepareAppInstallAttribution(configuration:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Tuple",
+                "printedName": "(configuration: GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration, affiliateMarketingData: [Swift.String : Any]?)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GoMarketMeAppleCoreConfiguration",
+                    "printedName": "GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration",
+                    "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "[Swift.String : Any]?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Dictionary",
+                        "printedName": "[Swift.String : Any]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "ProtocolComposition",
+                            "printedName": "Any"
+                          }
+                        ],
+                        "usr": "s:SD"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GoMarketMeAppleCoreConfiguration",
+                "printedName": "GoMarketMeAppleCoreKit.GoMarketMeAppleCoreConfiguration",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C28prepareAppInstallAttribution13configurationAA0abcdE13ConfigurationVAE_SDySSypGSg22affiliateMarketingDatatAG_tYaKF",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C28prepareAppInstallAttribution13configurationAA0abcdE13ConfigurationVAE_SDySSypGSg22affiliateMarketingDatatAG_tYaKF",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "showReferralCodeSheet",
             "printedName": "showReferralCodeSheet(showTrigger:completion:)",
             "children": [
@@ -1267,7 +1374,7 @@
           {
             "kind": "Function",
             "name": "redeemReferralCode",
-            "printedName": "redeemReferralCode(_:)",
+            "printedName": "redeemReferralCode(_:referralEntrySource:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -1293,11 +1400,18 @@
                 "name": "String",
                 "printedName": "Swift.String",
                 "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "hasDefaultArg": true,
+                "usr": "s:SS"
               }
             ],
             "declKind": "Func",
-            "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C18redeemReferralCodeySDySSypGSSYaKF",
-            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C18redeemReferralCodeySDySSypGSSYaKF",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE0C18redeemReferralCode_19referralEntrySourceSDySSypGSS_SStYaKF",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE0C18redeemReferralCode_19referralEntrySourceSDySSypGSS_SStYaKF",
             "moduleName": "GoMarketMeAppleCoreKit",
             "declAttributes": [
               "Final",
@@ -2521,9 +2635,269 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "appInstallRef",
+            "printedName": "appInstallRef",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV13appInstallRefSSSgvp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV13appInstallRefSSSgvp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV13appInstallRefSSSgvg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV13appInstallRefSSSgvg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV13appInstallRefSSSgvs",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV13appInstallRefSSSgvs",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV13appInstallRefSSSgvM",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV13appInstallRefSSSgvM",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "attributionMode",
+            "printedName": "attributionMode",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV15attributionModeSSSgvp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV15attributionModeSSSgvp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV15attributionModeSSSgvg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV15attributionModeSSSgvg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV15attributionModeSSSgvs",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV15attributionModeSSSgvs",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV15attributionModeSSSgvM",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV15attributionModeSSSgvM",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "isPrivacyFirst",
+            "printedName": "isPrivacyFirst",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV14isPrivacyFirstSbvp",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV14isPrivacyFirstSbvp",
+            "moduleName": "GoMarketMeAppleCoreKit",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV14isPrivacyFirstSbvg",
+                "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV14isPrivacyFirstSbvg",
+                "moduleName": "GoMarketMeAppleCoreKit",
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
             "kind": "Constructor",
             "name": "init",
-            "printedName": "init(apiKey:affiliateCampaignCode:deviceId:sourceName:sdkType:sdkVersion:packageName:eventEndpoint:sdkInitializationEndpoint:systemInfoEndpoint:isProduction:referralCodeSettingsEndpoint:referralCodeRedeemEndpoint:)",
+            "printedName": "init(apiKey:affiliateCampaignCode:deviceId:sourceName:sdkType:sdkVersion:packageName:eventEndpoint:sdkInitializationEndpoint:systemInfoEndpoint:isProduction:referralCodeSettingsEndpoint:referralCodeRedeemEndpoint:appInstallRef:attributionMode:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -2668,11 +3042,41 @@
                 "printedName": "Foundation.URL",
                 "hasDefaultArg": true,
                 "usr": "s:10Foundation3URLV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV6apiKey21affiliateCampaignCode8deviceId10sourceName7sdkType0Q7Version07packageP013eventEndpoint0q14InitializationV0010systemInfoV012isProduction08referrall8SettingsV008referrall6RedeemV0ACSS_SSSgAQSSA3Q10Foundation3URLVA2TSbSgA2Ttcfc",
-            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV6apiKey21affiliateCampaignCode8deviceId10sourceName7sdkType0Q7Version07packageP013eventEndpoint0q14InitializationV0010systemInfoV012isProduction08referrall8SettingsV008referrall6RedeemV0ACSS_SSSgAQSSA3Q10Foundation3URLVA2TSbSgA2Ttcfc",
+            "usr": "s:22GoMarketMeAppleCoreKit0abcdE13ConfigurationV6apiKey21affiliateCampaignCode8deviceId10sourceName7sdkType0Q7Version07packageP013eventEndpoint0q14InitializationV0010systemInfoV012isProduction08referrall8SettingsV008referrall6RedeemV013appInstallRef15attributionModeACSS_SSSgASSSA3S10Foundation3URLVA2VSbSgA2v2Stcfc",
+            "mangledName": "$s22GoMarketMeAppleCoreKit0abcdE13ConfigurationV6apiKey21affiliateCampaignCode8deviceId10sourceName7sdkType0Q7Version07packageP013eventEndpoint0q14InitializationV0010systemInfoV012isProduction08referrall8SettingsV008referrall6RedeemV013appInstallRef15attributionModeACSS_SSSgASSSA3S10Foundation3URLVA2VSbSgA2v2Stcfc",
             "moduleName": "GoMarketMeAppleCoreKit",
             "declAttributes": [
               "AccessControl"
@@ -3669,16 +4073,23 @@
     {
       "filePath": "\/Users\/tonipeinoit\/Documents\/Others\/GOMARKETME\/gomarketme-sdks-monorepo\/bridges\/apple\/Sources\/GoMarketMeAppleCore\/GoMarketMeAppleCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 5731,
+      "offset": 9747,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/tonipeinoit\/Documents\/Others\/GOMARKETME\/gomarketme-sdks-monorepo\/bridges\/apple\/Sources\/GoMarketMeAppleCore\/GoMarketMeAppleCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 7343,
+      "offset": 11359,
       "length": 5,
       "value": "false"
+    },
+    {
+      "filePath": "\/Users\/tonipeinoit\/Documents\/Others\/GOMARKETME\/gomarketme-sdks-monorepo\/bridges\/apple\/Sources\/GoMarketMeAppleCore\/GoMarketMeAppleCore.swift",
+      "kind": "StringLiteral",
+      "offset": 13056,
+      "length": 14,
+      "value": "\"programmatic\""
     },
     {
       "filePath": "\/Users\/tonipeinoit\/Documents\/Others\/GOMARKETME\/gomarketme-sdks-monorepo\/bridges\/apple\/Sources\/GoMarketMeAppleCore\/GoMarketMeAppleCoreConfiguration.swift",
@@ -3718,7 +4129,7 @@
     {
       "filePath": "\/Users\/tonipeinoit\/Documents\/Others\/GOMARKETME\/gomarketme-sdks-monorepo\/bridges\/apple\/Sources\/GoMarketMeAppleCore\/GoMarketMeAppleCoreConfiguration.swift",
       "kind": "StringLiteral",
-      "offset": 1461,
+      "offset": 1642,
       "length": 11,
       "value": "\"app_store\""
     },
@@ -3728,6 +4139,13 @@
       "offset": 667,
       "length": 2,
       "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/tonipeinoit\/Documents\/Others\/GOMARKETME\/gomarketme-sdks-monorepo\/bridges\/apple\/Sources\/GoMarketMeAppleCore\/GoMarketMeReferralAPI.swift",
+      "kind": "StringLiteral",
+      "offset": 1478,
+      "length": 14,
+      "value": "\"programmatic\""
     },
     {
       "filePath": "\/Users\/tonipeinoit\/Documents\/Others\/GOMARKETME\/gomarketme-sdks-monorepo\/bridges\/apple\/Sources\/GoMarketMeAppleCore\/GoMarketMeReferralHTML.swift",

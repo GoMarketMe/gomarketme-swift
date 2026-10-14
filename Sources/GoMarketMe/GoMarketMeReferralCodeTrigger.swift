@@ -57,7 +57,8 @@ public struct GoMarketMeReferralCodeTrigger: View {
             }
         }
         .task(id: sdk.isInitialized) {
-            guard sdk.isInitialized, settings == nil else { return }
+            settings = nil
+            guard sdk.isInitialized else { return }
             do {
                 settings = TriggerSettings(raw: try await sdk.referralCodeSettings())
             } catch {

@@ -1,11 +1,65 @@
 import XCTest
+import GoMarketMeAppleCoreKit
 @testable import GoMarketMe
 
+private final class InitializationURLProtocol: URLProtocol {
+    static var mode = "unknown"
+    static var initializationCalls = 0
+    override class func canInit(with request: URLRequest) -> Bool { true }
+    override class func canonicalRequest(for request: URLRequest) -> URLRequest { request }
+    override func startLoading() {
+        let body: [String: Any]
+        if request.url!.path.hasSuffix("sdk-initialization") {
+            Self.initializationCalls += 1
+            body = ["attribution_mode": Self.mode]
+        } else {
+            body = ["affiliate_campaign_code": "", "campaign": [:], "affiliate": [:], "sale_distribution": [:]]
+        }
+        client?.urlProtocol(self, didReceive: HTTPURLResponse(url: request.url!, statusCode: 200, httpVersion: nil, headerFields: nil)!, cacheStoragePolicy: .notAllowed)
+        client?.urlProtocol(self, didLoad: try! JSONSerialization.data(withJSONObject: body))
+        client?.urlProtocolDidFinishLoading(self)
+    }
+    override func stopLoading() {}
+}
+
 final class GoMarketMeTests: XCTestCase {
+    @MainActor
+    func testInitializationFailureIsRetryableAndSavedModeRefreshes() async throws {
+        let sessionConfig = URLSessionConfiguration.ephemeral
+        sessionConfig.protocolClasses = [InitializationURLProtocol.self]
+        let core = GoMarketMeAppleCore(apiClient: GoMarketMeAppleApiClient(session: URLSession(configuration: sessionConfig)))
+        let sdk = GoMarketMe(core: core)
+        defer { sdk.stop() }
+        let apiKey = UUID().uuidString
+        InitializationURLProtocol.mode = "unknown"
+        InitializationURLProtocol.initializationCalls = 0
+        _ = await sdk.initialize(apiKey: apiKey)
+        XCTAssertFalse(sdk.isInitialized)
+        InitializationURLProtocol.mode = "ReferralCodesOnly"
+        _ = await sdk.initialize(apiKey: apiKey)
+        XCTAssertTrue(sdk.isInitialized)
+        XCTAssertTrue((sdk.attributionMode == "ReferralCodesOnly"))
+        XCTAssertNil(sdk.affiliateMarketingData)
+        let reference = sdk.appInstallRef
+        XCTAssertNotNil(reference)
+        InitializationURLProtocol.mode = "LinksOnly"
+        _ = await sdk.initialize(apiKey: apiKey)
+        XCTAssertFalse((sdk.attributionMode == "ReferralCodesOnly"))
+        XCTAssertEqual(sdk.appInstallRef, reference)
+        XCTAssertEqual(InitializationURLProtocol.initializationCalls, 3)
+    }
+    func testInstallReferenceIgnoresReturnedLegacyDeviceID() throws {
+        let json = #"{"campaign":{"id":"c","name":"Campaign","status":"Running","type":"Public"},"affiliate":{"id":"a","first_name":"A","last_name":"B","country_code":"US","instagram_account":"","tiktok_account":"","x_account":""},"sale_distribution":{"platform_percentage":"10","affiliate_percentage":"20"},"affiliate_campaign_code":"campaign","app_install_ref":"install-reference","device_id":"legacy"}"#
+        let data = try JSONDecoder().decode(GoMarketMeAffiliateMarketingData.self, from: Data(json.utf8))
+        XCTAssertEqual(data.appInstallRef, "install-reference")
+        XCTAssertEqual(data.deviceId, "")
+        let withoutDeviceID = json.replacingOccurrences(of: ",\"device_id\":\"legacy\"", with: "")
+        XCTAssertNoThrow(try JSONDecoder().decode(GoMarketMeAffiliateMarketingData.self, from: Data(withoutDeviceID.utf8)))
+    }
     func testSDKMetadata() throws {
         if #available(iOS 15.0, *) {
             XCTAssertEqual(GoMarketMe.sdkType, "Swift")
-            XCTAssertEqual(GoMarketMe.sdkVersion, "6.0.1")
+            XCTAssertEqual(GoMarketMe.sdkVersion, "6.0.2")
         }
     }
 

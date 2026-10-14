@@ -10,23 +10,23 @@
 		</data>
 		<key>Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		ZWp/6vKThWWr5ei+B4hsbjTr98A=
+		+b0C2HpUzKVcj0mALVuM8FkBDVU=
 		</data>
 		<key>Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios.package.swiftinterface</key>
 		<data>
-		BNOWjKMX6M41txE+1tP4pntH4PQ=
+		PcYHLJIk6SlzKA35hYhhntQG0Bg=
 		</data>
 		<key>Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		BNOWjKMX6M41txE+1tP4pntH4PQ=
+		PcYHLJIk6SlzKA35hYhhntQG0Bg=
 		</data>
 		<key>Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		xnaDIN29raIkisDf5427e/JPwRo=
+		I8AWeXsoyYiZzut1WYyXCvK7QgM=
 		</data>
 		<key>Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		BNOWjKMX6M41txE+1tP4pntH4PQ=
+		PcYHLJIk6SlzKA35hYhhntQG0Bg=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -35,35 +35,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			+3rSSTbf7gDecoy6UiHTaNGxJb6l52rcFENkRvvvyTk=
+			Vn4Y/+OoW5Mi/c4RZnZY29l6wHtU22S9U8FUDY5Lmmk=
 			</data>
 		</dict>
 		<key>Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios.package.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			2FhlmQ03xWkdod+7l3xNgICmPgAcUMWnBbRLcFpnGZI=
+			IsvMktfI7SishKDZ9eAHRVyjFBXwY7/domh6SYp5Bjw=
 			</data>
 		</dict>
 		<key>Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			2FhlmQ03xWkdod+7l3xNgICmPgAcUMWnBbRLcFpnGZI=
+			IsvMktfI7SishKDZ9eAHRVyjFBXwY7/domh6SYp5Bjw=
 			</data>
 		</dict>
 		<key>Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			SJN930tDMhcXG7Q9OFwC89+FgUZw8HwZPCAPG9GaKcc=
+			h9JrHylFBA+eDFqjcp+cBF3SFaHlkHR2YPPlNQowcoY=
 			</data>
 		</dict>
 		<key>Modules/GoMarketMeAppleCoreKit.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			2FhlmQ03xWkdod+7l3xNgICmPgAcUMWnBbRLcFpnGZI=
+			IsvMktfI7SishKDZ9eAHRVyjFBXwY7/domh6SYp5Bjw=
 			</data>
 		</dict>
 	</dict>
